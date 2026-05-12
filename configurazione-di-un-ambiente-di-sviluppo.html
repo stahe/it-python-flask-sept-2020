@@ -1,0 +1,1971 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduzione a Python 3 e al framework web Flask attraverso esempi">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/it-python-flask-sept-2020/configurazione-di-un-ambiente-di-sviluppo.html">
+      
+      
+        <link rel="prev" href="prefazione.html">
+      
+      
+        <link rel="next" href="nozioni-di-base-su-python.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>2. Configurazione di un ambiente di sviluppo - Introduzione a Python 3 e al framework web Flask attraverso esempi</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduzione a Python 3 e al framework web Flask attraverso esempi";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-configurazione-di-un-ambiente-di-sviluppo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-header__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduzione a Python 3 e al framework web Flask attraverso esempi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Configurazione di un ambiente di sviluppo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità scura"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità scura" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità chiara"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità chiara" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-nav__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduzione a Python 3 e al framework web Flask attraverso esempi
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benvenuti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prefazione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prefazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configurazione di un ambiente di sviluppo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="configurazione-di-un-ambiente-di-sviluppo.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configurazione di un ambiente di sviluppo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-python-381" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Python 3.8.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-lide-pycharm-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. L&#x27;IDE PyCharm Community
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. L&#39;IDE PyCharm Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-introduzione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.1. Introduzione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-ambiente-di-esecuzione-virtuale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.2. Ambiente di esecuzione virtuale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2.3. Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-convenzioni-di-codifica-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Convenzioni di codifica Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nozioni-di-base-su-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Nozioni di base su Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stringhe.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Stringhe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eccezioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Eccezioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="funzioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Funzioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="file-di-testo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. File di testo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Esercizio pratico – versione 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="importazioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Importazioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Esercizio pratico: Versione 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Esercizio pratico: Versione 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="classi-e-oggetti.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Classi e oggetti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-generiche-baseentity-e-myexception.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Le classi generiche [BaseEntity] e [MyException]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architettura-a-livelli-e-programmazione-basata-su-interfacce.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Architettura a livelli e programmazione basata su interfacce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Esercizio pratico - Versione 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-del-dbms-mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Utilizzo del DBMS MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-del-dbms-postgresql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Utilizzo del DBMS PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scrivere-codice-indipendente-dal-dbms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Scrivere codice indipendente dal DBMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-dellorm-sqlalchemy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Utilizzo dell'ORM SQLAlchemy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Esercizio pratico: versione 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="funzioni-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Funzioni Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="servizi-web-con-il-framework-flask.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Servizi web con il framework Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Esercizio pratico: Versione 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Esercizio pratico: Versione 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="-esercizio-sullapplicazione-versione-8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25.  Esercizio sull'applicazione: Versione 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dal-dizionario-allxml-e-viceversa.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Dal dizionario all'XML e viceversa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-applicativo-versione-9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Esercizio applicativo: Versione 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Esercizio pratico: versione 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Esercizio pratico: versione 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Esercizio pratico: Versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="client-web-per-i-servizi-json-e-xml-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Client web per i servizi JSON e XML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modalita-html-nella-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. Modalità HTML nella versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-applicativo-versione-13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Esercizio applicativo: Versione 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Esercizio pratico: versione 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-15.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Esercizio pratico: versione 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-sullapplicazione-versione-16.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Esercizio sull'applicazione: Versione 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-17.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Esercizio pratico: Versione 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-18-.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Esercizio pratico: Versione 18 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. Conclusione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="toc48548915"></a>
+<a id="installationdunenvironnement"></a>
+<a id="refheading382362423505"></a></p>
+<h1 id="2-configurazione-di-un-ambiente-di-sviluppo">2. <span style="color: #365f91">Configurazione di un ambiente di sviluppo</span></h1>
+<p><a id="toc48548916"></a>
+<a id="python381"></a>
+<a id="refheading382382423505"></a></p>
+<h2 id="21-python-381">2.1. <span style="color: #4f81bd">Python 3.8.1</span></h2>
+<p>Gli esempi contenuti in questo documento sono stati testati con l&#x27;interprete Python 3.8.1 disponibile all&#x27;URL |<a href="https://www.python.org/downloads/"><u><span style="color: #0563c1">https://www.python.org/downloads/</span></u></a>| (febbraio 2020) su un computer con sistema operativo Windows 10:</p>
+<p><img src="images/1000000100000299000001B3AECCB8A3.png" width="384" height="251" style="width:10.162cm;height:6.646cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000299000001B3AECCB8A3.png" /></p>
+<p>L&#x27;installazione di Python crea la directory dei file <strong>[1]</strong> e il menu <strong>[2]</strong> nell&#x27;elenco dei programmi:</p>
+<p><img src="images/1000000100000274000001F46906140F.png" width="403" height="320" style="width:10.65cm;height:8.479cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000274000001F46906140F.png" /></p>
+<ul>
+  <li><b>[3-4]</b>: due interpreti Python interattivi;
+  </li>
+  <li><b>[5]</b>: documentazione di Python;
+  </li>
+  <li><b>[6]</b>: documentazione dei moduli Python;
+  </li>
+</ul>
+
+<p>Non useremo l&#x27;interprete Python interattivo. È semplicemente importante sapere che gli script in questo documento potrebbero essere eseguiti usando questo interprete. Sebbene sia utile per testare come funziona una funzionalità di Python, non è molto pratico per gli script che devono essere riutilizzati. Ecco un esempio che utilizza l&#x27;opzione <strong>[4]</strong> sopra:</p>
+<p><img src="images/10000001000002EE000000A7D46FABF9.png" width="473" height="105" style="width:12.51cm;height:2.785cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002EE000000A7D46FABF9.png" /></p>
+<p>Il prompt &gt;&gt;&gt; consente di inserire un&#x27;istruzione Python che viene eseguita immediatamente. Il codice digitato sopra ha il seguente significato:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">nom</span><span class="o">=</span><span class="s2">&quot;tintin&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nom=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">nom</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">nom</span><span class="o">=</span><span class="n">tintin</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;type=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">nom</span><span class="p">))</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nb">type</span><span class="o">=&lt;</span><span class="k">class</span><span class="w"> </span><span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="o">&gt;&gt;&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Righe</strong>:</p>
+<ul>
+  <li>1: Inizializzazione di una variabile. In Python non si dichiara il tipo delle variabili. Esse assumono automaticamente il tipo del valore loro assegnato. Questo tipo può cambiare nel tempo;
+  </li>
+  <li>2: visualizzazione del nome. &#x27;name=%s&#x27; è un formato di visualizzazione in cui %s è un parametro formale che indica una stringa. <i>name </i>è il parametro effettivo che verrà visualizzato al posto di %s;
+  </li>
+  <li>3: il risultato della visualizzazione;
+  </li>
+  <li>4: visualizzazione del tipo della variabile <i>name;</i>
+  </li>
+  <li>5: La variabile name è di tipo <i>class </i>in questo caso. In Python 2.7, avrebbe il valore <i>&lt;type &#x27;str&#x27;&gt;</i>;
+  </li>
+</ul>
+
+<p>Ora, apriamo una console di Windows:</p>
+<p><img src="images/10000001000002D7000000A7880C954D.png" width="472" height="109" style="width:12.501cm;height:2.872cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002D7000000A7880C954D.png" /></p>
+<p>Il fatto che siamo riusciti a digitare <strong>[python]</strong> in <strong>[1]</strong> e che l&#x27;eseguibile <strong>[python.exe]</strong> sia stato trovato dimostra che si trova nel PATH del computer Windows. Questo è importante perché significa che gli strumenti di sviluppo Python saranno in grado di trovare l&#x27;interprete Python. Possiamo verificarlo come segue:</p>
+<p><img src="images/100000010000035C000001143AD8F4F2.png" width="551" height="177" style="width:14.589cm;height:4.681cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000035C000001143AD8F4F2.png" /></p>
+<ul>
+  <li>in <b>[2]</b>, usciamo dall&#x27;interprete Python;
+  </li>
+  <li>in <b>[3]</b>, il comando che visualizza il PATH per gli eseguibili sul computer Windows;
+  </li>
+  <li>in <b>[4]</b>, vediamo che la cartella dell&#x27;interprete Python 3.8 fa parte del PATH;
+  </li>
+</ul>
+<p><a id="toc48548917"></a>
+<a id="lidepycharmcommunity"></a>
+<a id="refheadingtoc2520872924280206"></a></p>
+<h2 id="22-lide-pycharm-community">2.2. <span style="color: #4f81bd">L&#x27;IDE PyCharm Community</span></h2>
+<p><a id="toc48548918"></a></p>
+<h3 id="221-introduzione">2.2.1. <span style="color: #4f81bd">Introduzione</span></h3>
+<p>Per compilare ed eseguire gli script in questo documento, abbiamo utilizzato l&#x27;editor <strong>[PyCharm]</strong> Community Edition, disponibile (febbraio 2020) all&#x27;URL |https://www.jetbrains.com/fr-fr/pycharm/download/#section=windows|:</p>
+<p><img src="images/100000010000027A0000018C9A192739.png" width="447" height="279" style="width:11.83cm;height:7.389cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000027A0000018C9A192739.png" /></p>
+<p>Scaricare l&#x27;IDE PyCharm Community <strong>[1-3]</strong> e installarlo.</p>
+<p>Avviare l&#x27;IDE PyCharm e creare il primo progetto Python:</p>
+<p><img src="images/100000010000020F000001485D7AFCD6.png" width="403" height="251" style="width:10.659cm;height:6.634cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000020F000001485D7AFCD6.png" /></p>
+<p><img src="images/10000001000002DA000001C911AADD0A.png" width="567" height="355" style="width:15.011cm;height:9.396cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002DA000001C911AADD0A.png" /></p>
+<ul>
+  <li>In <b>[2-4]</b>, creare un nuovo progetto;
+  </li>
+</ul>
+
+<p>L&#x27;IDE PyCharm visualizza il progetto creato come segue:</p>
+<p><img src="images/10000001000004270000010CBF0658ED.png" width="679" height="171" style="width:17.962cm;height:4.53cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000004270000010CBF0658ED.png" /></p>
+<ul>
+  <li>In <b>[2-3]</b>, esaminiamo le proprietà dell&#x27;IDE;
+  </li>
+</ul>
+
+<p><img src="images/100000010000042700000100A569C355.png" width="662" height="159" style="width:17.521cm;height:4.219cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000042700000100A569C355.png" /></p>
+<ul>
+  <li>in <b>[4]</b>, l&#x27;interprete Python che verrà utilizzato per il progetto;
+  </li>
+  <li>in <b>[5]</b>, un elenco a discesa degli interpreti disponibili;
+  </li>
+  <li>In <b>[6]</b>, selezionare l&#x27;interprete scaricato nella sezione <a href="#python381"><u><span style="color: #0563c1">|Python 3.8.</span></u></a>1|;
+  </li>
+</ul>
+
+<p><img src="images/1000000100000395000002910038673B.png" width="584" height="419" style="width:15.46cm;height:11.077cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000395000002910038673B.png" /></p>
+<ul>
+  <li>in <b>[7]</b>, l&#x27;interprete selezionato;
+  </li>
+  <li>in <b>[8]</b>, l&#x27;elenco dei pacchetti disponibili con questo interprete. I pacchetti contengono moduli che gli script Python possono utilizzare. Sono disponibili centinaia di moduli;
+  </li>
+</ul>
+
+<p>Iniziamo creando una cartella in cui inseriremo il nostro primo script Python:</p>
+<p><img src="images/100000010000038D000000BC8604A6B5.png" width="585" height="121" style="width:15.482cm;height:3.201cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000038D000000BC8604A6B5.png" /></p>
+<ul>
+  <li>Fai clic con il tasto destro del mouse sul progetto, quindi <b>[1-2] </b>per creare una cartella;
+  </li>
+  <li>In <b>[3]</b>, digita il nome della cartella: verrà creata nella cartella del progetto;
+  </li>
+</ul>
+
+<p>Successivamente, creiamo uno script Python:</p>
+<p><img src="images/10000001000004270000011436FF10C9.png" width="663" height="172" style="width:17.53cm;height:4.553cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000004270000011436FF10C9.png" /></p>
+<ul>
+  <li>Fai clic con il tasto destro sulla cartella<b> [bases]</b>, quindi <b>[1-3]</b>;
+  </li>
+  <li>In <b>[4-5]</b>, inserisci il nome dello script;
+  </li>
+</ul>
+
+<p>Scriviamo il nostro primo script:</p>
+<p><img src="images/10000001000004270000014DD7E62FF3.png" width="662" height="207" style="width:17.521cm;height:5.489cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000004270000014DD7E62FF3.png" /></p>
+<ul>
+  <li>In <b>[3]</b>, scriviamo il seguente script:
+  </li>
+</ul>
+
+<ol>
+    <ul>
+      <li>righe 1, 3: i commenti iniziano con il simbolo #;
+      </li>
+      <li>riga 2: inizializzazione di una variabile. Python non dichiara il tipo delle sue variabili;
+      </li>
+      <li>riga 4: output sullo schermo. La sintassi utilizzata qui è <b>[formato % dati] </b>con:
+        <ul>
+          <li><b>formato</b>: nome=%s dove %s indica il segnaposto per una stringa. Questa stringa si troverà nella parte<b> [dati] </b>dell&#x27;espressione;
+          </li>
+          <li><b>dati</b>: il valore della variabile <b>[nome] </b>sostituirà il segnaposto %s nella stringa di formato;
+          </li>
+        </ul>
+      </li>
+    </ul>
+</ol>
+<ul>
+  <li>Con <b>[4-5]</b>, riformattiamo il codice secondo le raccomandazioni dell&#x27;ente di controllo di Python;
+  </li>
+</ul>
+
+<p>Lo script viene eseguito facendo clic con il tasto destro del mouse sul codice <strong>[6]</strong>:</p>
+<p><img src="images/1000000100000427000001BEEEEA8F56.png" width="662" height="278" style="width:17.521cm;height:7.35cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000427000001BEEEEA8F56.png" /></p>
+<ul>
+  <li>in <b>[7]</b>, il comando eseguito;
+  </li>
+  <li>in <b>[8]</b>, il risultato dell&#x27;esecuzione;
+  </li>
+</ul>
+
+<p>Per eseguire lo script nel documento, scaricare il codice dall&#x27;URL |<a href="https://tahe.developpez.com/tutoriels-cours/python-flask-2020/documents/python-flask-2020.rar"><u><span style="color: #0563c1">https://tahe.developpez.com/tutoriels-cours/python-flask-2020/documents/python-flask-2020.rar</span></u></a>| e poi procedere come segue in PyCharm:</p>
+<p><img src="images/1000000100000427000002222EDEA730.png" width="663" height="340" style="width:17.53cm;height:9.005cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000427000002222EDEA730.png" /></p>
+<ul>
+  <li>in <b>[1-2]</b>, aprire un progetto esistente: selezionare la cartella contenente il codice scaricato;
+  </li>
+  <li>in <b>[3]</b>, il progetto è aperto;
+  </li>
+  <li>in <b>[4-5]</b>, esegui uno degli script del progetto;
+  </li>
+</ul>
+
+<p><img src="images/10000001000003240000010A33CB37BF.png" width="523" height="173" style="width:13.839cm;height:4.579cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003240000010A33CB37BF.png" /></p>
+<ul>
+  <li>in <b>[7-8]</b>, i risultati dell&#x27;esecuzione;
+  </li>
+</ul>
+<p><a id="environnementvirtueldexecution"></a>
+<a id="toc48548919"></a></p>
+<h3 id="222-ambiente-di-esecuzione-virtuale">2.2.2. <span style="color: #4f81bd">Ambiente di esecuzione virtuale</span></h3>
+<p>Il nostro ambiente di lavoro è ora attivo e funzionante. Tuttavia, lo modificheremo per scrivere gli script per questo corso. Per prima cosa, modifichiamo la configurazione di PyCharm:</p>
+<p><img src="images/1000000100000426000002452F6C4184.png" width="662" height="362" style="width:17.51cm;height:9.58cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000426000002452F6C4184.png" /></p>
+<p>Nella finestra a destra:</p>
+<ul>
+  <li>Per impostazione predefinita, la casella <b>[1] </b>è selezionata. Deselezionarla in modo che PyCharm non apra l&#x27;ultimo progetto per impostazione predefinita, ma ci permetta di scegliere quale aprire;
+  </li>
+  <li>In <b>[2]</b>, non confermiamo l&#x27;uscita da PyCharm quando chiudiamo la finestra dell&#x27;applicazione;
+  </li>
+  <li>In <b>[3]</b>, i nuovi progetti si aprono in una finestra separata;
+  </li>
+  <li>in <b>[4]</b>, se chiudi PyCharm mentre un programma è in esecuzione, questo verrà interrotto;
+  </li>
+</ul>
+
+<p>Ora chiudiamo PyCharm e poi lo riapriamo:</p>
+<p><img src="images/1000000100000427000001E44ED38623.png" width="662" height="302" style="width:17.521cm;height:7.978cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000427000001E44ED38623.png" /></p>
+<ul>
+  <li>In <b>[1]</b>, creare un nuovo progetto;
+  </li>
+  <li>In <b>[2]</b>, specificare la cartella del progetto;
+  </li>
+  <li>In <b>[3]</b>, seleziona un ambiente virtuale. Un ambiente virtuale è specifico per il progetto che stai creando. Non si mescola con gli ambienti virtuali di altri progetti. Un progetto Python/Flask utilizza molte librerie esterne che devono essere installate. Il progetto P1 potrebbe utilizzare la libreria B nella versione v1, mentre il progetto P2 potrebbe utilizzare la stessa libreria B ma nella versione v2. Queste due versioni potrebbero essere più o meno compatibili. Tuttavia, quando si installa una libreria nella versione v2 e la versione v1 è già installata, la versione v1 viene sovrascritta dalla versione v2. Ciò può essere problematico per il progetto che utilizzava la versione v1 se la nuova versione v2 non è pienamente compatibile con la versione v1. Per evitare questi problemi, ogni progetto è isolato in un ambiente virtuale;
+  </li>
+  <li>in <b>[4]</b>, specificare la cartella in cui verranno memorizzate le librerie Python scaricate durante il progetto. Qui, abbiamo scelto una cartella <b>[venv] </b>(ambiente virtuale) all&#x27;interno della cartella del progetto. Non è obbligatorio farlo;
+  </li>
+  <li>in <b>[5]</b>, l&#x27;interprete Python del progetto. Si tratta di quello che abbiamo installato nel passaggio precedente;
+  </li>
+  <li>in <b>[6]</b>, creare il progetto;
+  </li>
+</ul>
+
+<p><img src="images/100000010000017C0000023AE122802B.png" width="290" height="436" style="width:7.682cm;height:11.523cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000017C0000023AE122802B.png" /></p>
+<ul>
+  <li>in <b>[7-8]</b>, il progetto creato;
+  </li>
+  <li>in <b>[9]</b>, l&#x27;ambiente di runtime del progetto, chiamato ambiente virtuale;
+  </li>
+  <li>in <b>[10]</b>, la cartella<b> [site-packages] </b>è dove verranno memorizzate le librerie scaricate in seguito;
+  </li>
+</ul>
+<p><a id="toc48548920"></a></p>
+<h3 id="223-git">2.2.3. <span style="color: #4f81bd">Git</span></h3>
+<p>Successivamente, attiviamo un sistema di controllo delle versioni. Qui useremo Git <strong>[1-4]</strong>:</p>
+<p><img src="images/100000010000042800000143DEC3132E.png" width="679" height="206" style="width:17.962cm;height:5.452cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000042800000143DEC3132E.png" /></p>
+<p>Un sistema di controllo delle versioni (VCS) consente di tenere traccia delle modifiche apportate a un progetto. È possibile acquisire istantanee del progetto in diversi momenti del suo ciclo di vita tramite un&#x27;operazione chiamata <strong>commit</strong>. Se si effettuano due commit nei momenti T e T+1, il VCS consente di vedere cosa è cambiato tra le due versioni sottoposte a commit. Normalmente, l&#x27; e del VCS è utilizzata da un team di sviluppatori. Essi effettuano il commit del loro codice una volta che è stato accuratamente testato. Dal VCS, altri sviluppatori possono recuperare questo codice convalidato e utilizzarlo.</p>
+<p>In questo caso, c&#x27;è un solo sviluppatore. L&#x27;esperienza dimostra che un&#x27;applicazione può funzionare al momento T ma non più al momento T+1. In tal caso, vorremmo tornare al momento T per ricominciare da zero. Il VCS lo consente, ed è per questo che lo useremo qui.</p>
+<p>Vi mostreremo come farlo con Git.</p>
+<p><img src="images/1000000100000456000002148875885E.png" width="639" height="306" style="width:16.902cm;height:8.102cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000456000002148875885E.png" /></p>
+<ul>
+  <li>In <b>[1]</b>, selezionate la scheda<b> [Git] </b>(in basso a sinistra);
+  </li>
+  <li>in <b>[2]</b>, potete vedere che ci sono 495 file di progetto che non sono sottoposti a controllo di versione da Git. Ciò significa che non saranno inclusi nell&#x27;istantanea del progetto durante i commit;
+  </li>
+  <li>in <b>[3]</b>, il pulsante <b>[commit] </b>o il pulsante di convalida del progetto. Come accennato, Git acquisisce quindi un&#x27;istantanea del progetto e la memorizza in una cartella<b> [.git] </b>nella radice del progetto (non visualizzata da PyCharm ma visibile in Esplora file);
+  </li>
+</ul>
+
+<p>Eseguiamo il commit <strong>[3]</strong> del progetto nel suo stato attuale.</p>
+<ul>
+  <li>In <b>[4]</b>, l&#x27;elenco dei file non sottoposti a controllo di versione;
+  </li>
+  <li>in <b>[5]</b>, tutti questi file non sottoposti a controllo di versione appartengono all&#x27;ambiente virtuale <b>[venv]</b>;
+  </li>
+  <li>In <b>[6]</b>, ogni commit deve essere accompagnato da un messaggio. Qui, lo sviluppatore descrive le modifiche introdotte dalla versione da sottoporre a commit rispetto all&#x27;ultima versione sottoposta a commit;
+  </li>
+</ul>
+
+<p>Alcune cartelle o file possono essere ignorati da Git. In tal caso, non vengono mai inclusi nell&#x27;istantanea. In <strong>[5]</strong> sopra, fare clic con il tasto destro del mouse sulla cartella <strong>[venv]</strong>.</p>
+<ul>
+  <li>In <b>[1-3]</b>, specifichiamo che la cartella<b> [venv] </b>non deve essere inclusa negli snapshot di Git. L&#x27;elenco delle cartelle e dei file ignorati da Git è memorizzato in un file chiamato <b>[.gitignore] [4]</b>;
+  </li>
+</ul>
+
+<p><img src="images/10000001000003E900000154A8B6254D.png" width="621" height="211" style="width:16.431cm;height:5.581cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003E900000154A8B6254D.png" /></p>
+<p><img src="images/10000001000002FB000001A553182FB3.png" width="497" height="274" style="width:13.139cm;height:7.25cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002FB000001A553182FB3.png" /></p>
+<ul>
+  <li>Dopo il passaggio precedente, tutti i file nella cartella<b> [venv] </b>scompaiono dall&#x27;elenco dei file non sottoposti a controllo di versione. Rimane solo il file<b> [.gitignore] </b>appena creato;
+  </li>
+  <li>In <b>[5]</b>, lo selezioniamo in modo che venga salvato;
+  </li>
+  <li>In <b>[6]</b>, creiamo un messaggio di commit:
+  </li>
+  <li>in <b>[7]</b>, confermiamo. Viene quindi eseguita un&#x27;istantanea del progetto;
+  </li>
+</ul>
+
+<p><img src="images/10000001000001FE000000E30821F753.png" width="393" height="175" style="width:10.41cm;height:4.634cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000001FE000000E30821F753.png" /></p>
+<ul>
+  <li>in <b>[8-9]</b>, il contenuto del file<b> [.gitignore]</b>: una singola riga con il nome della cartella<b> [/venv]</b>, che indica che il suo contenuto deve essere ignorato nelle istantanee;
+  </li>
+</ul>
+
+<p>Ora vediamo come Git può essere utile. Per prima cosa, creiamo una cartella <strong>[git]</strong> (puoi usare qualsiasi altro nome: potrà essere cancellata alla fine della dimostrazione):</p>
+<p><img src="images/10000001000003FC0000017BDA1981DD.png" width="662" height="246" style="width:17.51cm;height:6.505cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003FC0000017BDA1981DD.png" /></p>
+<ul>
+  <li>in <b>[1-5]</b>, creiamo una cartella<b> [git]</b>;
+
+<img src="images/100000010000034B0000011FE08509EA.png" width="596" height="203" style="width:15.76cm;height:5.366cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000034B0000011FE08509EA.png" />
+
+
+  </li>
+</ul>
+
+<ul>
+  <li>nei passaggi <b>[6-10]</b>, creiamo uno script Python <b>[git_01]</b>;
+  </li>
+</ul>
+
+<p><img src="images/1000000100000219000000C45A0BDAD2.png" width="415" height="152" style="width:10.993cm;height:4.013cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000219000000C45A0BDAD2.png" /></p>
+<ul>
+  <li>nei passaggi <b>[11-12]</b>, lo script contiene solo un commento;
+  </li>
+  <li>In <b>[13-14]</b>, creare una copia di <b>[git_01]</b>. Per farlo, selezionare <b>[git_01]</b>, premere Ctrl-C (Copia), poi Ctrl-V (Incolla) e inserire <b>[git_02] </b>come nome del file;
+  </li>
+</ul>
+
+<p><img src="images/10000001000002A70000013DE8FB7512.png" width="432" height="202" style="width:11.432cm;height:5.338cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002A70000013DE8FB7512.png" /></p>
+<p>Ora, eseguiamo il commit del nostro progetto. Verrà creata un&#x27;istantanea dei due file <strong>[git_01, git_02]</strong>;</p>
+<p><img src="images/10000001000003E9000001BCB5F0C707.png" width="662" height="294" style="width:17.521cm;height:7.772cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003E9000001BCB5F0C707.png" /></p>
+<ul>
+  <li>In <b>[1-3]</b>, esegui il commit del progetto;
+  </li>
+  <li>In <b>[4]</b>, seleziona i file non sottoposti a controllo di cui vuoi eseguire il commit — in questo caso, tutti;
+  </li>
+  <li>In <b>[5]</b>, inserisci il messaggio di commit;
+  </li>
+  <li>In <b>[6]</b>, confermiamo;
+  </li>
+</ul>
+
+<p><img src="images/10000001000003E80000017A6827943E.png" width="621" height="235" style="width:16.439cm;height:6.214cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003E80000017A6827943E.png" /></p>
+<ul>
+  <li>in <b>[1-2]</b>, confermare il commit;
+  </li>
+  <li>in <b>[3]</b>, seleziona la scheda<b> [Log]</b>;
+  </li>
+  <li>In <b>[4]</b>, una vista dei rami del progetto. Qui, c&#x27;è un solo ramo chiamato <b>[master]</b>;
+  </li>
+  <li>in <b>[5-6]</b>, il commit appena effettuato;
+  </li>
+</ul>
+
+<p>Ora creiamo uno script <strong>[git_03]</strong> seguendo la stessa procedura:</p>
+<p><img src="images/1000000100000263000000F075443EDD.png" width="398" height="156" style="width:10.522cm;height:4.133cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000263000000F075443EDD.png" /></p>
+<p>Modifica lo script <strong>[git_02]</strong> ed elimina lo script <strong>[git_01]</strong>:</p>
+<p><img src="images/10000001000001E9000000D84141DF23.png" width="377" height="166" style="width:9.97cm;height:4.404cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000001E9000000D84141DF23.png" /></p>
+<p>Quindi esegui il commit della nuova versione:</p>
+<p><img src="images/10000001000002C6000001D5972841EE.png" width="452" height="298" style="width:11.95cm;height:7.893cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002C6000001D5972841EE.png" /></p>
+<p>Ora abbiamo due commit nei log:</p>
+<p><img src="images/100000010000020B000001415F885B7C.png" width="401" height="246" style="width:10.612cm;height:6.512cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000020B000001415F885B7C.png" /></p>
+<p>Quando selezioni un commit specifico, l&#x27;albero dei file del progetto appare alla sua destra:</p>
+<p><img src="images/10000001000003E8000000B7E62C425B.png" width="663" height="121" style="width:17.53cm;height:3.209cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003E8000000B7E62C425B.png" /></p>
+<p>Supponiamo ora che l&#x27;ultimo commit ci abbia portato in un vicolo cieco e che vogliamo tornare a uno stato corrispondente a uno dei commit precedenti:</p>
+<p><img src="images/10000001000003940000011BCE7271AA.png" width="584" height="180" style="width:15.452cm;height:4.775cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003940000011BCE7271AA.png" /></p>
+<ul>
+  <li>In <b>[1-2]</b>, seleziona il commit a cui vuoi tornare;
+  </li>
+  <li>in <b>[3-5]</b>, sono disponibili diverse modalità di ripristino. Scegliamo la modalità<b> [hard]</b>, che ripristina lo stato selezionato scartando le modifiche apportate da allora;
+  </li>
+</ul>
+
+<p><img src="images/10000001000003C9000001119BD9102A.png" width="622" height="175" style="width:16.452cm;height:4.636cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003C9000001119BD9102A.png" /></p>
+<ul>
+  <li>in <b>[6]</b>, abbiamo recuperato <b>[git_01], </b>che era stato cancellato;
+  </li>
+  <li>in <b>[7-8]</b>, troviamo <b>[git_02] </b>nel suo stato originale senza la modifica che era stata apportata;
+  </li>
+</ul>
+
+<p>Ora, modifichiamo <strong>[git_02]</strong> e aggiungiamo <strong>[git_03] [1-4]</strong>:</p>
+<p><img src="images/10000000000006160000015FBBA841D4.png" width="679" height="153" style="width:17.962cm;height:4.046cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006160000015FBBA841D4.png" /></p>
+<p>Ora, ripetiamo il processo di ripristino al commit iniziale:</p>
+<p><img src="images/10000000000005C50000024052E9D443.png" width="645" height="252" style="width:17.069cm;height:6.657cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005C50000024052E9D443.png" /></p>
+<ul>
+  <li>in <b>[1-4]</b>, torniamo allo snapshot del commit n. 1;
+  </li>
+  <li>In <b>[5-6]</b>, scegliamo l&#x27;opzione<b> [Keep] </b>invece di <b>[Hard]</b>. Queste opzioni non sono facili da capire. Quindi dobbiamo provarle:
+  </li>
+</ul>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001910000017E89B0F891.png" width="175" height="167" style="display:inline-block; margin:4px;width:4.63cm;height:4.411cm;" class="odt-zoomable" data-zoom-src="images/10000000000001910000017E89B0F891.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000035600000170968442FB.png" width="373" height="161" style="display:inline-block; margin:4px;width:9.86cm;height:4.249cm;" class="odt-zoomable" data-zoom-src="images/100000000000035600000170968442FB.png" /></td></tr></table>
+
+<ul>
+  <li>in <b>[1]</b>, il file <b>[git_03] </b>è ancora presente;
+  </li>
+  <li>in <b>[2-3]</b>, il file<b> [git_02] </b>ha mantenuto le sue modifiche;
+  </li>
+</ul>
+
+<p>È difficile capire cosa abbia fatto questo <strong>[Revert Commit]</strong>. Ora eseguiamo il commit dello stato attuale:</p>
+<p><img src="images/100000000000059C00000227B1896679.png" width="627" height="241" style="width:16.589cm;height:6.366cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000059C00000227B1896679.png" /></p>
+<ul>
+  <li>In <b>[1-6]</b>, il commit;
+  </li>
+</ul>
+
+<p><img src="images/100000000000047400000277A180AD71.png" width="497" height="275" style="width:13.139cm;height:7.273cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000047400000277A180AD71.png" /></p>
+<ul>
+  <li>in <b>[9]</b>, vediamo il nuovo commit;
+  </li>
+</ul>
+
+<p>Ora, proviamo a tornare al commit 1 come abbiamo fatto prima:</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002AB000002172EBAEC02.png" width="298" height="233" style="display:inline-block; margin:4px;width:7.879cm;height:6.172cm;" class="odt-zoomable" data-zoom-src="images/10000000000002AB000002172EBAEC02.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><a id="hlk43380528"></a></div><img src="images/1000000000000239000001AD423E9C95.png" width="249" height="187" style="display:inline-block; margin:4px;width:6.579cm;height:4.96cm;" class="odt-zoomable" data-zoom-src="images/1000000000000239000001AD423E9C95.png" /></td></tr></table>
+
+<ul>
+  <li>in <b>[1-6]</b>, torniamo al commit n. 1 in modalità<b> [Hard]</b>;
+  </li>
+</ul>
+
+<p><img src="images/1000000000000356000001836041012A.png" width="373" height="169" style="width:9.871cm;height:4.473cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000356000001836041012A.png" /></p>
+<ul>
+  <li>come indicato nei paragrafi <b>[7-8]</b>, questa volta abbiamo effettivamente perso tutte le modifiche apportate dopo il primo commit;
+  </li>
+</ul>
+
+<p>Da questo punto in poi, non torneremo più su <strong>[Git]</strong>. Il lettore può procedere come segue:</p>
+<ul>
+  <li>può seguire gli esempi forniti digitandole personalmente o scaricandole dal sito web del corso;
+  </li>
+  <li>ogni volta che un esempio funziona, può eseguire il commit del proprio progetto;
+  </li>
+  <li>quando sviluppa il proprio codice e si trova in un vicolo cieco, sa che può tornare a uno stato stabile ripristinando un commit precedente;
+  </li>
+</ul>
+<p><a id="toc48548921"></a></p>
+<h2 id="23-convenzioni-di-codifica-python">2.3. <span style="color: #4f81bd">Convenzioni di codifica Python</span></h2>
+<p>È possibile scrivere codice Python senza seguire le convenzioni di codifica, e funzionerà comunque. Tuttavia, potrebbe non essere apprezzato dalla comunità Python, che ha stabilito delle convenzioni di codifica. Queste sono riassunte in un post su |https://stackoverflow.com/questions/159720/what-is-the-naming-convention-in-python-for-variable-and-function-names|:</p>
+<p><img src="images/1000000000000515000001427A8507CD.png" width="568" height="141" style="width:15.041cm;height:3.724cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000515000001427A8507CD.png" /></p>
+<ul>
+  <li>il nome di un modulo (module_name) segue una convenzione talvolta chiamata <b>[snake_case]</b>: tutto in minuscolo, con le parole separate da trattini bassi se necessario. Questa convenzione<b> [snake_case] </b>si applica ai nomi di metodi, pacchetti, variabili e funzioni;
+  </li>
+  <li>il nome di una classe (ClassName) segue una convenzione talvolta chiamata <b>[PascalCase]</b>: una sequenza di parole unite tra loro con la prima lettera di ogni parola maiuscola;
+  </li>
+  <li>I nomi delle costanti seguono la convenzione<b> [SNAKE_CASE]</b>: una sequenza di parole maiuscole separate da trattini bassi;
+  </li>
+</ul>
+
+<p>Queste convenzioni sono state generalmente seguite in questo documento. Tuttavia, per i moduli che definiscono una classe, ho dato al modulo lo stesso nome della classe che contiene. Segue quindi la convenzione <strong>[PascalCase]</strong> invece di <strong>[snake_case]</strong>. Volevo poter identificare rapidamente i moduli di classe.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Questo tutorial scritto da <strong>Serge Tahé</strong> è reso disponibile al pubblico secondo i termini della
+<em>Creative Commons Attribuzione – Non commerciale –
+Condividi allo stesso modo 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
