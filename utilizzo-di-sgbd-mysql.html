@@ -1,0 +1,2607 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduzione a Python 3 e al framework web Flask attraverso esempi">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/it-python-flask-sept-2020/utilizzo-di-sgbd-mysql.html">
+      
+      
+        <link rel="prev" href="esercizio-pratico---versione-4.html">
+      
+      
+        <link rel="next" href="utilizzo-di-sgbd-e-postgresql.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>16. Utilizzo di SGBD MySQL - Introduzione a Python 3 e al framework web Flask attraverso esempi</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduzione a Python 3 e al framework web Flask attraverso esempi";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#16-utilizzo-di-sgbd-mysql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-header__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduzione a Python 3 e al framework web Flask attraverso esempi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              16. Utilizzo di SGBD MySQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità scura"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità scura" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità chiara"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità chiara" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-nav__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduzione a Python 3 e al framework web Flask attraverso esempi
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benvenuti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prefazione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prefazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installazione-di-un-ambiente-di-lavoro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installazione di un ambiente di lavoro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nozioni-di-base-su-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Nozioni di base su Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-stringhe-di-caratteri.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Le stringhe di caratteri
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-eccezioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Le eccezioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-funzioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Le funzioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="i-file-di-testo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. I file di testo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Esercizio pratico – versione 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-importazioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Le importazioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Esercizio pratico: versione 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Esercizio pratico: versione 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-e-gli-oggetti.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Le classi e gli oggetti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-generiche-baseentity-e-myexception.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Le classi generiche [BaseEntity] e [MyException]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architettura-a-livelli-e-programmazione-tramite-interfacce.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Architettura a livelli e programmazione tramite interfacce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Esercizio pratico - versione 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Utilizzo di SGBD MySQL
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="utilizzo-di-sgbd-mysql.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Utilizzo di SGBD MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#161-installazione-di-sgbd-e-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1. Installazione di SGBD e MySQL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16.1. Installazione di SGBD e MySQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1611-installazione-di-laragon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1.1. Installazione di Laragon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1612-creazione-di-un-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1.2. Creazione di un database
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162-installazione-del-pacchetto-mysql-connector-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2. Installazione del pacchetto [mysql-connector-python]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163-script-mysql_01-connessione-a-un-database-mysql-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3. Script [mysql_01]: connessione a un database MySQL - 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164-script-mysql_02-connessione-a-un-database-mysql-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4. script [mysql_02]: connessione a un database MySQL - 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-script-mysql_03-creazione-di-una-tabella-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5. script [mysql_03]: creazione di una tabella MySQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#166-script-mysql_04-esecuzione-di-un-file-di-comandi-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.6. script [mysql_04]: esecuzione di un file di comandi SQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#167-script-mysql_05-utilizzo-di-query-parametrizzate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.7. script [mysql_05]: utilizzo di query parametrizzate
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-e-postgresql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Utilizzo di SGBD e PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scrivere-codice-indipendente-da-sgbd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Scrivere codice indipendente da SGBD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-orm-sqlalchemy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Utilizzo di ORM SQLALCHEMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Esercizio pratico: versione 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="funzioni-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Funzioni Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="servizi-web-con-il-framework-flask.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Servizi web con il framework Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Esercizio pratico: versione 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Esercizio pratico: versione 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="-esercizio-pratico-versione-8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25.  Esercizio pratico: versione 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dal-dizionario-a-xml-e-viceversa.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Dal dizionario a XML e viceversa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Esercizio pratico: versione 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Esercizio pratico: versione 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Esercizio pratico: versione 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Esercizio pratico: versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="client-web-per-i-servizi-json-e-xml-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Client web per i servizi jSON e XML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-modalita-html-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. La modalità HTML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Esercizio pratico: versione 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Esercizio pratico: versione 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-15.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Esercizio pratico: versione 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-16.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Esercizio pratico: versione 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-17.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Esercizio pratico: versione 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-18-.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Esercizio pratico: versione 18 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. Conclusione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="toc48549048" name="toc48549048" class="odt-bookmark-anchor"></span>
+<span id="utilisationdusgbd" name="utilisationdusgbd" class="odt-bookmark-anchor"></span>
+<span id="refheading382942423505" name="refheading382942423505" class="odt-bookmark-anchor"></span></p>
+<h1 id="16-utilizzo-di-sgbd-mysql">16. <span style="color: #365f91">Utilizzo di SGBD MySQL</span></h1>
+<p><img src="images/1000000000000168000001EB3E9DBFEB.png" width="141" height="192" style="width:3.731cm;height:5.089cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000168000001EB3E9DBFEB.png" /></p>
+<p><span id="toc48549049" name="toc48549049" class="odt-bookmark-anchor"></span>
+<span id="intallationdusgbd" name="intallationdusgbd" class="odt-bookmark-anchor"></span>
+<span id="refheading382982423505" name="refheading382982423505" class="odt-bookmark-anchor"></span></p>
+<h2 id="161-installazione-di-sgbd-e-mysql">16.1. <span style="color: #4f81bd">Installazione di SGBD e MySQL</span></h2>
+<p>Per poter disporre di SGBD e MySQL, installeremo il software Laragon.</p>
+<p><span id="toc48549050" name="toc48549050" class="odt-bookmark-anchor"></span>
+<span id="installationdelaragon" name="installationdelaragon" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc45843531951845" name="refheadingtoc45843531951845" class="odt-bookmark-anchor"></span></p>
+<h3 id="1611-installazione-di-laragon">16.1.1. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Installazione di Laragon</span></strong></span></h3>
+<p>Laragon è un pacchetto che riunisce diversi software:</p>
+<ul>
+<li>un server web Apache, che useremo per scrivere script web in Python;</li>
+<li>il SGBD MySQL;</li>
+<li>il linguaggio di scripting PHP, che non useremo;</li>
+<li>un server Redis che implementa una cache per le applicazioni web. Lo useremo;</li>
+</ul>
+<p>Laragon può essere scaricato (febbraio 2020) al seguente indirizzo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://laragon.org/download/
+</code></pre></div>
+<p><img src="images/1000000100000433000001A17C78C80C.png" width="616" height="239" style="width:16.302cm;height:6.324cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000433000001A17C78C80C.png" /></p>
+<p><img src="images/1000000100000433000001A1AFB7CE15.png" width="621" height="241" style="width:16.439cm;height:6.376cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000433000001A1AFB7CE15.png" /></p>
+<ul>
+<li>L&#x27;installazione <strong>[1-5]</strong> genera la seguente struttura di directory:</li>
+</ul>
+<p><img src="images/100000000000083D000003996FDD348B.png" width="527" height="230" style="width:13.951cm;height:6.092cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000083D000003996FDD348B.png" /></p>
+<ul>
+<li>in <strong>[6]</strong> la cartella di installazione di PHP (non utilizzata in questo documento);</li>
+</ul>
+<p>L&#x27;avvio di <strong>[Laragon]</strong> visualizza la seguente finestra:</p>
+<p><img src="images/10000001000002C3000001D698C38564.png" width="452" height="300" style="width:11.95cm;height:7.945cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002C3000001D698C38564.png" /></p>
+<ul>
+<li><strong>[1]</strong>: il menu principale di Laragon;</li>
+<li><strong>[2]</strong>: il pulsante <strong>[Start All]</strong> avvia il server web Apache e il SGBD MySQL;</li>
+<li><strong>[3]</strong>: il pulsante <strong>[WEB]</strong> visualizza la pagina web <strong>[http://localhost]</strong>;</li>
+<li><strong>[4]</strong>: il pulsante <strong>[Database]</strong> consente di gestire il SGBD e il MySQL con lo strumento <strong>[phpMyAdmin]</strong>. È necessario prima installarlo;</li>
+<li><strong>[5]</strong>: il pulsante <strong>[Terminal]</strong> apre una finestra di comando;</li>
+<li><strong>[6]</strong>: il pulsante <strong>[Root]</strong> apre Esplora risorse di Windows con la cartella <strong>[&lt;laragon&gt;/www]</strong> selezionata, che costituisce la radice del sito web <strong>[http://localhost]</strong>. È qui che devono essere collocate le applicazioni web statiche gestite dal server Apache di Laragon;</li>
+</ul>
+<p><span id="toc48549051" name="toc48549051" class="odt-bookmark-anchor"></span>
+<span id="creationdunebase" name="creationdunebase" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc837491549297239" name="refheadingtoc837491549297239" class="odt-bookmark-anchor"></span></p>
+<h3 id="1612-creazione-di-un-database">16.1.2. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Creazione di un database</span></strong></span></h3>
+<p>Ora mostriamo come creare un database e un utente MySQL con lo strumento Laragon.</p>
+<p><img src="images/10000001000002F50000027CED1AB67B.png" width="426" height="358" style="width:11.282cm;height:9.479cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002F50000027CED1AB67B.png" /></p>
+<ul>
+<li>Una volta avviato, Laragon <strong>[1]</strong> può essere gestito da un menu <strong>[2]</strong>;</li>
+<li>in <strong>[3-5]</strong>, si installa lo strumento <strong>[phpMyAdmin]</strong> di amministrazione di MySQL se non è già stato installato;</li>
+</ul>
+<p><img src="images/100000010000039B000000B34A0A8E1F.png" width="526" height="102" style="width:13.929cm;height:2.701cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000039B000000B34A0A8E1F.png" /></p>
+<ul>
+<li>in <strong>[6]</strong>, si avvia il server web Apache insieme a SGBD e MySQL;</li>
+<li>in <strong>[7]</strong>, viene avviato il server Apache;</li>
+<li>in <strong>[8]</strong>, vengono avviati SGBD e MySQL;</li>
+</ul>
+<p><img src="images/100000010000043300000199EC2124FB.png" width="639" height="243" style="width:16.91cm;height:6.435cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000043300000199EC2124FB.png" /></p>
+<ul>
+<li>in <strong>[8-10]</strong>, si crea un database denominato <strong>[dbpersonnes] [11]</strong>. Si creerà un database di persone;</li>
+</ul>
+<p><img src="images/10000001000001EF00000068835EF45C.png" width="288" height="61" style="width:7.622cm;height:1.602cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000001EF00000068835EF45C.png" /></p>
+<ul>
+<li>in <strong>[11]</strong>, gestiremo il database appena creato;</li>
+</ul>
+<p><img src="images/10000001000002D5000001F1A4321982.png" width="426" height="292" style="width:11.282cm;height:7.733cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002D5000001F1A4321982.png" /></p>
+<ul>
+<li>L&#x27;operazione <strong>[Bases de données]</strong> invia una richiesta web a URL, <strong>[http://localhost/phpmyadmin] e [12]</strong>. È il server web Apache di Laragon a rispondere. URL e <strong>[http://localhost/phpmyadmin]</strong> sono le versioni di URL dell’utilità <strong>[phpMyAdmin]</strong> che abbiamo installato in precedenza, <strong>[5]</strong>. Questa utility consente di gestire i database MySQL;</li>
+<li>per impostazione predefinita, le credenziali di accesso dell’amministratore del database sono: <strong>root [13]</strong> senza password <strong>[14]</strong>;</li>
+</ul>
+<p><img src="images/100000010000025100000145211E51A5.png" width="344" height="189" style="width:9.11cm;height:4.994cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000025100000145211E51A5.png" /></p>
+<ul>
+<li>in <strong>[16]</strong>, il database che abbiamo creato in precedenza;</li>
+</ul>
+<p><img src="images/10000001000002C7000000F1D28D2A00.png" width="406" height="138" style="width:10.749cm;height:3.644cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002C7000000F1D28D2A00.png" /></p>
+<ul>
+<li>al momento abbiamo un database <strong>[dbpersonnes] [17]</strong> che è vuoto <strong>[18]</strong>;</li>
+</ul>
+<p>Creiamo un utente <strong>[admpersonnes]</strong> con la password <strong>[nobody]</strong> che avrà tutti i diritti sul database <strong>[dbpersonnes]</strong>:</p>
+<p><img src="images/100000010000035900000152EEFCA436.png" width="497" height="196" style="width:13.16cm;height:5.191cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000035900000152EEFCA436.png" /></p>
+<ul>
+<li>in <strong>[19]</strong>, ci si posiziona sul database <strong>[dbpersonnes]</strong>;</li>
+<li>in <strong>[20]</strong>, selezioniamo la scheda <strong>[Privileges]</strong>;</li>
+<li>in <strong>[21-22]</strong>, si vede che l&#x27;utente <strong>[root]</strong> dispone di tutti i diritti sul database <strong>[dbpersonnes]</strong>;</li>
+<li>in <strong>[23]</strong>, si crea un nuovo utente;</li>
+</ul>
+<p><img src="images/1000000100000433000002BD3879D5DA.png" width="639" height="417" style="width:16.902cm;height:11.021cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000433000002BD3879D5DA.png" /></p>
+<ul>
+<li>in <strong>[25-26]</strong>, l&#x27;utente avrà l&#x27;ID <strong>[admdbpersonnes]</strong>;</li>
+<li>in <strong>[27-29]</strong>, la sua password sarà <strong>[nobody]</strong>;</li>
+<li>in <strong>[30]</strong>, phpMyAdmin segnala che la password è molto debole (facile da violare). In produzione, è preferibile generare una password forte con <strong>[31]</strong>;</li>
+<li>in <strong>[32]</strong>, si indica che l’utente <strong>[admdbpersonnes]</strong> deve disporre di tutti i diritti sul database <strong>[dbpersonnes]</strong>;</li>
+<li>in <strong>[33]</strong>, si convalidano le informazioni fornite;</li>
+</ul>
+<p><img src="images/1000000100000421000000AC1D3F2A7B.png" width="596" height="97" style="width:15.769cm;height:2.566cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000421000000AC1D3F2A7B.png" /></p>
+<ul>
+<li>in <strong>[35]</strong>, phpMyAdmin indica che l’utente è stato creato;</li>
+<li>in <strong>[36]</strong>, l’ordine SQL che è stato emesso sulla base;</li>
+<li>in <strong>[37]</strong>, l&#x27;utente <strong>[admpersonnes]</strong> dispone di tutti i diritti sul database <strong>[dbpersonnes]</strong>;</li>
+</ul>
+<p>Ora abbiamo:</p>
+<ul>
+<li>un database MySQL <strong>[dbpersonnes]</strong>;</li>
+<li>un utente <strong>[admpersonnes/nobody]</strong> che dispone di tutti i diritti su questo database;</li>
+</ul>
+<p><span id="toc48549052" name="toc48549052" class="odt-bookmark-anchor"></span>
+<span id="refheading382962423505" name="refheading382962423505" class="odt-bookmark-anchor"></span></p>
+<h2 id="162-installazione-del-pacchetto-mysql-connector-python">16.2. <span style="color: #4f81bd"><strong>Installazione del pacchetto</strong> [mysql-connector-python]</span></h2>
+<p>Scriveremo degli script Python per sfruttare il database creato in precedenza con la seguente struttura:</p>
+<p><img src="images/100000010000030B000000835DDD29BD.png" width="447" height="75" style="width:11.839cm;height:1.991cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000030B000000835DDD29BD.png" /></p>
+<p>Un connettore serve a isolare il codice Python dal SGBD utilizzato. Esistono connettori per diversi modelli di SGBD e questi rispettano la stessa interfaccia. Pertanto, quando si sostituiscono i SGBD e MySQL con i SGBD e PostgreSQL, l&#x27;architettura diventa la seguente:</p>
+<p><img src="images/10000001000003050000007C8CC0D4B2.png" width="448" height="72" style="width:11.852cm;height:1.901cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000003050000007C8CC0D4B2.png" /></p>
+<p>Poiché tutti i connettori di SGBD rispettano la stessa interfaccia, lo script Python <strong>non dovrebbe normalmente richiedere modifiche</strong>. In realtà, la maggior parte dei SGBD ha un SQL proprietario:</p>
+<ul>
+<li>rispettano lo standard SQL (Structured Query Language);</li>
+<li>ma la estendono, poiché non è sufficiente, con estensioni proprietarie del linguaggio;</li>
+</ul>
+<p>Pertanto, capita spesso che, in seguito a un cambio di SGBD, sia necessario apportare modifiche relative a SQL negli script.</p>
+<p>Di default, Python non offre la possibilità di gestire un database MySQL. A tal fine è necessario scaricare un pacchetto. Ne esistono diversi. In questo caso utilizzeremo il pacchetto <strong>[mysql-connector-python]</strong>, che è il connettore ufficiale di Oracle, l&#x27;azienda proprietaria di MySQL.</p>
+<p><strong>L</strong>’installazione del pacchetto avverrà in una finestra di PyCharm:</p>
+<p><img src="images/100000010000032C000000C62409F945.png" width="471" height="115" style="width:12.45cm;height:3.036cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000032C000000C62409F945.png" /></p>
+<ul>
+<li>la cartella <strong>[2]</strong> non ha alcuna rilevanza per quanto seguirà;</li>
+</ul>
+<p>Nel terminale, si digita il comando <strong>[pip search MySQL]</strong>:</p>
+<ul>
+<li><strong>[pip]</strong> (Package Installer for Python) è lo strumento di installazione dei pacchetti Python. Lo strumento <strong>[pip]</strong> si connette al repository contenente i pacchetti Python;</li>
+<li><strong>[search MySQL]</strong>: richiede l&#x27;elenco dei pacchetti che contengono il termine <strong>[MySQL]</strong> (le maiuscole e le minuscole non fanno differenza) nel loro nome;</li>
+</ul>
+<p>I risultati del comando sono i seguenti:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">mysql (0.0.2)                                                   - Virtual package for MySQL-python</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">jx-mysql (3.49.20042)                                           - jx-mysql - JSON Expressions for MySQL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">weibo-mysql (0.1)                                               - insert mysql</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">bits-mysql (1.0.3)                                              - BITS MySQL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">MySQL-python (1.2.5)                                            - Python interface to MySQL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">deployfish-mysql (0.2.13)                                       - Deployfish MySQL plugin</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mtstat-mysql (0.7.3.3)                                          - MySQL Plugins for mtstat</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">bottle-mysql (0.3.1)                                            - MySQL integration for Bottle.</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">WintxDriver-MySQL (2.0.0-1)                                     - MySQL support for Wintx</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">py-mysql (1.0)                                                  - Operating Mysql for Python.</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mysql-utilities (1.4.3)                                         - MySQL Utilities 1.4.3 (part of MySQL Workbench Distribution 6.0.0)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">….                                        - Tool to move slices of data from one MySQL store to another</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mysql-tracer (2.0.2)                                            - A MySQL client to run queries, write execution reports and export results</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mysql-utils (0.0.2)                                             - A simple MySQL library including a set of utility APIs for Python database programming</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mysql-connector-repackaged (0.3.1)                              - MySQL driver written in Python</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">dffml-source-mysql (0.0.5)                                      - DFFML Source for MySQL Protocol</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="background-color:#fff2cc">mysql-connector-python (8.0.19)</span><span style="background-color:#ffff00"> </span>                                - MySQL driver written in Python</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  INSTALLED: 8.0.19 (latest)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">prometheus-mysql-exporter (0.2.0)                               - MySQL query Prometheus exporter</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">backwork-backup-mysql (0.3.0)                                   - Backwork plug-in for MySQL backups.</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">django-mysql-manager (0.1.4)                                    - django-mysql-manager is a Django based management interface for MySQL users and databases.</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">….                                              - mysql operate</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\v-01&gt;</span></span>
+</code></pre></div>
+
+<p>Sono stati elencati tutti i moduli il cui nome o la cui descrizione contengono la parola chiave <em>MySQL</em>. Quello che useremo (febbraio 2020) è <strong>[mysql-connector-python]</strong>, riga 17. Per installarlo, si digita nel terminale il comando <strong>[pip install -U mysql-connector-python]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\v-01&gt;<span style="background-color:#fff2cc">pip install -U mysql-connector-python</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Collecting mysql-connector-python</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  Using cached mysql_connector_python-8.0.19-py2.py3-none-any.whl (355 kB)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Requirement already satisfied, skipping upgrade: protobuf==3.6.1 in c:\myprograms\python38\lib\site-packages (from mysql-connector-python) (3.6.1)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Requirement already satisfied, skipping upgrade: dnspython==1.16.0 in c:\myprograms\python38\lib\site-packages (from mysql-connector-python) (1.16.0)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Requirement already satisfied, skipping upgrade: six&gt;=1.9 in c:\users\serge\appdata\roaming\python\python38\site-packages (from protobuf==3.6.1-&gt;mysql-connector-python) (1.14.0)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Requirement already satisfied, skipping upgrade: setuptools in c:\myprograms\python38\lib\site-packages (from protobuf==3.6.1-&gt;mysql-connector-python) (41.2.0)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Installing collected packages: mysql-connector-python</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Successfully installed mysql-connector-python-8.0.19</span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 1: l’opzione <strong>[install -U]</strong> (U=upgrade) richiede la versione più recente dei vari pacchetti associati al pacchetto <strong>[mysql-connector-python]</strong>;</li>
+</ul>
+<p>Per conoscere i pacchetti installati nell’ambiente Python del nostro computer, si digita il comando <strong>[pip list]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\v-01&gt;<span style="background-color:#fff2cc">pip list</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Package                Version</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">---------------------- ----------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">asgiref                3.2.3</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">astroid                2.3.3</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">atomicwrites           1.3.0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">attrs                  19.3.0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">certifi                2019.11.28</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">MarkupSafe             1.1.1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mccabe                 0.6.1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">more-itertools         8.1.0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mysql-connector-python 8.0.19</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">mysqlclient            1.4.6</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">packaging              20.0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">pip                    20.0.1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">pipenv                 2018.11.26</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 13: è presente il pacchetto <strong>[mysql-connector-python]</strong>;</li>
+</ul>
+<p>Per sapere come utilizzare il pacchetto <strong>[mysql-connector-python]</strong> per gestire un database MySQL, visitiamo il sito del pacchetto |<a href="https://dev.mysql.com/doc/connector-python/en/"><u><span style="color: #0563c1">https://dev.mysql.com/doc/connector-python/en/</span></u></a>|. Di seguito è riportata una serie di esempi.</p>
+<p><span id="refheading383002423505" name="refheading383002423505" class="odt-bookmark-anchor"></span>
+<span id="toc48549053" name="toc48549053" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql01" name="scriptmysql01" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql-01" name="scriptmysql-01" class="odt-bookmark-anchor"></span></p>
+<h2 id="163-script-mysql_01-connessione-a-un-database-mysql-1">16.3. <span style="color: #4f81bd"><strong>Script</strong> [mysql_01]<strong>: connessione a un database MySQL - 1</strong></span></h2>
+<p>Lo script <strong>[mysql_01]</strong> illustra la prima fase dell’utilizzo di un database. Ci consentirà di verificare se siamo in grado di collegarci al database <strong>[dbpersonnes]</strong> creato in precedenza.</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione del modulo mysql.connector</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql</span><span style="color:#000000">.</span><span style="color:#6f008a">connector</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> connect, DatabaseError, InterfaceError</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># connessione a un database MySql [dbpersonnes]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># l&#x27;identità dell&#x27;utente è (admpersonnes,nobody)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">USER = </span><span style="color:#a31515">&quot;admpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">PWD = </span><span style="color:#a31515">&quot;nobody&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">HOST = </span><span style="color:#a31515">&quot;localhost&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">DATABASE = </span><span style="color:#a31515">&quot;dbpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si parte</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">connexion = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;Connexion au SGBD MySQL en cours...&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># connessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    connexion = connect(host=HOST, user=USER, password=PWD, database=DATABASE)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># monitoraggio</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#a31515">f&quot;Connexion MySQL réussie à la base database={DATABASE}, host={HOST} sous l&#x27;identité user={USER}, passwd={PWD}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato l&#x27;errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si chiude la connessione se è stata aperta</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> connexion:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        connexion.close()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>riga 2: si importano alcune funzioni e classi dal modulo <strong>[mysql.connector]</strong>;</li>
+<li>righe 6-7: le credenziali dell’utente che si connetterà;</li>
+<li>riga 8: il server che ospita il database. Infatti, il connettore MySQL consente di lavorare con un database remoto;</li>
+<li>riga 9: il nome del database a cui ci si vuole connettere;</li>
+<li>righe 11-26: lo script effettuerà la connessione (riga 16) dell&#x27;utente <strong>[admpersonnes / nobody]</strong> al database <strong>[dbpersonnes]</strong>;</li>
+<li>righe 20-26: la connessione potrebbe non andare a buon fine. Pertanto, viene eseguita all’interno di un blocco try / except / finally;</li>
+<li>riga 16: il metodo <em>connect</em> del modulo <strong>[mysq.connector]</strong> accetta diversi parametri denominati:<ul>
+<li><em>user</em>: utente proprietario della connessione <strong>[admpersonnes]</strong>;</li>
+<li><em>password</em>: password dell&#x27;utente <strong>[nobody]</strong>;</li>
+<li><em>host</em>: macchina di SGBD MySQL <strong>[localhost]</strong>;</li>
+<li><em>database</em>: il database a cui ci si connette. Facoltativo.</li>
+</ul>
+</li>
+<li>riga 20: se viene generata un&#x27;eccezione, è di tipo <strong>[DatabaseError]</strong> o <strong>[InterfaceError]</strong>;</li>
+<li>righe 23-26: nella clausola <strong>[finally]</strong> si chiude la connessione;</li>
+</ul>
+<p><strong>Risultati</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/databases/mysql/mysql_01.py
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>Connexion au SGBD MySQL en cours...
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Connexion MySQL réussie à la base database=dbpersonnes, host=localhost sous l&#39;identité user=admpersonnes, passwd=nobody
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>Process finished with exit code 0
+</code></pre></div></td></tr></table></div>
+<p><span id="refheading383022423505" name="refheading383022423505" class="odt-bookmark-anchor"></span>
+<span id="toc48549054" name="toc48549054" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql02" name="scriptmysql02" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql-02" name="scriptmysql-02" class="odt-bookmark-anchor"></span></p>
+<h2 id="164-script-mysql_02-connessione-a-un-database-mysql-2">16.4. <span style="color: #4f81bd"><strong>script</strong> [mysql_02]<strong>: connessione a un database MySQL - 2</strong></span></h2>
+<p>In questo nuovo script, la connessione al database è isolata in una funzione:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione del modulo mysql.connector</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql</span><span style="color:#000000">.</span><span style="color:#6f008a">connector</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> DatabaseError, InterfaceError, connect</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> connexion(</span><span style="color:#808080">host</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">, </span><span style="color:#808080">database</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">, </span><span style="color:#808080">login</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">, </span><span style="color:#808080">pwd</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># effettua il login e poi il logout (login, password) dal database [database] del server [host]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># genera l&#x27;eccezione DatabaseError in caso di problema</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    connexion = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># connessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        connexion = connect(host=</span><span style="color:#808080">host</span><span style="color:#000000">, user=</span><span style="color:#808080">login</span><span style="color:#000000">, password=</span><span style="color:#808080">pwd</span><span style="color:#000000">, database=</span><span style="color:#808080">database</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        print(</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#a31515">f&quot;Connexion réussie à la base database={database}, host={host} sous l&#x27;identité user={login}, passwd={pwd}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># la connessione viene chiusa se è stata aperta</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000ff">if</span><span style="color:#000000"> connexion:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            connexion.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            print(</span><span style="color:#a31515">&quot;Déconnexion réussie\n&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------- main</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># credenziali di accesso</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">USER = </span><span style="color:#a31515">&quot;admpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">PASSWD = </span><span style="color:#a31515">&quot;nobody&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">HOST = </span><span style="color:#a31515">&quot;localhost&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">DATABASE = </span><span style="color:#a31515">&quot;dbpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># accesso di un utente esistente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    connexion(host=HOST, login=USER, pwd=PASSWD, database=DATABASE)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato un errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(erreur)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># accesso di un utente inesistente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    connexion(host=HOST, login=</span><span style="color:#a31515">&quot;xx&quot;</span><span style="color:#000000">, pwd=</span><span style="color:#a31515">&quot;xx&quot;</span><span style="color:#000000">, database=DATABASE)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato l&#x27;errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(erreur)</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>righe 6-19: una funzione <strong>[connexion]</strong> che tenta di connettere e poi disconnettere un utente dal database <strong>[dbpersonnes]</strong>. Visualizza il risultato;</li>
+<li>righe 29-41: programma principale – chiama due volte il metodo <em>connexion</em> e visualizza eventuali eccezioni;</li>
+</ul>
+<p><strong>Risultati</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">C</span><span class="p">:</span><span class="err">\</span><span class="n">Data</span><span class="err">\</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="err">\</span><span class="n">dev</span><span class="err">\</span><span class="n">python</span><span class="err">\</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="err">\</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="err">\</span><span class="n">venv</span><span class="err">\</span><span class="n">Scripts</span><span class="err">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">databases</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql_02</span><span class="p">.</span><span class="n">py</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">Connexion</span><span class="w"> </span><span class="n">MySQL</span><span class="w"> </span><span class="n">réussie</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="k">base</span><span class="w"> </span><span class="n">database</span><span class="o">=</span><span class="n">dbpersonnes</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="o">=</span><span class="n">localhost</span><span class="w"> </span><span class="n">sous</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">identité</span><span class="w"> </span><span class="n">user</span><span class="o">=</span><span class="n">admpersonnes</span><span class="p">,</span><span class="w"> </span><span class="n">passwd</span><span class="o">=</span><span class="n">nobody</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">Déconnexion</span><span class="w"> </span><span class="n">MySQL</span><span class="w"> </span><span class="n">réussie</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="mi">1045</span><span class="w"> </span><span class="p">(</span><span class="mi">28000</span><span class="p">):</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="n">denied</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="err">&#39;</span><span class="n">xx</span><span class="sc">&#39;@&#39;</span><span class="n">localhost</span><span class="err">&#39;</span><span class="w"> </span><span class="p">(</span><span class="k">using</span><span class="w"> </span><span class="nn">password</span><span class="p">:</span><span class="w"> </span><span class="n">YES</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">Process</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">exit</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p><span id="refheading383042423505" name="refheading383042423505" class="odt-bookmark-anchor"></span>
+<span id="toc48549055" name="toc48549055" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql03" name="scriptmysql03" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql-03" name="scriptmysql-03" class="odt-bookmark-anchor"></span></p>
+<h2 id="165-script-mysql_03-creazione-di-una-tabella-mysql">16.5. <span style="color: #4f81bd"><strong>script</strong> [mysql_03]<strong>: creazione di una tabella MySQL</strong></span></h2>
+<p>Ora che sappiamo come creare una connessione con un SGBD MySQL, iniziamo a inviare comandi SQL su questa connessione. A tal fine, ci collegheremo al database creato <strong>[dbpersonnes]</strong> e utilizzeremo la connessione per creare una tabella all’interno del database.</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql</span><span style="color:#000000">.</span><span style="color:#6f008a">connector</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> DatabaseError, InterfaceError, connect</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql</span><span style="color:#000000">.</span><span style="color:#6f008a">connector</span><span style="color:#000000">.</span><span style="color:#6f008a">connection</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> MySQLConnection</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> execute_sql(</span><span style="color:#808080">connexion</span><span style="color:#000000">: MySQLConnection, </span><span style="color:#808080">update</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esegue una richiesta di aggiornamento sulla connessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    curseur = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># viene richiesto un cursore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        curseur = </span><span style="color:#808080">connexion</span><span style="color:#000000">.cursor()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># esegue la query di aggiornamento sulla connessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        curseur.execute(</span><span style="color:#808080">update</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># chiusura del cursore, se è stato ottenuto</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000ff">if</span><span style="color:#000000"> curseur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            curseur.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------- main</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># credenziali di connessione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># l&#x27;identità dell&#x27;utente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">ID = </span><span style="color:#a31515">&quot;admpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">PWD = </span><span style="color:#a31515">&quot;nobody&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># il computer host del SGBD</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">HOST = </span><span style="color:#a31515">&quot;localhost&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># identità del database</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">DATABASE = </span><span style="color:#a31515">&quot;dbpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># procediamo passo dopo passo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># connessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    connexion = connect(host=HOST, user=ID, password=PWD, database=DATABASE)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># modalità AUTOCOMMIT</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    connexion.autocommit = </span><span style="color:#0000ff">True</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizzazione dell&#x27;errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si esce</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># eliminazione della tabella &quot;persone&quot; se esiste</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># se non esiste, si verificherà un errore - lo si ignora</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">requête = </span><span style="color:#a31515">&quot;drop table personnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    execute_sql(connexion, requête)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">pass</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># creazione della tabella &quot;persone&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">requête = </span><span style="color:#a31515">&quot;create table personnes (id int PRIMARY KEY, prenom varchar(30) NOT NULL, nom varchar(30) NOT NULL, age integer NOT NULL, &quot;</span><span style="color:#000000"> \</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">          </span><span style="color:#a31515">&quot;unique(nom,prenom)) &quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esecuzione della query</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    execute_sql(connexion, requête)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizzazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;{requête} : requête réussie&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato l&#x27;errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si esegue il logout</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    connexion.close()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>riga 9: la funzione <em>execute_sql</em> esegue una query SQL su una connessione aperta;</li>
+<li>riga 14: le operazioni SQL sulla connessione vengono eseguite tramite un oggetto specifico denominato <em>cursore;</em></li>
+<li>riga 14: acquisizione di un cursore;</li>
+<li>riga 16: esecuzione della query SQL;</li>
+<li>righe 17-20: indipendentemente dal verificarsi o meno di un errore, il cursore viene chiuso. Ciò libera le risorse ad esso associate. Se si verifica un&#x27;eccezione, questa non viene gestita in questa sede, ma viene segnalata al codice chiamante;</li>
+<li>righe 33-43: creazione di una connessione al database;</li>
+<li>riga 38: la modalità AUTOCOMMIT=True per una connessione significa che ogni esecuzione di una query avviene all’interno di una transazione automatica. La modalità predefinita è AUTOCOMMIT=False, in cui è lo sviluppatore ad avere la responsabilità di gestire le transazioni. Una transazione è un meccanismo che comprende l’esecuzione di più query da 1 a n. O tutte vanno a buon fine, oppure nessuna va a buon fine. Pertanto, se le query da 1 a i vanno a buon fine ma la query i+1 fallisce, allora le query da 1 a i verranno «annullate» affinché il database torni allo stato in cui si trovava prima dell’esecuzione della query 1;</li>
+<li>in questo caso, ci sono due query SQL (righe 49, 58). Ciascuna di esse verrà eseguita all’interno di una transazione. Il fatto che la seconda fallisca non ha alcun impatto sulla prima;</li>
+<li>righe 45-51: viene eseguita la sequenza SQL <strong>[drop table personnes]</strong>. Essa elimina la tabella denominata <strong>[personnes]</strong>. Se questa non esiste, potrebbe essere segnalato un errore. Tale errore viene ignorato (riga 51);</li>
+<li>righe 53-55: comando di creazione della tabella <strong>[personnes]</strong>. Una tabella può essere vista come un insieme di righe e colonne. Il comando di creazione specifica i nomi delle colonne:<ul>
+<li><strong>[id]</strong>: un identificativo intero. Sarà univoco per ogni persona. Sarà la chiave primaria (PRIMARY KEY). Ciò significa che nella tabella questa colonna non presenta mai due volte lo stesso valore e può essere utilizzata per identificare una persona;</li>
+<li><strong>[nom]</strong>: una stringa di massimo 30 caratteri;</li>
+<li><strong>[prenom]</strong>: una stringa di massimo 30 caratteri;</li>
+<li><strong>[age]</strong>: un numero intero;</li>
+<li>l’attributo <strong>[NOT NULL]</strong> per ciascuna di queste colonne indica che in una riga della tabella nessuna delle tre colonne può essere vuota;</li>
+<li>il parametro <strong>[unique(nom,prenom)]</strong> è denominato <strong>vincolo</strong>. In questo caso, il vincolo sulle righe consiste nel fatto che la tupla (cognome, nome) della riga deve essere unica nella tabella. Ciò significa che è possibile identificare in modo univoco nella tabella un individuo di cui si conoscono il cognome e il nome;</li>
+</ul>
+</li>
+<li>righe 56-60: esecuzione del comando SQL;</li>
+<li>righe 61-63: gestione dell’eventuale eccezione;</li>
+<li>righe 64-66: disconnessione dal database;</li>
+</ul>
+<p><strong>Risultati</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="k">Data</span><span class="err">\</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="err">\</span><span class="n">dev</span><span class="err">\</span><span class="n">python</span><span class="err">\</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="err">\</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="err">\</span><span class="n">venv</span><span class="err">\</span><span class="n">Scripts</span><span class="err">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span><span class="w"> </span><span class="k">C</span><span class="p">:</span><span class="o">/</span><span class="k">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">databases</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql_03</span><span class="p">.</span><span class="n">py</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">personnes</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">prenom</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="k">unique</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span><span class="n">prenom</span><span class="p">))</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="n">requête</span><span class="w"> </span><span class="n">réussie</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">Process</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">exit</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Verifica con <strong>[phpMyAdmin]</strong>:</p>
+<p><img src="images/100000000000057200000365E1BC6EAD.png" width="609" height="379" style="width:16.103cm;height:10.038cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000057200000365E1BC6EAD.png" /></p>
+<ul>
+<li>il database <strong>[dbpersonnes] [1]</strong> contiene una tabella <strong>[personnes] [2]</strong> che presenta la struttura <strong>[3-4]</strong>, la chiave primaria <strong>[5]</strong> e il vincolo di unicità <strong>[6]</strong>;</li>
+</ul>
+<p><span id="refheading383062423505" name="refheading383062423505" class="odt-bookmark-anchor"></span>
+<span id="toc48549056" name="toc48549056" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql04" name="scriptmysql04" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql-04" name="scriptmysql-04" class="odt-bookmark-anchor"></span></p>
+<h2 id="166-script-mysql_04-esecuzione-di-un-file-di-comandi-sql">16.6. <span style="color: #4f81bd"><strong>script</strong> [mysql_04]<strong>: esecuzione di un file di comandi SQL</strong></span></h2>
+<p>Dopo aver creato in precedenza la tabella <strong>[personnes]</strong>, ora la popoliamo e la elaboriamo utilizzando i comandi SQL.</p>
+<p>Desideriamo eseguire i comandi SQL da un file di testo:</p>
+<p><img src="images/1000000000000174000001EA2C3FF061.png" width="162" height="214" style="width:4.292cm;height:5.652cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000174000001EA2C3FF061.png" /></p>
+<p>Il contenuto del file <strong>[commandes.sql]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content"># eliminazione della tabella [personnes]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">drop</span> <span style="color:#0000ff">table</span> personnes</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># creazione della tabella persone</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">create<span style="color:#000000"> </span>table<span style="color:#000000"> </span><span style="color:#2b91af">personnes</span><span style="color:#000000"> (prenom </span>varchar<span style="color:#000000">(30) </span>not null<span style="color:#000000">, nom </span>varchar<span style="color:#000000">(30) </span>not null<span style="color:#000000">, age </span>integer<span style="color:#000000"> </span>not null<span style="color:#000000">, </span>primary key<span style="color:#000000"> (nom,prenom))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># inserimento di due persone</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">insert into</span> personnes(prenom, nom, age) <span style="color:#0000ff">values</span>(<span style="color:#a31515">&#x27;Paul&#x27;</span>,<span style="color:#a31515">&#x27;Langevin&#x27;</span>,48)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">insert into</span> personnes(prenom, nom, age) <span style="color:#0000ff">values</span> (<span style="color:#a31515">&#x27;Sylvie&#x27;</span>,<span style="color:#a31515">&#x27;Lefur&#x27;</span>,70)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># visualizzazione della tabella</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">select</span> prenom, nom, age <span style="color:#0000ff">from</span> personnes</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># errore intenzionale</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">xx</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># inserimento di tre persone</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">insert into</span> personnes(prenom, nom, age) <span style="color:#0000ff">values</span> (<span style="color:#a31515">&#x27;Pierre&#x27;</span>,<span style="color:#a31515">&#x27;Nicazou&#x27;</span>,35)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">insert into</span> personnes(prenom, nom, age) <span style="color:#0000ff">values</span> (<span style="color:#a31515">&#x27;Geraldine&#x27;</span>,<span style="color:#a31515">&#x27;Colou&#x27;</span>,26)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">insert into</span> personnes(prenom, nom, age) <span style="color:#0000ff">values</span> (<span style="color:#a31515">&#x27;Paulette&#x27;</span>,<span style="color:#a31515">&#x27;Girond&#x27;</span>,56)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># visualizzazione della tabella</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">select</span> prenom, nom, age <span style="color:#0000ff">from</span> personnes</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elenco delle persone in ordine alfabetico per cognome e, in caso di cognomi uguali, in ordine alfabetico per nome</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">select</span> nom,prenom <span style="color:#0000ff">from</span> personnes <span style="color:#0000ff">order by</span> nom <span style="color:#0000ff">asc</span>, prenom <span style="color:#0000ff">desc</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elenco delle persone con età compresa nell&#x27;intervallo [20,40] in ordine decrescente di età</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># poi, a parità di età, in ordine alfabetico per cognome e, a parità di cognome, in ordine alfabetico per nome</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">select</span> nom,prenom,age <span style="color:#0000ff">from</span> personnes <span style="color:#0000ff">where</span> age between 20 <span style="color:#0000ff">and</span> 40 <span style="color:#0000ff">order by</span> age <span style="color:#0000ff">desc</span>, nom <span style="color:#0000ff">asc</span>, prenom <span style="color:#0000ff">asc</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># inserimento della sig.ra Bruneau</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">insert into</span> personnes(prenom, nom, age) <span style="color:#0000ff">values</span>(<span style="color:#a31515">&#x27;Josette&#x27;</span>,<span style="color:#a31515">&#x27;Bruneau&#x27;</span>,46)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># aggiornamento della sua età</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">update</span> personnes <span style="color:#0000ff">set</span> age=47 <span style="color:#0000ff">where</span> nom=<span style="color:#a31515">&#x27;Bruneau&#x27;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elenco delle persone con il cognome Bruneau</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">select</span> nom,prenom,age <span style="color:#0000ff">from</span> personnes <span style="color:#0000ff">where</span> nom=<span style="color:#a31515">&#x27;Bruneau&#x27;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># cancellazione della sig.ra Bruneau</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">delete</span> <span style="color:#0000ff">from</span> personnes <span style="color:#0000ff">where</span> nom=<span style="color:#a31515">&#x27;Bruneau&#x27;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elenco delle persone con cognome Bruneau</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">select</span> nom,prenom,age <span style="color:#0000ff">from</span> personnes <span style="color:#0000ff">where</span> nom=<span style="color:#a31515">&#x27;Bruneau&#x27;</span></span></span>
+</code></pre></div>
+
+<p>Per prima cosa definiamo alcune funzioni che inseriamo in un modulo per poterle riutilizzare:</p>
+<p><img src="images/1000000000000174000001EAB3648863.png" width="162" height="214" style="width:4.292cm;height:5.652cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000174000001EAB3648863.png" /></p>
+<p>Lo script <strong>[mysql_module]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> <span style="color:#6f008a">mysql</span>.<span style="color:#6f008a">connector</span> <span style="color:#0000ff">import</span> DatabaseError, InterfaceError</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span>mysql<span style="color:#000000">.</span>connector<span style="color:#000000">.</span>connection<span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> MySQLConnection</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span>mysql<span style="color:#000000">.</span>connector<span style="color:#000000">.</span>cursor<span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> MySQLCursor</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> afficher_infos(<span style="color:#808080">curseur</span>: MySQLCursor):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">     # visualizza il risultato di un comando SQL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span>…</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> execute_list_of_commands(<span style="color:#808080">connexion</span>: MySQLConnection, <span style="color:#808080">sql_commands</span>: <span style="color:#2b91af">list</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                             <span style="color:#808080">suivi</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">False</span>, <span style="color:#808080">arrêt</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">True</span>, <span style="color:#808080">with_transaction</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">True</span>):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># utilizza la connessione aperta [connexion]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esegue su questa connessione i comandi SQL contenuti nell&#x27;elenco [sql_commands]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># questo file è un file di comandi SQL da eseguire al ritmo di uno per riga</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se «seguito=True», ogni esecuzione di un comando SQL viene accompagnata da un messaggio che ne indica il successo o il fallimento</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se «arresto=True», la funzione si interrompe al primo errore riscontrato; in caso contrario, esegue tutti i comandi SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se with_transaction=True, allora qualsiasi errore annulla tutti i comandi SQL eseguiti in precedenza</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se with_transaction=False, allora un errore non ha alcun impatto sui comandi SQL eseguiti in precedenza</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># la funzione restituisce un elenco [erreur1, erreur2, ...]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span>….</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> execute_file_of_commands(<span style="color:#808080">connexion</span>: MySQLConnection, <span style="color:#808080">sql_filename</span>: <span style="color:#2b91af">str</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                             <span style="color:#808080">suivi</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">False</span>, <span style="color:#808080">arrêt</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">True</span>, <span style="color:#808080">with_transaction</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">True</span>):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># utilizza la connessione aperta [connexion]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esegue su questa connessione i comandi SQL contenuti nel file di testo sql_filename</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># questo file è un file di comandi SQL da eseguire al ritmo di uno per riga</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se «seguito=True», ogni esecuzione di un comando SQL viene accompagnata da un messaggio che ne indica il successo o il fallimento</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se «arresto=True», la funzione si interrompe al primo errore riscontrato; in caso contrario, esegue tutti i comandi SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se with_transaction=True, allora qualsiasi errore annulla tutti i comandi SQL eseguiti in precedenza</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se with_transaction=False, allora un errore non ha alcun impatto sui comandi SQL eseguiti in precedenza</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># la funzione restituisce un elenco [erreur1, erreur2, ...]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># elaborazione del file SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">try</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># apertura del file in modalità di lettura</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        file = open(<span style="color:#808080">sql_filename</span>, <span style="color:#a31515">&quot;r&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># elaborazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">return</span> execute_list_of_commands(<span style="color:#808080">connexion</span>, file.readlines(), <span style="color:#808080">suivi</span>, <span style="color:#808080">arrêt</span>, <span style="color:#808080">with_transaction</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">except</span> <span style="color:#2b91af">BaseException</span> <span style="color:#0000ff">as</span> erreur:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># viene restituito un array di errori</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000ff">return</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold">f&quot;Le fichier {sql_filename} n&#x27;a pu être être exploité : {erreur}&quot;</span><span style="font-weight:bold;color:#000000">]</span></span></span>
+</code></pre></div>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>riga 29: la funzione <strong>[execute_file_of_commands]</strong> esegue i comandi SQL contenuti nel file di testo denominato <strong>[sql_filename]</strong>:</li>
+<li>si leggano i commenti alle righe 31-38 per conoscere il significato dei parametri;</li>
+<li>righe 40-48: si utilizza il file di testo <strong>[sql_filename]</strong>;</li>
+<li>riga 43: apertura del file;</li>
+<li>riga 34: esecuzione della funzione <strong>[execute_list_of_commands]</strong> che esegue i comandi SQL che le vengono passati in un elenco. Tale elenco è costituito, in questo caso, dall’elenco di tutte le righe del file di testo <strong>[file.readlines()]</strong> (riga 45);</li>
+</ul>
+<p>La funzione <strong>[execute_list_of_commands]</strong> è la seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> execute_list_of_commands(<span style="color:#808080">connexion</span>: MySQLConnection, <span style="color:#808080">sql_commands</span>: <span style="color:#2b91af">list</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                             <span style="color:#808080">suivi</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">False</span>, <span style="color:#808080">arrêt</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">True</span>, <span style="color:#808080">with_transaction</span>: <span style="color:#2b91af">bool</span> = <span style="color:#0000ff">True</span>):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># utilizza la connessione aperta [connexion]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esegue su questa connessione i comandi SQL contenuti nell&#x27;elenco [sql_commands]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># questo file è un file di comandi SQL da eseguire al ritmo di uno per riga</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se «seguito=True», ogni esecuzione di un comando SQL viene accompagnata da un messaggio che ne indica il successo o il fallimento</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se «arresto=True», la funzione si interrompe al primo errore riscontrato; in caso contrario, esegue tutti i comandi SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se with_transaction=True, allora qualsiasi errore annulla tutti i comandi SQL eseguiti in precedenza</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># se with_transaction=False, allora un errore non ha alcun impatto sui comandi SQL eseguiti in precedenza</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># la funzione restituisce un elenco [erreur1, erreur2, ...]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># inizializzazioni</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    curseur = <span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span>connexion<span style="color:#000000">.autocommit = </span><span style="color:#0000ff">not</span><span style="color:#000000"> </span>with_transaction</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    erreurs = <span style="font-weight:bold">[]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">try</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># si richiede un cursore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        curseur = <span style="color:#808080">connexion</span>.cursor()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># esecuzione dei sql_commands SQL contenuti in sql_commands</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># vengono eseguiti uno alla volta</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">for</span> command <span style="color:#0000ff">in</span> <span style="color:#808080">sql_commands</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000"># si eliminano gli spazi all’inizio e alla fine del comando corrente</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            command = command.strip()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000"># si tratta di un comando vuoto o di un commento? Se sì, si passa al comando successivo</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> command == <span style="color:#a31515">&#x27;&#x27;</span> <span style="color:#0000ff">or</span> command<span style="font-weight:bold">[0]</span> == <span style="color:#a31515">&quot;#&quot;</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#0000ff">continue</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000"># esecuzione del comando corrente</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            error = <span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">try</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                curseur.execute(command)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">except</span> (InterfaceError, DatabaseError) <span style="color:#0000ff">as</span> erreur:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                error = erreur</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000"># Si è verificato un errore?</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> error:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#000000"># Un altro errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                msg = </span>f&quot;{command} : Erreur ({error})&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                erreurs.append(msg)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#000000"># visualizzazione sullo schermo o no?</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#0000ff">if</span> <span style="color:#808080">suivi</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                    print(msg)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                # interrompere l&#x27;operazione?</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#0000ff">if</span> <span style="color:#808080">with_transaction</span> <span style="color:#0000ff">or</span> <span style="color:#808080">arrêt</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                    <span style="color:#000000"># si genera l&#x27;elenco degli errori</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                    <span style="color:#0000ff">return</span> erreurs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">else</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                # nessun errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#0000ff">if</span> <span style="color:#808080">suivi</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                    print(</span>f&quot;<span style="font-weight:bold">[{command}]</span> : Exécution réussie&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#000000"># visualizza il risultato del comando</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                afficher_infos(curseur)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># restituisce la tabella degli errori</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">return</span> erreurs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span>finally<span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># chiusura del cursore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">if</span> curseur:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            curseur.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># conferma/annulla la transazione, se presente</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000ff">if</span><span style="color:#000000"> </span>with_transaction<span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> erreurs:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                # annullamento</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#808080">connexion</span>.rollback()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">else</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                # conferma</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#808080">connexion</span>.commit()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>riga 2: la funzione <strong>[execute_list_of_commands]</strong> esegue i comandi SQL contenuti nella lista <strong>[sql_commands]</strong>:</li>
+<li>si vedano i commenti alle righe 4-11 per conoscere il significato dei parametri;</li>
+<li>riga 2: la connessione ricevuta è una connessione aperta verso un database;</li>
+<li>riga 15: se si desidera che l’insieme dei comandi dell’elenco <strong>[sql_commands]</strong> venga eseguito all’interno di una transazione, è necessario operare in modalità AUTOCOMMIT=False. Altrimenti, si lavorerà in modalità AUTOCOMMIT=True e quindi ciascuno dei comandi dell&#x27;elenco <strong>[sqlCommands]</strong> verrà eseguito all&#x27;interno di una transazione automatica e non ci sarà una transazione globale;</li>
+<li>riga 19: si richiede un cursore per eseguire i vari comandi SQL;</li>
+<li>righe 22-51: si eseguono i comandi uno per uno;</li>
+<li>righe 26-27: si accettano le righe vuote e i commenti nell&#x27;elenco dei comandi SQL. In questo caso, il comando viene semplicemente ignorato;</li>
+<li>righe 30-33: esecuzione della query corrente;</li>
+<li>righe 35-45: si gestisce il caso di un eventuale errore nell&#x27;esecuzione della query corrente;</li>
+<li>righe 37-38: l&#x27;errore viene aggiunto alla tabella degli errori;</li>
+<li>righe 40-41: se è stato richiesto il tracciamento, viene visualizzato il messaggio di errore;</li>
+<li>righe 43-45: se il codice chiamante ha richiesto l&#x27;interruzione dopo il primo errore o se ha richiesto l&#x27;uso di una transazione, allora è necessario interrompere l&#x27;esecuzione. Si restituisce l&#x27;array degli errori;</li>
+<li>righe 46-51: caso in cui non si sia verificato alcun errore nell&#x27;esecuzione della query corrente;</li>
+<li>righe 48-49: se è stato richiesto un monitoraggio, viene visualizzata la query eseguita con l&#x27;indicazione «riuscita»;</li>
+<li>righe 50-51: si visualizza il risultato della query eseguita. Torneremo sulla funzione <strong>[afficher_infos]</strong> più avanti;</li>
+<li>righe 54-65: la clausola <strong>[finally]</strong> viene eseguita in ogni caso, indipendentemente dal fatto che si sia verificata un&#x27;eccezione o meno;</li>
+<li>righe 56-57: chiusura del cursore. Ciò libera le risorse ad esso assegnate;</li>
+<li>righe 59-65: si gestisce il caso in cui il codice chiamante abbia richiesto che i comandi SQL vengano eseguiti in una transazione;</li>
+<li>riga 60: si verifica se la lista <strong>[erreurs]</strong> è vuota, il che significa che non si è verificata alcuna eccezione. In questo caso, la transazione viene confermata (riga 65), altrimenti viene annullata (riga 62);</li>
+</ul>
+<p>La funzione <strong>[afficher_infos]</strong> visualizza il risultato di una query:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> afficher_infos(</span><span style="color:#808080">curseur</span><span style="color:#000000">: MySQLCursor):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#2b91af">type</span><span style="color:#000000">(</span><span style="color:#808080">curseur</span><span style="color:#000000">))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizza il risultato di un comando SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si trattava di un SELECT?</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> </span><span style="color:#808080">curseur</span><span style="color:#000000">.description:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># il cursore ha una descrizione - quindi ha eseguito un SELECT</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># descrizione[i] è la descrizione della colonna n. i del SELECT</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># descrizioneQZXW2HTMLBW2ldZQXQZXW2HTMLBWzBdZQX è il nome della colonna n. i del SELECT</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># vengono visualizzati i nomi dei campi</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        titre = </span><span style="color:#a31515">&quot;&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000ff">for</span><span style="color:#000000"> i </span><span style="color:#0000ff">in</span><span style="color:#000000"> </span><span style="color:#2b91af">range</span><span style="color:#000000">(len(</span><span style="color:#808080">curseur</span><span style="color:#000000">.description)):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            titre += </span><span style="color:#808080">curseur</span><span style="color:#000000">.description</span><span style="font-weight:bold;color:#000000">[i][0]</span><span style="color:#000000"> + </span><span style="color:#a31515">&quot;, &quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># viene visualizzato l&#x27;elenco dei campi senza la virgola finale</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        print(titre</span><span style="font-weight:bold;color:#000000">[0:len(titre) - 1]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># riga separatrice</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        print(</span><span style="color:#a31515">&quot;*&quot;</span><span style="color:#000000"> * (len(titre) - 1))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># riga corrente della selezione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        ligne = </span><span style="color:#808080">curseur</span><span style="color:#000000">.fetchone()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span><span style="color:#0000ff">while</span><span style="color:#000000"> ligne:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000"># viene visualizzato</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            print(ligne)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#000000"># riga successiva del menu a tendina</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            ligne = </span><span style="color:#808080">curseur</span><span style="color:#000000">.fetchone()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># riga di separazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        print(</span><span style="color:#a31515">&quot;*&quot;</span><span style="color:#000000"> * (len(titre) - 1))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">else</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># il cursore non ha alcun campo [description] - ha quindi eseguito un comando SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># di aggiornamento (insert, delete, update)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        print(</span><span style="color:#a31515">f&quot;nombre de lignes modifiées : {curseur.rowcount}&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>riga 1: il parametro della funzione è il cursore che ha appena eseguito un comando SQL. A seconda che tale comando sia un SELECT o un comando di aggiornamento INSERT, UPDATE, DELETE, il contenuto del cursore non è lo stesso;</li>
+<li>riga 6: se il cursore ha il campo <strong>[description]</strong>, significa che ha eseguito un SELECT e <strong>[description]</strong> descrive i campi richiesti nel SELECT:<ul>
+<li><strong>description[i]</strong> descrive il campo n. i richiesto dal SELECT. Si tratta di un elenco;</li>
+<li><strong>description[i][0]</strong> è il nome del campo n. i;</li>
+</ul>
+</li>
+<li>righe 11-17: vengono visualizzati i nomi dei campi richiesti dal SELECT;</li>
+<li>righe 18-24: si elabora il risultato del SELECT;</li>
+<li>righe 20, 24: il risultato di un SELECT viene elaborato in modo sequenziale. Questo risultato è un insieme di righe. La riga corrente viene ottenuta tramite <strong>[curseur.fetchone()]</strong> (riga 19). Si ottiene quindi una tupla;</li>
+<li>righe 27-30:  se il cursore non ha il campo <strong>[description]</strong>, allora ha eseguito un comando di aggiornamento INSERT, UPDATE, DELETE. È quindi possibile sapere quante righe della tabella sono state modificate dall&#x27;esecuzione di questo comando;</li>
+<li>riga 30: <strong>[curseur.rowcount]</strong> è questo numero;</li>
+</ul>
+<p>Lo script principale <strong>[mysql-04]</strong> utilizza il modulo <strong>[mysql_module]</strong> che abbiamo appena descritto:</p>
+<p><img src="images/10000000000001400000019646564AE6.png" width="140" height="177" style="width:3.701cm;height:4.695cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001400000019646564AE6.png" /></p>
+<p>Il file <strong>[config_04]</strong> configura il contesto di esecuzione dello script <strong>[mysql_04]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> configure():</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> <span style="color:#6f008a">os</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # percorso assoluto della cartella del file di configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    script_dir = <span style="color:#6f008a">os</span>.<span style="color:#6f008a">path</span>.dirname(<span style="color:#6f008a">os</span>.<span style="color:#6f008a">path</span>.abspath(__file__))</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # configurazione delle cartelle del syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    absolute_dependencies = <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="font-weight:bold"># cartelle locali</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">        </span><span style="font-weight:bold;color:#a31515">f&quot;{script_dir}/shared&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # impostazione del syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> <span style="color:#6f008a">myutils</span> <span style="color:#0000ff">import</span> set_syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    set_syspath(absolute_dependencies)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # si esegue la configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        # file dei comandi SQL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;commands_filename&quot;</span>: <span style="color:#a31515">f&quot;{script_dir}/data/commandes.sql&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        # credenziali di accesso al database</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;host&quot;</span>: <span style="color:#a31515">&quot;localhost&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;database&quot;</span>: <span style="color:#a31515">&quot;dbpersonnes&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;user&quot;</span>: <span style="color:#a31515">&quot;admpersonnes&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;password&quot;</span>: <span style="color:#a31515">&quot;nobody&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+</code></pre></div>
+
+<p>Lo script <strong>[mysql_04]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si recupera la configurazione dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">config_04</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">config = </span><span style="color:#6f008a">config_04</span><span style="color:#000000">.configure()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># il syspath è configurato - è possibile eseguire le importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql_module</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> execute_file_of_commands</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql</span><span style="color:#000000">.</span><span style="color:#6f008a">connector</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> connect, DatabaseError, InterfaceError</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ---------------------------------------------- main</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># verifica della sintassi della chiamata</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># argv[0] vero / falso</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">args = </span><span style="color:#6f008a">sys</span><span style="color:#000000">.argv</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">erreur = len(args) != 2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> </span><span style="color:#0000ff">not</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    with_transaction = args</span><span style="font-weight:bold;color:#000000">[1]</span><span style="color:#000000">.lower()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    erreur = with_transaction != </span><span style="color:#a31515">&quot;true&quot;</span><span style="color:#000000"> </span><span style="color:#0000ff">and</span><span style="color:#000000"> with_transaction != </span><span style="color:#a31515">&quot;false&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># errore?</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;syntaxe : {args</span><span style="font-weight:bold;color:#a31515">[0]</span><span style="color:#a31515">} true / false&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># calcolo di un testo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">with_transaction = with_transaction == </span><span style="color:#a31515">&quot;true&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> with_transaction:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    texte = </span><span style="color:#a31515">&quot;avec transaction&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">else</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    texte = </span><span style="color:#a31515">&quot;sans transaction&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># log di schermo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">&quot;--------------------------------------------------------------------&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">f&quot;Exécution du fichier SQL {config</span><span style="font-weight:bold;color:#a31515">[&#x27;commands_filename&#x27;]</span><span style="color:#a31515">} {texte}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">&quot;--------------------------------------------------------------------&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione dei comandi SQL dal file</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">connexion = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># connessione al database</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    connexion = connect(host=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;host&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">, user=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;user&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">, password=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;password&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                        database=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;database&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esecuzione del file di comandi SQL</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    erreurs = execute_file_of_commands(connexion, config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&quot;commands_filename&quot;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">, suivi=</span><span style="color:#0000ff">True</span><span style="color:#000000">, arrêt=</span><span style="color:#0000ff">False</span><span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                                       with_transaction=with_transaction)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (InterfaceError, DatabaseError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">     # visualizzazione dell&#x27;errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur fatale suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># termina l&#x27;esecuzione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># chiusura della connessione, se era stata aperta</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> connexion:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        connexion.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># visualizzazione del numero di errori</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">&quot;--------------------------------------------------------------------&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">f&quot;Exécution terminée&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">&quot;--------------------------------------------------------------------&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">f&quot;Il y a eu {len(erreurs)} erreur(s)&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># visualizzazione degli errori</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">for</span><span style="color:#000000"> erreur </span><span style="color:#0000ff">in</span><span style="color:#000000"> erreurs:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(erreur)</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>righe 1-4: configurazione dello script;</li>
+<li>riga 8: importazione del modulo <strong>[mysql_module]</strong> descritto in precedenza:</li>
+<li>righe 12-22: lo script <strong>[mysql-04]</strong> richiede un parametro che deve assumere uno dei valori <strong>[true / false]</strong>. Questo parametro indica se il file di comandi SQL deve essere eseguito all&#x27;interno di una transazione (true) o meno (false);</li>
+<li>riga 14: i parametri passati dall&#x27;utente allo script si trovano nell&#x27;elenco <strong>[sys.argv]</strong>;</li>
+<li>riga 15: sono necessari due parametri, ad esempio <strong>[mysql-04 true]</strong>. Il nome dello script conta come un parametro;</li>
+<li>righe 17-18: se sono presenti due parametri, il secondo deve essere una stringa di caratteri con valore &#x27;true&#x27; o &#x27;false&#x27;;</li>
+<li>righe 24-29: calcolo di un testo visualizzato alla riga 33;</li>
+<li>righe 39-44: si eseguono i comandi del file <strong>[./data/commandes.sql]</strong>;</li>
+<li>righe 45-49: se si verifica un errore durante la connessione (riga 40) o un errore non gestito dallo script <strong>[execute_file_of_commands],</strong> viene visualizzato l’errore e l’operazione viene interrotta;</li>
+<li>righe 55-62: in caso di esecuzione riuscita, viene visualizzato il numero di errori riscontrati durante l’esecuzione dei comandi SQL;</li>
+</ul>
+<p><u><strong>Esecuzione n. 1</strong></u></p>
+<p>Si esegue innanzitutto un&#x27;esecuzione senza transazione. A tal fine, si creerà una configurazione di esecuzione come illustrato nel paragrafo <a href="architettura-a-livelli-e-programmazione-tramite-interfacce.html#lescriptprincipal2"><u><span style="color: #0563c1">|Configurazione di un contesto</span></u></a> di esecuzione|:</p>
+<p><img src="images/10000000000005780000022925712BDD.png" width="612" height="242" style="width:16.18cm;height:6.391cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005780000022925712BDD.png" /></p>
+<ul>
+<li>in <strong>[1-4]</strong>, si crea una configurazione di esecuzione Python;</li>
+</ul>
+<p><img src="images/10000000000006370000028EDA2645CB.png" width="626" height="257" style="width:16.572cm;height:6.812cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006370000028EDA2645CB.png" /></p>
+<ul>
+<li><strong>[5]</strong>: nome della configurazione di esecuzione;</li>
+<li><strong>[6]</strong>: percorso dello script da eseguire;</li>
+<li><strong>[7]</strong>: parametri dello script;</li>
+<li><strong>[8]</strong>: cartella di esecuzione;</li>
+</ul>
+<p>Questa configurazione corrisponde quindi all&#x27;esecuzione del file SQL con una transazione. Utilizzare il pulsante <strong>[Apply]</strong> per confermare la configurazione.</p>
+<p>Allo stesso modo, creiamo la configurazione di esecuzione <strong>[mysql mysql-04 without_transaction]</strong>:</p>
+<p><img src="images/1000000000000558000001E178FC5470.png" width="597" height="210" style="width:15.79cm;height:5.553cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000558000001E178FC5470.png" /></p>
+<p>Questa configurazione corrisponde quindi all&#x27;esecuzione del file SQL senza transazione. Utilizzare il pulsante <strong>[Apply]</strong> per confermare la configurazione.</p>
+<p>Eseguiamo innanzitutto la versione senza transazione:</p>
+<p><img src="images/1000000000000413000000A167B8ACCE.png" width="456" height="70" style="width:12.06cm;height:1.863cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000413000000A167B8ACCE.png" /></p>
+<p>I risultati sono quindi i seguenti:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/databases/mysql/mysql_04.py false</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Exécution du fichier SQL C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\databases\mysql/data/commandes.sql sans transaction</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">drop table personnes</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">create table personnes</span><span style="font-weight:bold"> (id int primary key, prenom varchar(30) not null, nom varchar(30) not null, age integer not null, unique (nom,prenom))]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values(1, &#x27;Paul&#x27;,&#x27;Langevin&#x27;,48)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values (2, &#x27;Sylvie&#x27;,&#x27;Lefur&#x27;,70)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select prenom, nom, age from personnes</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">prenom, nom, age,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Paul&#x27;, &#x27;Langevin&#x27;, 48)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Sylvie&#x27;, &#x27;Lefur&#x27;, 70)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="background-color:#fff2cc">xx</span> : Erreur (1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;xx&#x27; at line 1)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values (3, &#x27;Pierre&#x27;,&#x27;Nicazou&#x27;,35)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values (4, &#x27;Geraldine&#x27;,&#x27;Colou&#x27;,26)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values (5, &#x27;Paulette&#x27;,&#x27;Girond&#x27;,56)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select prenom, nom, age from personnes</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">prenom, nom, age,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Paul&#x27;, &#x27;Langevin&#x27;, 48)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Sylvie&#x27;, &#x27;Lefur&#x27;, 70)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Pierre&#x27;, &#x27;Nicazou&#x27;, 35)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Geraldine&#x27;, &#x27;Colou&#x27;, 26)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Paulette&#x27;, &#x27;Girond&#x27;, 56)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select nom,prenom from personnes order by nom asc, prenom desc</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nom, prenom,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Colou&#x27;, &#x27;Geraldine&#x27;)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Girond&#x27;, &#x27;Paulette&#x27;)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Langevin&#x27;, &#x27;Paul&#x27;)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Lefur&#x27;, &#x27;Sylvie&#x27;)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Nicazou&#x27;, &#x27;Pierre&#x27;)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select nom,prenom,age from personnes where age between 20 and 40 order by age desc, nom asc, prenom asc</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nom, prenom, age,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Nicazou&#x27;, &#x27;Pierre&#x27;, 35)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Colou&#x27;, &#x27;Geraldine&#x27;, 26)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes(id, prenom, nom, age) values(6, &#x27;Josette&#x27;,&#x27;Bruneau&#x27;,46)</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">update personnes set age=47 where nom=&#x27;Bruneau&#x27;</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select nom,prenom,age from personnes where nom=&#x27;Bruneau&#x27;</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nom, prenom, age,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Bruneau&#x27;, &#x27;Josette&#x27;, 47)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">delete from personnes where nom=&#x27;Bruneau&#x27;</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select nom,prenom,age from personnes where nom=&#x27;Bruneau&#x27;</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nom, prenom, age,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Exécution terminée</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Il y a eu 1 erreur(s)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">xx : Erreur (1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;xx&#x27; at line 1)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Process finished with exit code 0</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>riga 19: si nota che, dopo l&#x27;errore, l&#x27;esecuzione degli ordini SQL è proseguita, poiché l&#x27;esecuzione è avvenuta senza transazione e con il parametro <strong>[arrêt=False]</strong>. Tutti i comandi SQL sono stati quindi eseguiti. Dovremmo quindi avere una tabella <strong>[personnes]</strong> che rifletta tale esecuzione;</li>
+</ul>
+<p>Verifica con phpMyAdmin:</p>
+<p><img src="images/10000000000002BE00000254275E18A9.png" width="306" height="260" style="width:8.089cm;height:6.869cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002BE00000254275E18A9.png" /></p>
+<p><u><strong>Esecuzione n. 2</strong></u></p>
+<p>Eseguiamo ora la configurazione <strong>[mysql mysql-04 with_transaction]</strong>. I risultati sono i seguenti:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/databases/mysql/mysql_04.py true</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Exécution du fichier SQL C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\databases\mysql/data/commandes.sql avec transaction</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">drop table personnes</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">create table personnes</span><span style="font-weight:bold"> (id int primary key, prenom varchar(30) not null, nom varchar(30) not null, age integer not null, unique (nom,prenom))]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 0</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values(1, &#x27;Paul&#x27;,&#x27;Langevin&#x27;,48)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">insert into personnes</span><span style="font-weight:bold">(id, prenom, nom, age) values (2, &#x27;Sylvie&#x27;,&#x27;Lefur&#x27;,70)]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">nombre de lignes modifiées : 1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">[</span><span style="font-weight:bold;background-color:#fff2cc">select prenom, nom, age from personnes</span><span style="font-weight:bold">]</span> : Exécution réussie</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">prenom, nom, age,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Paul&#x27;, &#x27;Langevin&#x27;, 48)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(&#x27;Sylvie&#x27;, &#x27;Lefur&#x27;, 70)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">*****************</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="background-color:#fff2cc">xx</span> : Erreur (1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;xx&#x27; at line 1)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Exécution terminée</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">--------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Il y a eu 1 erreur(s)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">xx : Erreur (1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#x27;xx&#x27; at line 1)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Process finished with exit code 0</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>riga 19: si nota che, dopo l’errore, non vengono più eseguiti i comandi SQL; ciò è dovuto al fatto che l’esecuzione è avvenuta all’interno di una transazione e che, al primo errore riscontrato, abbiamo annullato la transazione e interrotto l’esecuzione dei comandi SQL. Ciò significa che il risultato degli ordini delle righe 9, 11 e 13 è stato annullato. Dovremmo quindi avere una tabella <strong>[personnes]</strong> vuota;</li>
+</ul>
+<p>Verifiche con phpMyAdmin:</p>
+<p><img src="images/10000000000003F4000001B87E159F8E.png" width="442" height="192" style="width:11.689cm;height:5.082cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003F4000001B87E159F8E.png" /></p>
+<ul>
+<li>in <strong>[5]</strong>, si vede che la tabella <strong>[personnes] e [2]</strong> sono vuote;</li>
+</ul>
+<p><span id="refheading383082423505" name="refheading383082423505" class="odt-bookmark-anchor"></span>
+<span id="toc48549057" name="toc48549057" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql05" name="scriptmysql05" class="odt-bookmark-anchor"></span>
+<span id="scriptmysql-05" name="scriptmysql-05" class="odt-bookmark-anchor"></span></p>
+<h2 id="167-script-mysql_05-utilizzo-di-query-parametrizzate">16.7. <span style="color: #4f81bd"><strong>script</strong> [mysql_05]<strong>: utilizzo di query parametrizzate</strong></span></h2>
+<p>Lo script <strong>[mysql_05]</strong> introduce il concetto di query parametrizzate:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">mysql</span><span style="color:#000000">.</span><span style="color:#6f008a">connector</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> connect, DatabaseError, InterfaceError</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># l&#x27;identità dell&#x27;utente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">ID = </span><span style="color:#a31515">&quot;admpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">PWD = </span><span style="color:#a31515">&quot;nobody&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># host del SGBD</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">HOST = </span><span style="color:#a31515">&quot;localhost&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># identificativo del database</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">BASE = </span><span style="color:#a31515">&quot;dbpersonnes&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elenco delle persone (cognome, nome, età)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">personnes = </span><span style="font-weight:bold;color:#000000">[]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">for</span><span style="color:#000000"> i </span><span style="color:#0000ff">in</span><span style="color:#000000"> </span><span style="color:#2b91af">range</span><span style="color:#000000">(5):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    personnes.append((i, </span><span style="color:#a31515">f&quot;n0{i}&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">f&quot;p0{i}&quot;</span><span style="color:#000000">, i + 10))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">personnes.append((40, </span><span style="color:#a31515">&quot;d&#x27;Aboot&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;Y&#x27;éna&quot;</span><span style="color:#000000">, 18))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># altro elenco di persone</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">autresPersonnes = </span><span style="font-weight:bold;color:#000000">[]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">for</span><span style="color:#000000"> i </span><span style="color:#0000ff">in</span><span style="color:#000000"> </span><span style="color:#2b91af">range</span><span style="color:#000000">(5):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    autresPersonnes.append((i + 100, </span><span style="color:#a31515">f&quot;n1{i}&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">f&quot;p1{i}&quot;</span><span style="color:#000000">, i + 20))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">autresPersonnes.append((200, </span><span style="color:#a31515">&quot;d&#x27;Aboot&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;F&#x27;ilhem&quot;</span><span style="color:#000000">, 34))</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># accesso a SGBD</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">connexion = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># connessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    connexion = connect(host=HOST, user=ID, password=PWD, database=BASE)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># cursore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    curseur = connexion.cursor()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># eliminazione dei record esistenti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    curseur.execute(</span><span style="color:#a31515">&quot;delete from personnes&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># inserimenti uno per uno con una query preparata</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">for</span><span style="color:#000000"> personne </span><span style="color:#0000ff">in</span><span style="color:#000000"> personnes:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        curseur.execute(</span><span style="color:#a31515">&quot;insert into personnes(id,nom,prenom,age) values(%s,%s,%s,%s)&quot;</span><span style="color:#000000">, personne)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># inserimento in blocco di un elenco di persone</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    curseur.executemany(</span><span style="color:#a31515">&quot;insert into personnes(id,nom,prenom,age) values(%s, %s,%s,%s)&quot;</span><span style="color:#000000">, autresPersonnes)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># conferma della transazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    connexion.commit()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> (DatabaseError, InterfaceError) </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizzazione dell&#x27;errore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># annullamento della transazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> connexion:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        connexion.rollback()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># chiusura della sessione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> connexion:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        connexion.close()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>righe 12-21: si creano due elenchi di persone da includere nel database <strong>[dbpersonnes]</strong>;</li>
+<li>riga 27: connessione al database;</li>
+<li>riga 31: cancellazione del contenuto della tabella <strong>[personnes]</strong>;</li>
+<li>righe 33-34: inserimento di persone tramite una query parametrizzata. Riga 34: il primo parametro è il comando SQL da eseguire. Questo è incompleto. Contiene i parametri <strong>[%s]</strong> che verranno sostituiti uno per uno e nell’ordine dai valori dell’elenco del secondo parametro;</li>
+<li>riga 36: inserimento di persone, questa volta con un&#x27;unica istruzione <strong>[curseur.executemany]</strong>. Il secondo parametro di <strong>[executemany]</strong> è quindi un elenco di elenchi;</li>
+</ul>
+<p>Il vantaggio delle query parametrizzate risiede in due aspetti:</p>
+<ul>
+<li>vengono eseguite più rapidamente rispetto alle query «fisse», che devono essere analizzate ad ogni esecuzione. La query parametrizzata <strong>[executemany]</strong> viene analizzata una sola volta. Successivamente viene eseguita n volte senza essere analizzata nuovamente;</li>
+<li>i parametri inseriti nella query parametrizzata vengono verificati. Se contengono caratteri riservati, come ad esempio l’apostrofo, questi vengono “protetti” in modo che non interferiscano con l’esecuzione del comando SQL. È proprio per verificare questo aspetto che nell’elenco sono stati inclusi nomi e cognomi con apostrofi (righe 16 e 21);</li>
+</ul>
+<p>I risultati ottenuti in phpMyAdmin sono i seguenti:</p>
+<p><img src="images/1000000000000357000003570770DB41.png" width="373" height="373" style="width:9.86cm;height:9.86cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000357000003570770DB41.png" /></p>
+<ul>
+<li>si noti che le stringhe contenenti un apostrofo, carattere riservato in SQL, sono state inserite correttamente. La query parametrizzata le ha «protette». Senza una query parametrizzata, avremmo dovuto svolgere questo lavoro manualmente;</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Questo tutorial scritto da <strong>Serge Tahé</strong> è reso disponibile al pubblico secondo i termini della
+<em>Creative Commons Attribuzione – Non commerciale –
+Condividi allo stesso modo 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

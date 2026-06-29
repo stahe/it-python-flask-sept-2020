@@ -1,0 +1,2360 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduzione a Python 3 e al framework web Flask attraverso esempi">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/it-python-flask-sept-2020/le-importazioni.html">
+      
+      
+        <link rel="prev" href="esercizio-pratico---versione-1.html">
+      
+      
+        <link rel="next" href="esercizio-pratico-versione-2.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>9. Le importazioni - Introduzione a Python 3 e al framework web Flask attraverso esempi</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduzione a Python 3 e al framework web Flask attraverso esempi";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#9-le-importazioni" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-header__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduzione a Python 3 e al framework web Flask attraverso esempi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9. Le importazioni
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità scura"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità scura" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità chiara"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità chiara" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-nav__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduzione a Python 3 e al framework web Flask attraverso esempi
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benvenuti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prefazione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prefazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installazione-di-un-ambiente-di-lavoro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installazione di un ambiente di lavoro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nozioni-di-base-su-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Nozioni di base su Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-stringhe-di-caratteri.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Le stringhe di caratteri
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-eccezioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Le eccezioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-funzioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Le funzioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="i-file-di-testo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. I file di testo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Esercizio pratico – versione 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Le importazioni
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="le-importazioni.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Le importazioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#91-script-import_01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1. Script [import_01]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#92-script-import_02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2. Script [import_02]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#93-script-import_03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3. Script [import_03]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#94-script-import_04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4. Script [import_04]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#95-script-import_05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5. Script [import_05]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#96-script-import_06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.6. Script [import_06]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#97-script-import_07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7. Script [import_07]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9.7. Script [import_07]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#971-installazione-di-un-modulo-a-livello-di-macchina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.1. Installazione di un modulo a livello di macchina
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#972-lo-script-configpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.2. Lo script [config.py]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#973-lo-script-mainpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.7.3. Lo script [main.py]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Esercizio pratico: versione 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Esercizio pratico: versione 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-e-gli-oggetti.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Le classi e gli oggetti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-generiche-baseentity-e-myexception.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Le classi generiche [BaseEntity] e [MyException]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architettura-a-livelli-e-programmazione-tramite-interfacce.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Architettura a livelli e programmazione tramite interfacce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Esercizio pratico - versione 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Utilizzo di SGBD MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-e-postgresql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Utilizzo di SGBD e PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scrivere-codice-indipendente-da-sgbd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Scrivere codice indipendente da SGBD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-orm-sqlalchemy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Utilizzo di ORM SQLALCHEMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Esercizio pratico: versione 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="funzioni-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Funzioni Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="servizi-web-con-il-framework-flask.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Servizi web con il framework Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Esercizio pratico: versione 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Esercizio pratico: versione 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="-esercizio-pratico-versione-8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25.  Esercizio pratico: versione 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dal-dizionario-a-xml-e-viceversa.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Dal dizionario a XML e viceversa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Esercizio pratico: versione 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Esercizio pratico: versione 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Esercizio pratico: versione 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Esercizio pratico: versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="client-web-per-i-servizi-json-e-xml-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Client web per i servizi jSON e XML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-modalita-html-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. La modalità HTML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Esercizio pratico: versione 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Esercizio pratico: versione 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-15.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Esercizio pratico: versione 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-16.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Esercizio pratico: versione 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-17.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Esercizio pratico: versione 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-18-.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Esercizio pratico: versione 18 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. Conclusione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="lesimports" name="lesimports" class="odt-bookmark-anchor"></span>
+<span id="toc48548982" name="toc48548982" class="odt-bookmark-anchor"></span></p>
+<h1 id="9-le-importazioni">9. <span style="color: #365f91"><strong><span style="color: #365f91">Le importazioni</span></strong></span></h1>
+<p>L’errore riscontrato nella versione 1 dell’esercizio pratico ci porta ad approfondire il ruolo dell’istruzione <strong>[import]</strong>.</p>
+<p><img src="images/10000001000000D10000012D4D95DD64.png" width="73" height="105" style="width:1.923cm;height:2.768cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000000D10000012D4D95DD64.png" /></p>
+<p><span id="toc48548983" name="toc48548983" class="odt-bookmark-anchor"></span></p>
+<h2 id="91-script-import_01">9.1. <span style="color: #4f81bd"><strong>Script</strong> [import_01]</span></h2>
+<p>Lo script <strong>[imported]</strong> verrà importato da diversi script (chiamati anche moduli):</p>
+<p><img src="images/1000000100000165000001099BBA76F1.png" width="124" height="92" style="width:3.29cm;height:2.441cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000165000001099BBA76F1.png" /></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># questa istruzione verrà eseguita ogni volta che il modulo verrà importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#a31515">&quot;2&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># variabile appartenente al modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">x=4</span></span>
+</code></pre></div>
+
+<p>Un modulo viene <strong>eseguito</strong> al momento dell’importazione. Pertanto, quando verrà importato il modulo <strong>[imported]</strong>:</p>
+<ul>
+<li>verrà visualizzata la riga 3;</li>
+<li>la variabile x della riga 5 riceverà il suo valore;</li>
+</ul>
+<p>Lo script <strong>[main_01]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># viene eseguito un modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">imported</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># utilizzo della variabile x del modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#6f008a">imported</span><span style="color:#000000">.x)</span></span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 2: il modulo <strong>[imported]</strong> viene importato. Ciò ne provocherà l’esecuzione:<ul>
+<li>verrà visualizzato il valore 2;</li>
+<li>viene creata la variabile x con il valore 4;</li>
+</ul>
+</li>
+<li>riga 4: si utilizza la variabile x del modulo importato;</li>
+</ul>
+<p>In PyCharm viene segnalato un errore:</p>
+<p>In <strong>[1]</strong>, PyCharm indica che non riconosce il modulo <strong>[imported]</strong>. In termini tecnici, ciò significa che la cartella contenente il modulo <strong>[imported]</strong> non si trova nel Python Path di PyCharm. Il Python Path è l’insieme delle cartelle in cui vengono cercati i moduli importati. Per risolvere questo problema, è sufficiente specificare <strong>a [Sources root]</strong> la cartella in cui si trova il modulo <strong>[imported]</strong>, in questo caso la cartella <strong>[import/01]</strong>:</p>
+<p><img src="images/1000000000000383000000F22A24F5ED.png" width="316" height="85" style="width:8.37cm;height:2.252cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000383000000F22A24F5ED.png" /></p>
+<p><img src="images/1000000000000216000002A7BAF59978.png" width="233" height="297" style="width:6.172cm;height:7.848cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000216000002A7BAF59978.png" /></p>
+<p>Dopo questa operazione, la cartella <strong>[import/01]</strong> viene aggiunta al Python Path di PyCharm e l’errore scompare:</p>
+<p><img src="images/1000000000000375000000E9BB9A2FCE.png" width="386" height="102" style="width:10.209cm;height:2.688cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000375000000E9BB9A2FCE.png" /></p>
+<ul>
+<li>in <strong>[1]</strong>, la cartella <strong>[01]</strong> ha cambiato colore;</li>
+<li>in <strong>[2-3]</strong>, l&#x27;errore non è più presente;</li>
+</ul>
+<p>I risultati dell’esecuzione sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="n">main_01</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="mi">2</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="mi">4</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Commenti</strong></p>
+<ul>
+<li>la riga 2 è il risultato dell&#x27;esecuzione del modulo importato;</li>
+<li>la riga 3 mostra il valore della variabile x del modulo importato;</li>
+</ul>
+<p>Da questo esempio si ricava il concetto importante secondo cui un modulo (o uno script) importato viene <strong>eseguito</strong>.</p>
+<p>Lo script <strong>[main_02]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si importa la variabile x dal modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">imported</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> x</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># viene visualizzata</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">print(x)</span></span>
+</code></pre></div>
+
+<ul>
+<li>alla riga 2, si osserva un&#x27;altra sintassi di importazione: <strong>[from module import objet1, objet2, …]</strong>. Qui si importa la variabile <strong>[imported.x]</strong>. Con questa sintassi, la variabile x diventa una variabile dello script <strong>[main_02]</strong>. Non è più necessario anteporle il prefisso del modulo <strong>[imported]</strong>;</li>
+<li>riga 4: si visualizza la variabile x di <strong>[main_02]</strong>;</li>
+</ul>
+<p>I risultati dell’esecuzione sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="n">main_02</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="mi">2</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="mi">4</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Lo script <strong>[main_03]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si importa tutto ciò che è visibile dal modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">imported</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> *</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si utilizza la variabile x del modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">print(x)</span></span>
+</code></pre></div>
+
+<p>La notazione <strong>[import *]</strong> nella riga 2 indica che vengono importati tutti gli oggetti visibili del modulo importato (variabili, funzioni).</p>
+<p>I risultati sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="n">main_03</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="mi">2</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="mi">4</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Lo script <strong>[main_04]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si importa la variabile x dal modulo importato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># e la si rinomina y</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">imported</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> x </span><span style="color:#0000ff">as</span><span style="color:#000000"> y</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si visualizza la variabile y</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">print(y) </span></span>
+</code></pre></div>
+
+<p>La riga 3 mostra che è possibile importare un oggetto dal modulo importato e assegnargli un alias. In questo caso, la variabile <strong>[imported.x]</strong> diventa la variabile <strong>[main_04.y]</strong>. I risultati sono gli stessi di prima.</p>
+<p><span id="toc48548984" name="toc48548984" class="odt-bookmark-anchor"></span></p>
+<h2 id="92-script-import_02">9.2. <span style="color: #4f81bd"><strong>Script</strong> [import_02]</span></h2>
+<p><img src="images/10000001000001280000009EB2C9DE0E.png" width="104" height="56" style="width:2.76cm;height:1.475cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000001280000009EB2C9DE0E.png" /></p>
+<p>Il modulo importato <strong>[module1.py]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># una funzione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> f1():</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;f1&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<p>Il modulo importato definisce una funzione, un caso frequente.</p>
+<p>Lo script <strong>[main_01]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># import</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">module1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione di f1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">module1</span><span style="color:#000000">.f1()</span></span></span>
+</code></pre></div>
+
+<ul>
+<li>alla riga 2, il modulo viene importato. Verrà eseguito. In questo caso, non visualizza nulla;</li>
+<li>riga 4: viene eseguita la funzione <strong>[f1]</strong> del modulo importato;</li>
+</ul>
+<p>I risultati dell’esecuzione sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="n">main_01</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">f1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Nota</strong>: per evitare che PyCharm segnali un errore durante l’importazione della riga 2, è necessario inserire la cartella contenente <strong>[module1]</strong> all’interno di <strong>[Sources Root]</strong> di PyCharm:</p>
+<p><img src="images/1000000000000130000000FE1D0C40DC.png" width="105" height="88" style="width:2.79cm;height:2.332cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000130000000FE1D0C40DC.png" /></p>
+<p>In <strong>[1]</strong>, la cartella <strong>[02]</strong> inserita in <strong>[Sources Root]</strong> è diventata blu. Si noti che l’errore segnalato non impedisce in questo caso la corretta esecuzione degli script. Infatti, durante l’esecuzione dello script <strong>[main_0x]</strong>, la cartella dello script viene automaticamente aggiunta al Python Path. Di conseguenza, <strong>[module1]</strong> viene individuato. D&#x27;ora in poi, quando in uno screenshot una cartella appare in blu, significa che è stata inserita nel Python Path da <strong>[Sources Root]</strong> a PyCharm.</p>
+<p>Lo script <strong>[main_02]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># import</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">module1</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> f1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione di f1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f1()</span></span>
+</code></pre></div>
+
+<ul>
+<li>la riga 2 importa la funzione <strong>[f1]</strong> dal modulo <strong>[module1]</strong>;</li>
+<li>alla riga 4 si utilizza la funzione f1;</li>
+</ul>
+<p>I risultati sono identici a quelli dello script <strong>[main_01]</strong>.</p>
+<p><span id="toc48548985" name="toc48548985" class="odt-bookmark-anchor"></span></p>
+<h2 id="93-script-import_03">9.3. <span style="color: #4f81bd"><strong>Script</strong> [import_03]</span></h2>
+<p><img src="images/1000000000000127000001374B92EB8C.png" width="102" height="108" style="width:2.709cm;height:2.858cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000127000001374B92EB8C.png" /></p>
+<p><strong>Nota</strong>: <strong>[03]</strong> si trova nella cartella <strong>[Sources Root]</strong> del progetto.</p>
+<p>I nuovi script importeranno il modulo <strong>[module2],</strong> che non si trova nella stessa cartella in cui sono presenti gli script stessi.</p>
+<p>Lo script <strong>[module2]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># una funzione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> f2():</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;f2&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<p>Lo script definisce quindi una funzione <strong>[f2]</strong>.</p>
+<p>Lo script <strong>[main_01]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione del modulo Class2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">dir1</span><span style="color:#000000">.</span><span style="color:#6f008a">module2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione f2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">dir1</span><span style="color:#000000">.module2.f2()</span></span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 2: si utilizza una notazione speciale per indicare come individuare il modulo <strong>[module2]</strong>. <strong>[dir1.module2]</strong> va letto come il percorso <strong>[dir1/module2]</strong>: per trovare <strong>[module2]</strong>, si parte dalla cartella dello script corrente <strong>[main_01]</strong>, poi si passa a <strong>[dir1]</strong> e lì si trova <strong>[module2]</strong>. Non bisogna dimenticare che il punto di partenza del percorso è la cartella dello script che esegue l’importazione;</li>
+<li>riga 4: per eseguire la funzione <strong>[f2]</strong> da <strong>[module2]</strong>;</li>
+</ul>
+<p>I risultati sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="n">main_01</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">f2</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Riga 2, il risultato della funzione <strong>[f2]</strong>.</p>
+<p>Lo script <strong>[main_02]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione del modulo dir1.module2, che viene rinominato</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">dir1</span><span style="color:#000000">.</span><span style="color:#6f008a">module2</span><span style="color:#000000"> </span><span style="color:#0000ff">as</span><span style="color:#000000"> </span><span style="color:#6f008a">module2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione di f2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">module2</span><span style="color:#000000">.f2()</span></span></span>
+</code></pre></div>
+
+<p>Riga 2: si rinomina il modulo <strong>[dir1.module]</strong> per semplificare la scrittura della riga 4.</p>
+<p>Lo script <strong>[main_03]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione della funzione f2 dal modulo dir1.module2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">dir1</span><span style="color:#000000">.</span><span style="color:#6f008a">module2</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> f2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione di f2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f2()</span></span>
+</code></pre></div>
+
+<p>Questa volta, alla riga 2, si importa solo la funzione <strong>[f2],</strong> che diventa quindi una funzione dello script <strong>[main_03]</strong> (riga 4).</p>
+<p>Tutti questi script funzionano sia nel contesto di PyCharm che in quello di una console Python. Il motivo è che in entrambi i casi la cartella dello script eseguito, in questo caso la cartella <strong>[03]</strong>, fa parte del Python Path. Di conseguenza, la cartella <strong>[dir1/module2]</strong> viene individuata.</p>
+<p><span id="toc48548986" name="toc48548986" class="odt-bookmark-anchor"></span></p>
+<h2 id="94-script-import_04">9.4. <span style="color: #4f81bd"><strong>Script</strong> [import_04]</span></h2>
+<p><img src="images/100000000000016A000001A351983500.png" width="125" height="145" style="width:3.32cm;height:3.844cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000016A000001A351983500.png" /></p>
+<p>In questo caso, le cartelle <strong>[dir1]</strong> e <strong>[dir2]</strong> sono state inserite nella cartella <strong>[Sources Root]</strong> del progetto PyCharm.</p>
+<p>Il primo modulo importato è <strong>[module3]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># una funzione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> f3():</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;f3&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<p>Il secondo modulo importato è <strong>[module4]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">from<span style="color:#000000"> </span><span style="color:#6f008a">module3</span><span style="color:#000000"> </span>import<span style="color:#000000"> f3</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># una funzione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">def<span style="color:#000000"> f4():</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    f3()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;f4&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<ul>
+<li>alla riga 1, si importa la funzione <strong>[f3]</strong> da <strong>[module3]</strong>. Qui, <strong>[module3]</strong> è visibile perché la sua cartella <strong>[dir1]</strong> è stata inserita in <strong>[Sources Root]</strong>;</li>
+<li>righe 4-6: si definisce una funzione <strong>[f4]</strong> che richiama la funzione <strong>[f3]</strong> da <strong>[module3]</strong>;</li>
+</ul>
+<p>Lo script principale <strong>[main_01]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si importa il modulo 4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">module4</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> f4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione f4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4()</span></span>
+</code></pre></div>
+
+<ul>
+<li>alla riga 2 si importa il modulo <strong>[module4]</strong>. Questo è visibile poiché la sua cartella <strong>[dir2]</strong> è stata inserita nella cartella <strong>[Sources Root]</strong> di PyCharm;</li>
+<li>riga 4: esecuzione della funzione <strong>[f4]</strong> da <strong>[module4]</strong>;</li>
+</ul>
+<p>I risultati dell’esecuzione di <strong>[main_01]</strong> all’interno di PyCharm sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">main_01</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">f3</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">f4</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Ora eseguiamo <strong>[main_01]</strong> in un terminale (console) Python:</p>
+<p><img src="images/1000000000000147000002CCB9B7E723.png" width="142" height="312" style="width:3.769cm;height:8.255cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000147000002CCB9B7E723.png" /></p>
+<p>I risultati sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">import</span>\<span class="mi">04</span><span class="o">&gt;</span><span class="n">python</span> <span class="n">main_01</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>  <span class="n">File</span> <span class="s2">&quot;main_01.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">module4</span><span class="w"> </span><span class="kn">import</span> <span class="n">f4</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="ne">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;module4&#39;</span>
+</code></pre></div></td></tr></table></div>
+<p>Cosa è successo? Il terminale Python non ha alcuna conoscenza del Python Path e dei file <strong>[Sources Root]</strong> e PyCharm. Ha un proprio Python Path. In esso è sempre presente la cartella dello script in esecuzione, in questo caso lo script <strong>[main_01]</strong>. Conosce quindi la cartella <strong>[import/04]</strong>. Nello script in esecuzione trova la riga:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">from<span style="color:#000000"> </span><span style="color:#6f008a">module4</span><span style="color:#000000"> </span>import<span style="color:#000000"> f4</span></span></span>
+</code></pre></div>
+
+<p>L’interprete Python cerca <strong>[module4]</strong> nelle cartelle del proprio Python Path. Tuttavia, <strong>[module4]</strong> non si trova in <strong>[import/04] —</strong> che è effettivamente presente nel Python Path — ma in <strong>[import/04/dir2],</strong> che invece non vi è presente. Da qui l’errore.</p>
+<p>Ci troviamo quindi di fronte a un problema già riscontrato in precedenza: uno script che funziona correttamente in PyCharm può bloccarsi nel contesto di un terminale Python. Si tratta di un problema ricorrente che dovremo risolvere.</p>
+<p><span id="toc48548987" name="toc48548987" class="odt-bookmark-anchor"></span></p>
+<h2 id="95-script-import_05">9.5. <span style="color: #4f81bd"><strong>Script</strong> [import_05]</span></h2>
+<p><img src="images/100000000000018100000231B0B3CD88.png" width="136" height="198" style="width:3.59cm;height:5.232cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000018100000231B0B3CD88.png" /></p>
+<p><strong>Nota</strong>: le cartelle <strong>[dir1]</strong> e <strong>[dir2]</strong> sono inserite nel Python Path. Notiamo subito che c’è un conflitto: <strong>[module3]</strong> e <strong>[module4]</strong> si trovano in due posizioni diverse del Python Path di PyCharm:</p>
+<ul>
+<li>in <strong>[import/04/dir1]</strong> e <strong>[import/05/dir1]</strong> per <strong>[module3]</strong>;</li>
+<li>in <strong>[import/04/dir2]</strong> e <strong>[import/05/dir2]</strong> per <strong>[module4]</strong>;</li>
+</ul>
+<p>È quindi possibile estrarre <strong>[import/04/dir1]</strong> e <strong>[import/04/dir2]</strong> dai <strong>[Sources Root]</strong> del progetto PyCharm. In questo caso, <strong>[import/05/dir1]</strong> è una copia di <strong>[import/04/dir1]</strong> (lo stesso vale per <strong>[dir2]</strong>) e quindi non vi è alcun problema. Va tuttavia notato che, all’interno dello stesso PyCharm, è necessario prestare attenzione all’elenco delle cartelle di <strong>[Sources Root]</strong> per evitare conflitti.</p>
+<p>Lo script <strong>[main_01]</strong> diventa il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si modifica il file sys.path per includervi le cartelle</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># contenenti le classi da importare</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">sys</span><span style="color:#000000">.path.append(</span><span style="color:#a31515">&quot;.&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">sys</span><span style="color:#000000">.path.append(</span><span style="color:#a31515">&quot;./dir1&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">sys</span><span style="color:#000000">.path.append(</span><span style="color:#a31515">&quot;./dir2&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si importa il modulo4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">from<span style="color:#000000"> </span><span style="color:#6f008a">module4</span><span style="color:#000000"> </span>import<span style="color:#000000"> f4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione f4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4()</span></span>
+</code></pre></div>
+
+<p>Stiamo cercando di risolvere il problema del Python Path. Ne vogliamo uno che funzioni bene sia su PyCharm che in un terminale Python. Per farlo, lo sistemeremo noi stessi.</p>
+<ul>
+<li>righe 4-6: aggiungiamo le cartelle <strong>[., ./dir1, ./dir2]</strong> al Python Path. Affinché funzioni, è necessario che la cartella corrente al momento dell’esecuzione sia la cartella <strong>[import/05]</strong>. Ciò sarà vero in PyCharm ma non necessariamente in un terminale Python, come vedremo;</li>
+<li>riga 8: si importa <strong>[module4]</strong>. In seguito a quanto appena fatto, dovrebbe essere individuato in <strong>[./dir2]</strong>;</li>
+</ul>
+<p>L’esecuzione in PyCharm fornisce i seguenti risultati:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="n">main_01</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">f3</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">f4</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Ora, in un terminale Python:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\<span style="background-color:#fff2cc">import\05</span>&gt;python main_01.py</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f3</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4</span></span>
+</code></pre></div>
+
+<p>Riga 1: la cartella di esecuzione è <strong>[import/05]</strong>.</p>
+<p>Ora risaliamo di un livello nella struttura di <strong>[import/05]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\import\05&gt;<span style="background-color:#fff2cc">cd ..</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\<span style="background-color:#fff2cc">import</span>&gt;python <span style="background-color:#fff2cc">05/main_01.py</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Traceback (most recent call last):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  File &quot;05/main_01.py&quot;, line 8, in &lt;module&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    from module4 import f4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">ModuleNotFoundError: No module named &#x27;module4&#x27;</span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 2: quando viene eseguito <strong>[main_01]</strong>, non ci si trova più nella cartella <strong>[import/05]</strong> ma in <strong>[import]</strong>. Tuttavia, abbiamo scritto:</li>
+</ul>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">sys</span>.path.append(<span style="color:#a31515">&quot;.&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">sys</span>.path.append(<span style="color:#a31515">&quot;./dir1&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">sys</span>.path.append(<span style="color:#a31515">&quot;./dir2&quot;</span>)</span></span>
+</code></pre></div>
+
+<p>Questo aggiunge al Python Path le cartelle <strong>[import, import/dir1, import/dir2]</strong>, che non è affatto ciò che vogliamo. Si noti che l&#x27;aggiunta al Python Path di cartelle inesistenti (import/dir1, import/dir2) non provoca errori.</p>
+<p>Abbiamo fatto progressi, ma non è ancora sufficiente. È necessario aggiungere al Python Path non percorsi relativi, ma percorsi assoluti.</p>
+<p>Lo script <strong>[main_02]</strong> è una variante di <strong>[main_01]</strong> che utilizza un file di configurazione <strong>[config.json]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">{</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#2e75b6">&quot;dependencies&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">    </span><span style="font-weight:bold;color:#a31515">&quot;C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/import/05/dir1&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">    </span><span style="font-weight:bold;color:#a31515">&quot;C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/import/05/dir2&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Il valore della chiave <strong>[dependencies]</strong> è l&#x27;elenco delle cartelle da aggiungere al Python Path. Da notare che in questo caso sono stati inseriti nomi assoluti e non relativi.</p>
+<p>Lo script <strong>[main_02]</strong> utilizza il file <strong>[config.json]</strong> nel modo seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">codecs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># file di configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">config_filename=</span><span style="color:#a31515">&quot;C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/import/05/config.json&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># lettura del file di configurazione json</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">with<span style="color:#000000"> </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(config_filename, </span><span style="color:#a31515">&quot;r&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;utf-8&quot;</span><span style="color:#000000">) </span>as<span style="color:#000000"> file:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    config = </span><span style="color:#6f008a">json</span><span style="color:#000000">.load(file)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># modifica di sys.path</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">for<span style="color:#000000"> directory </span>in<span style="color:#000000"> config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;dependencies&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.path.append(directory)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si importa il modulo 4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">from<span style="color:#000000"> </span><span style="color:#6f008a">module4</span><span style="color:#000000"> </span>import<span style="color:#000000"> f4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># esecuzione di f4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 6:  si noti che è stato utilizzato il nome assoluto del file di configurazione;</li>
+<li>righe 8-9: il file di configurazione viene letto. Con il suo contenuto viene costruito un dizionario <strong>[config]</strong> (riga 9);</li>
+<li>righe 11-13: si aggiungono gli elementi dell’array <strong>[</strong><strong><span style="color: #000000">config[&#x27;dependencies&#x27;]</span></strong>] al Python Path. Si noti che, poiché in <strong>[config.json]</strong> sono stati inseriti nomi assoluti di cartelle, al Python Path vengono aggiunti nomi assoluti;</li>
+<li>riga 16: viene importato <strong>[module4]</strong>. Dovremmo riuscire a trovarlo poiché ora <strong>[dir2]</strong> si trova nel Python Path;</li>
+</ul>
+<p>L’esecuzione fornisce gli stessi risultati di <strong>[main_02],</strong> tranne per il fatto che lo script continua a funzionare anche quando la cartella di esecuzione non è più <strong>[import/05]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\<span style="background-color:#fff2cc">import</span>&gt;python <span style="background-color:#fff2cc">05/main_02.py</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f3</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4</span></span>
+</code></pre></div>
+
+<p>Riga 1, la cartella di esecuzione è <strong>[import]</strong>.</p>
+<p>Abbiamo fatto progressi. Abbiamo visto che:</p>
+<ul>
+<li>che dovevamo costruire il Python Path da soli;</li>
+<li>che bisognava inserirvi i percorsi assoluti di tutte le cartelle contenenti i moduli importati dall’applicazione;</li>
+</ul>
+<p>Tuttavia, inserire nomi assoluti negli script non è una soluzione. Non appena il progetto viene trasferito su un altro sito, smette di funzionare. Dobbiamo trovare un’altra soluzione.</p>
+<p><span id="toc48548988" name="toc48548988" class="odt-bookmark-anchor"></span></p>
+<h2 id="96-script-import_06">9.6. <span style="color: #4f81bd"><strong>Script</strong> [import_06]</span></h2>
+<p><img src="images/100000000000016F0000013E247ECD7F.png" width="130" height="112" style="width:3.433cm;height:2.974cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000016F0000013E247ECD7F.png" /></p>
+<p><strong>Nota</strong>: le cartelle <strong>[06, dir1, dir2]</strong> sono state inserite nelle cartelle <strong>[Sources Root]</strong> del progetto PyCharm. Le cartelle <strong>[dir1, dir2]</strong> sono identiche a quelle degli esempi precedenti.</p>
+<p>Il file <strong>[config.json]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">{</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#2e75b6">&quot;rootDir&quot;</span>: <span style="color:#a31515">&quot;C:/Data/st-2020/dev/python/cours-2020/v-02/imports/06&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#2e75b6">&quot;relativeDependencies&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">    </span><span style="font-weight:bold;color:#a31515">&quot;dir1&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">    </span><span style="font-weight:bold;color:#a31515">&quot;dir2&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">  ]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#2e75b6">&quot;absoluteDependencies&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">   ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p>Introduciamo due tipi di percorsi:</p>
+<ul>
+<li>percorsi assoluti, righe 7-8;</li>
+<li>percorsi relativi, righe 3-6. Sono relativi alla radice della riga 2. Pertanto, quando il progetto viene spostato, è necessario modificare solo questa riga;</li>
+</ul>
+<p>Lo script <strong>[utils.py]</strong> utilizza il file <strong>[config.json]</strong> e crea il Python Path:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span> codecs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> os</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># configurazione dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> config_app(config_filename: str) -&gt; dict:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># config_filename: nome del file di configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si consente la segnalazione delle eccezioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># elaborazione del file di configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">with</span> codecs.open(config_filename, <span style="color:#a31515">&quot;r&quot;</span>, <span style="color:#a31515">&quot;utf-8&quot;</span>) <span style="color:#0000ff">as</span> file:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        config = json.load(file)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># aggiunta delle dipendenze a sys.path</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    rootDir = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;rootDir&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si aggiungono le dipendenze relative al progetto al syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">for</span> directory <span style="color:#0000ff">in</span> config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;relativeDependencies&#x27;</span><span style="font-weight:bold">]</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si aggiunge la dipendenza all&#x27;inizio del syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        sys.path.insert(<span style="color:#098658">0</span>, <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{rootDir}<span style="color:#a31515">/</span>{directory}<span style="color:#a31515">&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si aggiungono le dipendenze assolute del progetto al syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">for</span> directory <span style="color:#0000ff">in</span> config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;absoluteDependencies&#x27;</span><span style="font-weight:bold">]</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si aggiunge la dipendenza all&#x27;inizio del syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        sys.path.insert(<span style="color:#098658">0</span>, directory)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si crea il dizionario di configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> config</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># cartella dello script eseguito</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> get_scriptdir():</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> os.path.dirname(os.path.abspath(__file__))</span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 8: la funzione <strong>[config_app]</strong> riceve come parametro il nome del file di configurazione;</li>
+<li>righe 12-14: il file di configurazione viene utilizzato per creare il dizionario <strong>[config]</strong>;</li>
+<li>riga 20: <strong>[sys.path]</strong> è l&#x27;elenco delle cartelle del Python Path;</li>
+<li>righe 17-20: le dipendenze relative al file di configurazione vengono aggiunte al Python Path. Vengono inserite all’inizio dell’array <strong>[sys.path]</strong>, riga 20. Infatti, quando Python cerca un modulo, esplora le cartelle del <strong>[sys.path]</strong> in ordine. Tuttavia, in questo documento, moduli con lo stesso nome si troveranno in cartelle diverse del <strong>[sys.path]</strong>. Inserendo le dipendenze dell’applicazione all’inizio della tabella <strong>[sys.path]</strong>, ci si assicura che queste vengano esplorate prima delle altre cartelle del <strong>[sys.path]</strong> che potrebbero contenere moduli con lo stesso nome;</li>
+<li>righe 21-24: le dipendenze assolute del file di configurazione vengono aggiunte al Python Path;</li>
+<li>riga 26: si restituisce la configurazione dell’applicazione;</li>
+<li>righe 29-30: la funzione <strong>[get_scriptdir]</strong> restituisce il percorso assoluto della cartella dello script in esecuzione (quella in cui si trova la chiamata alla funzione);</li>
+</ul>
+<p>Lo script principale <strong>[main]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">utils</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> config_app</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> affiche_path(</span><span style="color:#808080">msg</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># messaggio</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;{msg}------------------------------&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># sys.path</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">for</span><span style="color:#000000"> path </span><span style="color:#0000ff">in</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span><span style="color:#000000">.path:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        print(path)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># main -------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># il sys.path è configurato</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    affiche_path(</span><span style="color:#a31515">&quot;avant....&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    config = config_app(</span><span style="color:#a31515">f&quot;{get_scriptdir()}/config.json&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    affiche_path(</span><span style="color:#a31515">&quot;après....&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si importa il modulo 4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">module4</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> f4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># esecuzione f4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    f4()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> </span><span style="color:#2b91af">BaseException</span><span style="color:#000000"> </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;done&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 4: viene importata la funzione <strong>[config_app]</strong>. Si noti che, poiché <strong>[utils]</strong> e <strong>[main]</strong> si trovano nella stessa cartella, questa funzione <strong>[import]</strong> funziona sempre. Infatti, la cartella dello script principale viene automaticamente aggiunta al Python Path;</li>
+<li>righe 7-12: la funzione <strong>[affiche_path]</strong> visualizza l’elenco delle cartelle del Python Path;</li>
+<li>riga 19: si configura l’applicazione. Si noti che alla funzione <strong>[config_app]</strong> viene passato il percorso assoluto del file di configurazione. Dopo questa istruzione, il Python Path è stato ricostruito;</li>
+<li>riga 22: si importa <strong>[module4]</strong>. Grazie alla ricostruzione del Python Path, questo modulo verrà individuato;</li>
+<li>riga 24: si esegue la funzione <strong>[f4]</strong>;</li>
+</ul>
+<p>Nel contesto PyCharm, i risultati dell’esecuzione sono i seguenti:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/<span style="background-color:#fff2cc">import/06/main.py</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">avant....------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\import\06</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\fonctions\shared</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\impots\v01\shared</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\python38.zip</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\DLLs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\lib</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\lib\site-packages</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">après....------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:/Data/st-2020/dev/python/cours-2020/v-02/imports/06/dir2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:/Data/st-2020/dev/python/cours-2020/v-02/imports/06/dir1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\import\06</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\fonctions\shared</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\impots\v01\shared</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">….</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\python38.zip</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\DLLs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\lib</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\lib\site-packages</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f3</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">done</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Process finished with exit code 0</span></span>
+</code></pre></div>
+
+<p><strong>Commenti</strong></p>
+<ul>
+<li>righe 2-13: il Python Path di PyCharm. Vi si trovano tutte le cartelle inserite nel <strong>[Sources Root]</strong> del progetto;</li>
+<li>righe 14-29: il Python Path costruito dalla funzione <strong>[config_app]</strong>. Alle righe 15-16 si trovano le due dipendenze che abbiamo aggiunto;</li>
+<li>righe 22-27: le cartelle di sistema dell’interprete Python che ha eseguito lo script;</li>
+<li>righe 28-29: l&#x27;esecuzione procede normalmente;</li>
+</ul>
+<p>Ora passiamo al contesto che finora causava un errore di esecuzione:</p>
+<ul>
+<li>ci si posiziona in un terminale Python;</li>
+<li>ci spostiamo in una cartella diversa da quella contenente lo script in esecuzione;</li>
+</ul>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\<span style="background-color:#fff2cc">import</span>&gt;python <span style="background-color:#fff2cc">06/main.py</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">avant....------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\import\06</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\python38.zip</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\DLLs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\lib</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\lib\site-packages</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">après....------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:/Data/st-2020/dev/python/cours-2020/v-02/imports/06/<span style="background-color:#fff2cc">dir2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:/Data/st-2020/dev/python/cours-2020/v-02/imports/06/<span style="background-color:#fff2cc">dir1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\import\06</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\python38.zip</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\DLLs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38\lib</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Program Files\Python38</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\lib\site-packages</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f3</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">f4</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">done</span></span>
+</code></pre></div>
+
+<p>Questa volta funziona (righe 20-21). Si noti che <strong>[sys.path]</strong> non contiene le stesse cartelle rispetto a quando l’esecuzione avviene sotto PyCharm. </p>
+<p><span id="toc48548989" name="toc48548989" class="odt-bookmark-anchor"></span></p>
+<h2 id="97-script-import_07">9.7. <span style="color: #4f81bd"><strong>Script</strong> [import_07]</span></h2>
+<p>Miglioriamo la soluzione precedente in due modi:</p>
+<ul>
+<li>sostituiamo il file di configurazione <strong>[config.json]</strong> con uno script <strong>[config.py]</strong>. Infatti, il file jSON presenta un problema rilevante: non può essere commentato. Il dizionario <strong>[config.json]</strong> può essere sostituito da un dizionario Python che ha il vantaggio di poter essere commentato;</li>
+<li>utilizziamo un modulo visibile a tutti i progetti Python presenti sul computer;</li>
+</ul>
+<p><span id="installationdunmodule" name="installationdunmodule" class="odt-bookmark-anchor"></span>
+<span id="toc48548990" name="toc48548990" class="odt-bookmark-anchor"></span></p>
+<h3 id="971-installazione-di-un-modulo-a-livello-di-macchina">9.7.1. <span style="color: #4f81bd">Installazione di un modulo a livello di macchina</span></h3>
+<p><img src="images/1000000100000128000000D56ECC7998.png" width="105" height="75" style="width:2.769cm;height:1.993cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000128000000D56ECC7998.png" /></p>
+<p>Qui sopra creiamo una cartella <strong>[packages/myutils]</strong> all’interno del progetto PyCharm (i nomi non hanno importanza).</p>
+<p>Lo script <strong>[myutils.py]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">os</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> set_syspath(absolute_dependencies: list):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># absolute_dependencies: un elenco di nomi assoluti di cartelle</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si aggiungono al syspath i percorsi assoluti delle dipendenze del progetto</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">for</span> directory <span style="color:#0000ff">in</span> absolute_dependencies:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si verifica l&#x27;esistenza della cartella</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        existe = os.path.exists(directory) <span style="color:#0000ff">and</span> os.path.isdir(directory)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">if</span> <span style="color:#0000ff">not</span> existe:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># viene generata un&#x27;eccezione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span><span style="color:#0000ff">raise</span><span style="color:#000000"> BaseException(</span><span style="color:#0000ff">f</span>&quot;<span style="font-weight:bold">[set_syspath]</span> le dossier du Python Path <span style="font-weight:bold">[</span><span style="font-weight:bold;color:#000000">{directory}</span><span style="font-weight:bold">]</span> n&#x27;existe pas&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">else</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># si aggiunge la cartella all&#x27;inizio del syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            sys.path.insert(<span style="color:#098658">0</span>, directory)</span></span>
+</code></pre></div>
+
+<ul>
+<li>righe 6-18: la funzione <strong>[set_syspath]</strong> crea un Python Path con l&#x27;elenco delle cartelle che le vengono passate come parametro;</li>
+<li>righe 12-15: si verifica che la cartella da inserire nel Python Path esista;</li>
+</ul>
+<p>Lo script <strong>[__init.py__]</strong> (due trattini bassi prima e dopo il nome; questo è obbligatorio) è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> .<span style="color:#6f008a">myutils</span> <span style="color:#0000ff">import</span> set_syspath</span></span>
+</code></pre></div>
+
+<p>Si importa la funzione <strong>[set_syspath]</strong> dallo script <strong>[myutils]</strong>. La notazione <strong>[.myutils]</strong> indica il percorso <strong>[./myutils]</strong>, quindi lo script <strong>[myutils]</strong> si trova nella stessa cartella di <strong>[__init.py]</strong>. Si sarebbe potuto utilizzare la notazione <strong>[myutils]</strong>. Tuttavia, creeremo un modulo <strong>[myutils]</strong> con ambito a livello di macchina. Di conseguenza, la notazione <strong>[from myutils import set_syspath]</strong> diventerebbe ambigua. Si tratta di importare lo script <strong>[myutils]</strong> dalla cartella corrente o lo script <strong>[myutils]</strong> a livello di macchina? La notazione <strong>[.myutils]</strong> elimina questa ambiguità.</p>
+<p>Lo script <strong>[setup.py]</strong> (anche in questo caso il nome è predefinito) è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> setuptools <span style="color:#0000ff">import</span> setup</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">setup(name=<span style="color:#a31515">&#x27;myutils&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      version=<span style="color:#a31515">&#x27;0.1&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      description=<span style="color:#a31515">&#x27;Utilitaire fixant le Python Path&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      url=<span style="color:#a31515">&#x27;#&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      author=<span style="color:#a31515">&#x27;st&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      author_email=<span style="color:#a31515">&#x27;st@gmail.com&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      license=<span style="color:#a31515">&#x27;MIT&#x27;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      packages=<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;myutils&#x27;</span><span style="font-weight:bold">]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      zip_safe=<span style="color:#0000ff">False</span>)</span></span>
+</code></pre></div>
+
+<p>In questo script viene descritto il modulo che verrà creato. In questo caso, lo creeremo localmente. Tuttavia, lo stesso processo viene utilizzato per creare un modulo distribuito ufficialmente (cfr. |pypi|). I punti importanti sono i seguenti:</p>
+<ul>
+<li>riga 3: il nome del modulo creato;</li>
+<li>riga 4: la versione del modulo;</li>
+<li>riga 5: la sua descrizione;</li>
+<li>righe 7-8: l&#x27;autore del modulo;</li>
+</ul>
+<p>Per installare questo modulo con ambito locale, si procede come segue:</p>
+<p><img src="images/100000010000024B0000027B01C4A14B.png" width="263" height="285" style="width:6.96cm;height:7.528cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000024B0000027B01C4A14B.png" /></p>
+<p>Quindi, nel terminale Python, si digita il seguente comando <strong>[pip install .]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\packages&gt;<span style="background-color:#fff2cc">pip install .</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Processing c:\data\st-2020\dev\python\cours-2020\python3-flask-2020\packages</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Using legacy setup.py install for myutils, since package &#x27;wheel&#x27; is not installed.</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Installing collected packages: myutils</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  Attempting uninstall: myutils</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    Found existing installation: myutils 0.1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    Uninstalling myutils-0.1:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      Successfully uninstalled myutils-0.1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    Running setup.py install for myutils ... done</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Successfully installed myutils-0.1</span></span>
+</code></pre></div>
+
+<p>Da questo momento in poi, qualsiasi script della macchina potrà importare il modulo <strong>[myutils]</strong> senza che questo sia presente nel codice del progetto.</p>
+<p><span id="toc48548991" name="toc48548991" class="odt-bookmark-anchor"></span></p>
+<h3 id="972-lo-script-configpy">9.7.2. <span style="color: #4f81bd"><strong>Lo script</strong> [config.py]</span></h3>
+<p><img src="images/100000010000010D000000D33929E6BE.png" width="135" height="106" style="width:3.56cm;height:2.792cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000010D000000D33929E6BE.png" /></p>
+<p>Lo script <strong>[config.py]</strong> garantisce la configurazione dell’applicazione:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> configure():</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> os</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># percorso assoluto della cartella dello script di configurazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    script_dir = os.path.dirname(os.path.abspath(__file__))</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># percorsi assoluti delle cartelle da inserire nel syspath</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    absolute_dependencies = <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">        </span><span style="font-weight:bold;color:#008000"># cartelle locali</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold;color:#a31515">&quot;</span><span style="font-weight:bold">{script_dir}</span><span style="font-weight:bold;color:#a31515">/dir1&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold;color:#a31515">&quot;</span><span style="font-weight:bold">{script_dir}</span><span style="font-weight:bold;color:#a31515">/dir2&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># aggiornamento del syspath</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> myutils <span style="color:#0000ff">import</span> set_syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    set_syspath(absolute_dependencies)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># si restituisce la configurazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> {}</span></span>
+</code></pre></div>
+
+<ul>
+<li>riga 1: la funzione <strong>[configure]</strong> garantisce la configurazione dell’applicazione;</li>
+<li>righe 7-10: il dizionario che prima si trovava in <strong>[config.json]</strong>;</li>
+<li>righe 9-10: poiché ci si trova in uno script, è possibile ottenere direttamente i nomi assoluti delle cartelle <strong>[dir1, dir2]</strong>;</li>
+<li>righe 12-14: si utilizza la funzione <strong>[set_syspath]</strong> del modulo <strong>[myutils]</strong> che abbiamo appena creato per definire il Python Path della configurazione;</li>
+<li>riga 20: restituiamo il dizionario della configurazione dell’applicazione. In questo caso, è vuoto;</li>
+</ul>
+<p><span id="toc48548992" name="toc48548992" class="odt-bookmark-anchor"></span></p>
+<h3 id="973-lo-script-mainpy">9.7.3. <span style="color: #4f81bd"><strong>Lo script</strong> [main.py]</span></h3>
+<p>Lo script principale <strong>[main]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si configura l&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">config</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#6f008a">config</span><span style="color:#000000"> = </span><span style="color:#6f008a">config</span><span style="color:#000000">.configure()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># il syspath è configurato - è possibile eseguire le importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#6f008a">module4</span><span style="color:#000000"> </span><span style="color:#0000ff">import</span><span style="color:#000000"> f4</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># main -------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    f4()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> </span><span style="color:#2b91af">BaseException</span><span style="color:#000000"> </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">&quot;done&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<ul>
+<li>righe 2-4: si configura l’applicazione utilizzando il modulo <strong>[config.py]</strong>. Questo è accessibile poiché si trova nella stessa cartella dello script principale. La cartella dello script principale fa sempre parte del Python Path;</li>
+<li>quando si arriva alla riga 6, il Python Path è stato costruito includendo al suo interno la cartella del modulo <strong>[module4]</strong>. È quindi possibile importarlo alla riga 7;</li>
+<li>righe 10-15: non resta che eseguire la funzione <strong>[f4]</strong>;</li>
+</ul>
+<p>I risultati dell’esecuzione in PyCharm sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">st</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">cours</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span><span class="o">/</span><span class="n">import</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">f3</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">f4</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">done</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">Process</span> <span class="n">finished</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>In un terminale Python e in una cartella diversa da quella dello script principale, i risultati sono i seguenti:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Data</span>\<span class="n">st</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">dev</span>\<span class="n">python</span>\<span class="n">cours</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">python3</span><span class="o">-</span><span class="n">flask</span><span class="o">-</span><span class="mi">2020</span>\<span class="n">import</span><span class="o">&gt;</span><span class="n">python</span> <span class="mi">07</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">py</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="n">f3</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">f4</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">done</span>
+</code></pre></div></td></tr></table></div>
+<p>D&#x27;ora in poi procederemo sempre allo stesso modo per configurare un&#x27;applicazione:</p>
+<ul>
+<li>presenza di uno script <strong>[config.py]</strong> nella cartella dello script principale. Questo script contiene una funzione <strong>[configure]</strong> che ha due obiettivi:<ul>
+<li>creare il Python Path per l’applicazione. A tal fine, <strong>[config.py]</strong> identifica tutte le cartelle contenenti i moduli utilizzati dall’applicazione e crea il Python Path con i loro nomi assoluti;</li>
+<li>costruire il dizionario <strong>[config]</strong> della configurazione dell’applicazione;</li>
+</ul>
+</li>
+</ul>
+<p>Applichiamo questo schema alla seconda versione dell’esercizio pratico. Ricordiamo infatti che la versione 1 funzionava nell’ambiente PyCharm ma non in un terminale Python. Il problema era dovuto al Python Path.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Questo tutorial scritto da <strong>Serge Tahé</strong> è reso disponibile al pubblico secondo i termini della
+<em>Creative Commons Attribuzione – Non commerciale –
+Condividi allo stesso modo 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

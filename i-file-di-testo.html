@@ -1,0 +1,1900 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduzione a Python 3 e al framework web Flask attraverso esempi">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/it-python-flask-sept-2020/i-file-di-testo.html">
+      
+      
+        <link rel="prev" href="le-funzioni.html">
+      
+      
+        <link rel="next" href="esercizio-pratico---versione-1.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>7. I file di testo - Introduzione a Python 3 e al framework web Flask attraverso esempi</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduzione a Python 3 e al framework web Flask attraverso esempi";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-i-file-di-testo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-header__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduzione a Python 3 e al framework web Flask attraverso esempi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. I file di testo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità scura"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità scura" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità chiara"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità chiara" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-nav__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduzione a Python 3 e al framework web Flask attraverso esempi
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benvenuti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prefazione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prefazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installazione-di-un-ambiente-di-lavoro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installazione di un ambiente di lavoro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nozioni-di-base-su-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Nozioni di base su Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-stringhe-di-caratteri.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Le stringhe di caratteri
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-eccezioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Le eccezioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-funzioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Le funzioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. I file di testo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="i-file-di-testo.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. I file di testo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-script-fic_01-letturascrittura-di-un-file-di-testo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Script [fic_01]: lettura/scrittura di un file di testo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-script-fic_02-gestione-dei-file-di-testo-codificati-in-utf-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2. Script [fic_02]: gestione dei file di testo codificati in UTF-8
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-script-fic_03-gestione-dei-file-di-testo-codificati-in-iso-8859-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3. Script [fic_03]: gestione dei file di testo codificati in ISO-8859-1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-script-json_01-gestione-di-un-file-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4. Script [json_01]: gestione di un file jSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-script-json_02-gestione-dei-file-json-codificati-in-utf-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5. Script [json_02]: gestione dei file jSON codificati in UTF-8
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Esercizio pratico – versione 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-importazioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Le importazioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Esercizio pratico: versione 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Esercizio pratico: versione 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-e-gli-oggetti.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Le classi e gli oggetti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-generiche-baseentity-e-myexception.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Le classi generiche [BaseEntity] e [MyException]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architettura-a-livelli-e-programmazione-tramite-interfacce.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Architettura a livelli e programmazione tramite interfacce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Esercizio pratico - versione 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Utilizzo di SGBD MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-e-postgresql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Utilizzo di SGBD e PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scrivere-codice-indipendente-da-sgbd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Scrivere codice indipendente da SGBD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-orm-sqlalchemy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Utilizzo di ORM SQLALCHEMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Esercizio pratico: versione 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="funzioni-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Funzioni Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="servizi-web-con-il-framework-flask.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Servizi web con il framework Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Esercizio pratico: versione 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Esercizio pratico: versione 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="-esercizio-pratico-versione-8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25.  Esercizio pratico: versione 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dal-dizionario-a-xml-e-viceversa.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Dal dizionario a XML e viceversa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Esercizio pratico: versione 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Esercizio pratico: versione 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Esercizio pratico: versione 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Esercizio pratico: versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="client-web-per-i-servizi-json-e-xml-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Client web per i servizi jSON e XML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-modalita-html-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. La modalità HTML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-13.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Esercizio pratico: versione 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Esercizio pratico: versione 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-15.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Esercizio pratico: versione 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-16.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Esercizio pratico: versione 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-17.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Esercizio pratico: versione 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-18-.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Esercizio pratico: versione 18 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. Conclusione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="toc48548956" name="toc48548956" class="odt-bookmark-anchor"></span>
+<span id="lesfichierstexte" name="lesfichierstexte" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc2521212924280206" name="refheadingtoc2521212924280206" class="odt-bookmark-anchor"></span></p>
+<h1 id="7-i-file-di-testo">7. <span style="color: #365f91">I file di testo</span></h1>
+<p><img src="images/1000000100000164000001FA6815CD95.png" width="125" height="178" style="width:3.313cm;height:4.708cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000164000001FA6815CD95.png" /></p>
+<p><span id="toc48548957" name="toc48548957" class="odt-bookmark-anchor"></span>
+<span id="refheading382642423505" name="refheading382642423505" class="odt-bookmark-anchor"></span></p>
+<h2 id="71-script-fic_01-letturascrittura-di-un-file-di-testo">7.1. <span style="color: #4f81bd"><strong>Script</strong> [fic_01]<strong>: lettura/scrittura di un file di testo</strong></span></h2>
+<p>Lo script seguente illustra un esempio di utilizzo dei file di testo:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># creazione e successiva elaborazione sequenziale di un file di testo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># questo è un insieme di righe della forma login:pwd:uid:gid:infos:dir:shell</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># ogni riga viene inserita in un dizionario nella forma login =&gt; uid:gid:infos:dir:shell</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># --------------------------------------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> affiche_infos(</span><span style="color:#808080">dico</span><span style="color:#000000">: </span><span style="color:#2b91af">dict</span><span style="color:#000000">, </span><span style="color:#808080">clé</span><span style="color:#000000">: </span><span style="color:#2b91af">str</span><span style="color:#000000">):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizza il valore associato alla chiave nel dizionario &quot;dico&quot;, se esiste</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> </span><span style="color:#808080">clé</span><span style="color:#000000"> </span><span style="color:#0000ff">in</span><span style="color:#000000"> </span><span style="color:#808080">dico.keys()</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># viene visualizzato il valore associato alla chiave</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        print(</span><span style="color:#a31515">f&quot;{clé} : {dico</span><span style="font-weight:bold;color:#a31515">[clé]</span><span style="color:#a31515">}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">else</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># la chiave non è presente nel dizionario &quot;dico&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        print(</span><span style="color:#a31515">f&quot;la clé </span><span style="font-weight:bold;color:#a31515">[{clé}]</span><span style="color:#a31515"> n&#x27;existe pas&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># main -----------------------------------------------</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si imposta il nome del file</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">FILE_NAME = </span><span style="color:#a31515">&quot;./data/infos.txt&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># creazione e compilazione del file di testo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">fic = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># apertura del file in modalità scrittura (w=write)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    fic = open(FILE_NAME, </span><span style="color:#a31515">&quot;w&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si genera un contenuto arbitrario</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">for</span><span style="color:#000000"> i </span><span style="color:#0000ff">in</span><span style="color:#000000"> </span><span style="color:#2b91af">range</span><span style="color:#000000">(1, 101):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># una riga</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        ligne = </span><span style="color:#a31515">f&quot;login{i}:pwd{i}:uid{i}:gid{i}:infos{i}:dir{i}:shell{i}&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># viene scritta nel file di testo</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        fic.write(</span><span style="color:#a31515">f&quot;{ligne}\n&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> IOError </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;Erreur d&#x27;exploitation du fichier {FILE_NAME} : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si chiude il file se è stato aperto</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> fic:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        fic.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si apre in lettura</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">fic = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># apertura del file in lettura</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    fic = open(FILE_NAME, </span><span style="color:#a31515">&quot;r&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># dizionario vuoto all&#x27;inizio</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    dico = {}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># ogni riga viene inserita nel dizionario [dico] nella forma login =&gt; uid:gid:infos:dir:shell</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># lettura della prima riga rimuovendo gli spazi all&#x27;inizio e alla fine della riga</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    ligne = fic.readline().strip()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># finché la riga non è vuota</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">while</span><span style="color:#000000"> ligne != </span><span style="color:#a31515">&#x27;&#x27;</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># si inserisce la riga in un array</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        infos = ligne.split(</span><span style="color:#a31515">&quot;:&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># si recupera il login</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        login = infos</span><span style="font-weight:bold;color:#000000">[0]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># si ignora la password</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        infos</span><span style="font-weight:bold;color:#000000">[0:2]</span><span style="color:#000000"> = </span><span style="font-weight:bold;color:#000000">[]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># si crea una voce nel dizionario</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        dico</span><span style="font-weight:bold;color:#000000">[login]</span><span style="color:#000000"> = infos</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000"># lettura della riga successiva</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        ligne = fic.readline().strip()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> IOError </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;Erreur d&#x27;exploitation du fichier {FILE_NAME} : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># si chiude il file se è stato aperto</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> fic:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        fic.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># utilizzo del dizionario</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">affiche_infos(dico, </span><span style="color:#a31515">&quot;login10&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">affiche_infos(dico, </span><span style="color:#a31515">&quot;X&quot;</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<p><strong>Note</strong>:</p>
+<ul>
+<li>riga 28: apertura del file in modalità scrittura (w=write). Se il file esiste già, verrà sovrascritto;</li>
+<li>righe 30-34: si generano 100 righe nel file di testo;</li>
+<li>riga 34: per scrivere una riga nel file di testo. Il metodo <strong>[write]</strong> non aggiunge il carattere di fine riga. È quindi necessario inserirlo nel testo scritto;</li>
+<li>righe 35-37: gestione dell&#x27;eventuale eccezione;</li>
+<li>riga 37: interruzione dell&#x27;esecuzione dello script (tuttavia dopo l&#x27;esecuzione della clausola finally);</li>
+<li>righe 38-41: in ogni caso, che si verifichi o meno un errore, si chiude il file se è aperto;</li>
+<li>riga 47: apertura del file in lettura (r=read);</li>
+<li>riga 49: definizione di un dizionario vuoto;</li>
+<li>riga 52: il metodo <strong>[readline]</strong> legge una riga di testo, compreso il carattere di fine riga. Il metodo <strong>[strip]</strong> rimuove gli «spazi» all’inizio e alla fine della stringa. Per «spazio» si intendono caratteri bianchi, segni di fine riga, salti di pagina, tabulazioni e alcuni altri. Quindi, in questo caso, <strong>[ligne]</strong> non conterrà i caratteri di fine riga presenti in <strong>[\r\n]</strong> (Windows) o <strong>[\n]</strong> (Unix);</li>
+<li>riga 54: si elabora il file finché non si incontra una riga vuota;</li>
+<li>righe 54-64: il file di testo viene trasferito nel dizionario <strong>[dico]</strong>. La chiave è il campo <strong>[login]</strong>, il valore è costituito dai campi <strong>[uid:gid:infos:dir:shell]</strong>;</li>
+<li>righe 65-67: gestione dell&#x27;eventuale eccezione;</li>
+<li>righe 68-71: chiusura del file in ogni caso, indipendentemente dalla presenza o meno di un errore;</li>
+<li>righe 74-75: utilizzo del dizionario <strong>[dico]</strong>;</li>
+</ul>
+<p>Il file <strong>[data/infos.txt]</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>login0:pwd0:uid0:gid0:infos0:dir0:shell0
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>login1:pwd1:uid1:gid1:infos1:dir1:shell1
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>login2:pwd2:uid2:gid2:infos2:dir2:shell2
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>…
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>login98:pwd98:uid98:gid98:infos98:dir98:shell98
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>login99:pwd99:uid99:gid99:infos99:dir99:shell99
+</code></pre></div></td></tr></table></div>
+<p>Risultati sullo schermo:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/fichiers/fic_01.py</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">login10 : <span style="font-weight:bold">[&#x27;uid10&#x27;, &#x27;gid10&#x27;, &#x27;infos10&#x27;, &#x27;dir10&#x27;, &#x27;shell10&#x27;]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">la clé <span style="font-weight:bold">[X]</span> n&#x27;existe pas</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Process finished with exit code 0</span></span>
+</code></pre></div>
+
+<p><span id="toc48548958" name="toc48548958" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc2521232924280206" name="refheadingtoc2521232924280206" class="odt-bookmark-anchor"></span></p>
+<h2 id="72-script-fic_02-gestione-dei-file-di-testo-codificati-in-utf-8">7.2. <span style="color: #4f81bd"><strong>Script</strong> [fic_02]<strong>: gestione dei file di testo codificati in UTF-8</strong></span></h2>
+<p>Nel prosieguo del documento, gestiremo file di testo codificati esclusivamente in UTF-8. Per prima cosa configureremo PyCharm:</p>
+<p><img src="images/1000000100000427000001397C0E777D.png" width="614" height="181" style="width:16.24cm;height:4.782cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000427000001397C0E777D.png" /></p>
+<ul>
+<li>in <strong>[5-6]</strong>: scegliere la codifica UTF-8 per i file del progetto;</li>
+</ul>
+<p>Per creare un file codificato in UTF-8, si può procedere come segue (fic-02):</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">codecs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># scrittura in formato UTF-8 in un file di testo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># non si gestiscono le eccezioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">file=</span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span>&quot;./data/utf8.txt&quot;<span style="color:#000000">,</span>&quot;w&quot;<span style="color:#000000">,</span>&quot;utf8&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">file.write(</span>&quot;Hélène est partie à Bâle pendant l&#x27;été chez sa grand-mère&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">file.close()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>riga 2: per gestire la codifica dei file, si importa il modulo <strong>[codecs]</strong>;</li>
+<li>riga 6: il metodo <strong>[codecs.open]</strong> si utilizza come la classica funzione <strong>[open]</strong>. È tuttavia possibile specificare la codifica desiderata (creazione) o esistente (lettura). Dopo l’apertura, l’oggetto <strong>[file]</strong> ottenuto alla riga 6 si utilizza come un file classico;</li>
+<li>riga 7: sono stati utilizzati caratteri accentati che, nella maggior parte dei casi, hanno rappresentazioni diverse a seconda del codice caratteri utilizzato;</li>
+</ul>
+<p><strong>Risultati</strong></p>
+<p>Quando si apre il file <strong>[data/utf8.txt]</strong> ottenuto (cfr. riga 6), si ottiene il seguente risultato:</p>
+<p><img src="images/10000001000002E20000006391398D09.png" width="426" height="57" style="width:11.261cm;height:1.512cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002E20000006391398D09.png" /></p>
+<p><span id="toc48548959" name="toc48548959" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc2521252924280206" name="refheadingtoc2521252924280206" class="odt-bookmark-anchor"></span></p>
+<h2 id="73-script-fic_03-gestione-dei-file-di-testo-codificati-in-iso-8859-1">7.3. <span style="color: #4f81bd"><strong>Script</strong> [fic_03]<strong>: gestione dei file di testo codificati in</strong> ISO-8859-1</span></h2>
+<p>Lo script <strong>[fic_03]</strong> svolge la stessa funzione dello script <strong>[fic_02],</strong> ma codifica il file di testo in ISO-8859-1. Di seguito viene illustrata la differenza tra i file ottenuti:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">codecs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># scrittura in iso-8859-1 in un file di testo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># non vengono gestite le eccezioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">file=</span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span>&quot;./data/iso-8859-1.txt&quot;<span style="color:#000000">,</span>&quot;w&quot;<span style="color:#000000">,</span>&quot;<span style="background-color:#fff2cc">iso-8859-1</span>&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">file.write(</span>&quot;Hélène est partie à Bâle pendant l&#x27;été chez sa grand-mère&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">file.close()</span></span>
+</code></pre></div>
+
+<p>Quando si apre il file <strong>[data/iso-8859-1]</strong> creato alla riga 6, si ottiene il seguente risultato:</p>
+<p><img src="images/100000010000040A000000588352856D.png" width="595" height="51" style="width:15.739cm;height:1.339cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000040A000000588352856D.png" /></p>
+<p>Poiché abbiamo configurato il progetto per funzionare con i file UTF-8, PyCharm ha tentato di aprire il file <strong>[iso-8859-1.txt]</strong> come UTF-8. È in grado di rilevare che il file <strong>[1]</strong> non corrisponde a UTF-8. Propone quindi a <strong>[2]</strong> di ricaricare il file con una diversa codifica:</p>
+<p><img src="images/1000000100000427000000AE9A720C3E.png" width="677" height="111" style="width:17.919cm;height:2.933cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000427000000AE9A720C3E.png" /></p>
+<ul>
+<li>in <strong>[3-5]</strong>: il file viene ricaricato utilizzando una codifica ISO-8859-1;</li>
+</ul>
+<p><img src="images/10000001000002FF0000006FB0D90935.png" width="498" height="72" style="width:13.182cm;height:1.909cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002FF0000006FB0D90935.png" /></p>
+<ul>
+<li>in <strong>[6]</strong>, lo stesso file ma visualizzato con una codifica diversa;</li>
+</ul>
+<p>Se si torna alle impostazioni del progetto:</p>
+<p><img src="images/10000001000002D10000016B0249FD35.png" width="462" height="233" style="width:12.233cm;height:6.158cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000002D10000016B0249FD35.png" /></p>
+<ul>
+<li>si nota che in <strong>[6-7]</strong>, PyCharm ha segnalato che il file <strong>[iso-8859-1.txt]</strong> doveva essere aperto con la codifica ISO-8859-1. Si tratta quindi di un&#x27;eccezione alla regola <strong>[5]</strong>;</li>
+</ul>
+<p><span id="toc48548960" name="toc48548960" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc2521272924280206" name="refheadingtoc2521272924280206" class="odt-bookmark-anchor"></span></p>
+<h2 id="74-script-json_01-gestione-di-un-file-json">7.4. <span style="color: #4f81bd"><strong>Script</strong> [json_01]<strong>: gestione di un file jSON</strong></span></h2>
+<p>JSON indica la notazione degli oggetti <strong>JavaScript</strong>. Come suggerisce il nome, si tratta di una modalità di rappresentazione testuale degli oggetti del linguaggio JavaScript. In questo contesto la utilizzeremo con oggetti Python.</p>
+<p>Il file jSON gestito da <strong>[data/in.json]</strong> sarà il seguente:</p>
+<p><img src="images/10000001000001FF0000016D2C4A751E.png" width="331" height="236" style="width:8.759cm;height:6.257cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000001FF0000016D2C4A751E.png" /></p>
+<ul>
+<li>in <strong>[2]</strong>, si vede che il contenuto testuale del file <strong>[in.json]</strong> potrebbe rappresentare un dizionario Python. PyCharm ha formattato (Ctrl-Alt-L) questo testo, ma anche se fosse su una sola riga non cambierebbe nulla. La forma del testo non ha alcuna importanza purché rappresenti sintatticamente un oggetto Python;</li>
+</ul>
+<p>Lo script <strong>[json-01]</strong> mostra come utilizzare questo file:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">codecs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># lettura/scrittura di un file jSON</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">inFile=<span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">outFile=<span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">try<span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># apertura del file jSON in modalità di lettura</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    inFile = </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span>&quot;./data/in.json&quot;<span style="color:#000000">, </span>&quot;r&quot;<span style="color:#000000">, </span>&quot;utf8&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># trasferimento del contenuto in un dizionario</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    data = <span style="color:#6f008a">json</span>.load(inFile)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizzazione dei dati letti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span>f&quot;data={data}, type(data)={type(data)}&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    limites = data<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;limites&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span>f&quot;limites={limites}, type(limites)={type(limites)}&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span>f&quot;limites<span style="font-weight:bold">[1]</span>={limites<span style="font-weight:bold">[1]</span>}, type(limites<span style="font-weight:bold">[1]</span>)={type(limites<span style="font-weight:bold">[1]</span>)}&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># trasferimento del dizionario [data] in un file JSON</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    outFile = </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span>&quot;./data/out.json&quot;<span style="color:#000000">, </span>&quot;w&quot;<span style="color:#000000">, </span>&quot;utf8&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#6f008a">json</span>.dump(data, outFile)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> </span>BaseException<span style="color:#000000"> </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato l&#x27;errore e si esce</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span>f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#6f008a">sys</span>.exit()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">finally<span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># chiusura dei file, se aperti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">if</span> inFile:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        inFile.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">if</span> outFile:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        outFile.close()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>riga 3: per gestire JSON, si importa il modulo <strong>[json]</strong>;</li>
+<li>riga 11: gestiremo file jSON codificati in UTF-8. Qui si apre il file <strong>[data/in.json]</strong> con il modulo <strong>[codecs]</strong>;</li>
+<li>riga 13: il metodo <strong>[json.load]</strong> legge il contenuto del file jSON e lo assegna alla variabile <strong>[data]</strong>. Il tipo di questa variabile sarà in questo caso un dizionario;</li>
+<li>righe 15-18: per dimostrare che si è effettivamente ottenuto un dizionario Python, si visualizzano alcuni dei suoi elementi;</li>
+<li>righe 20-21: si esegue l&#x27;operazione inversa: il dizionario <strong>[data]</strong> viene salvato in un file con estensione UTF-8 grazie al metodo <strong>[json.dump]</strong>;</li>
+<li>righe 22-25: gestione di eventuali eccezioni;</li>
+<li>righe 26-31: in ogni caso, che si verifichi o meno un errore, si chiudono i file che potrebbero essere stati aperti;</li>
+</ul>
+<p><strong>Risultati</strong></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/fichiers/json_01.py</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">data={&#x27;limites&#x27;: <span style="font-weight:bold">[9964, 27519, 73779, 156244, 0]</span>, &#x27;coeffR&#x27;: <span style="font-weight:bold">[0, 0.14, 0.3, 0.41, 0.45]</span>, &#x27;coeffN&#x27;: <span style="font-weight:bold">[0, 1394.96, 5798, 13913.69, 20163.45]</span>, &#x27;PLAFOND_QF_DEMI_PART&#x27;: 1551, &#x27;PLAFOND_REVENUS_CELIBATAIRE_POUR_REDUCTION&#x27;: 21037, &#x27;PLAFOND_REVENUS_COUPLE_POUR_REDUCTION&#x27;: 42074, &#x27;VALEUR_REDUC_DEMI_PART&#x27;: 3797, &#x27;PLAFOND_DECOTE_CELIBATAIRE&#x27;: 1196, &#x27;PLAFOND_DECOTE_COUPLE&#x27;: 1970, &#x27;PLAFOND_IMPOT_COUPLE_POUR_DECOTE&#x27;: 2627, &#x27;PLAFOND_IMPOT_CELIBATAIRE_POUR_DECOTE&#x27;: 1595, &#x27;ABATTEMENT_DIXPOURCENT_MAX&#x27;: 12502, &#x27;ABATTEMENT_DIXPOURCENT_MIN&#x27;: 437}, <span style="background-color:#fff2cc">type(data)=&lt;class &#x27;dict&#x27;&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">limites=<span style="font-weight:bold">[9964, 27519, 73779, 156244, 0]</span>, <span style="background-color:#fff2cc">type(limites)=&lt;class &#x27;list&#x27;&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">limites<span style="font-weight:bold">[1]</span>=27519, type(limites<span style="font-weight:bold">[1]</span>)=<span style="background-color:#fff2cc">&lt;class &#x27;int&#x27;&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Process finished with exit code 0</span></span>
+</code></pre></div>
+
+<ul>
+<li>le righe 2-4 mostrano che il dizionario presente nel file jSON è stato recuperato correttamente;</li>
+</ul>
+<p>Ora esaminiamo il contenuto del file <strong>[data/out.json]</strong>:</p>
+<p><img src="images/1000000100000409000000744C4EDB31.png" width="661" height="74" style="width:17.5cm;height:1.965cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000409000000744C4EDB31.png" /></p>
+<p>Il testo del file è su un&#x27;unica riga. Tuttavia, PyCharm riconosce i file jSON ed è possibile formattarli, come i file Python e altri, tramite Ctrl-Alt-L. Si ottiene quindi quanto segue:</p>
+<p><img src="images/10000001000001E1000001CED0548C1A.png" width="311" height="298" style="width:8.22cm;height:7.895cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000001000001E1000001CED0548C1A.png" /></p>
+<p><span id="toc48548961" name="toc48548961" class="odt-bookmark-anchor"></span>
+<span id="refheadingtoc2521292924280206" name="refheadingtoc2521292924280206" class="odt-bookmark-anchor"></span></p>
+<h2 id="75-script-json_02-gestione-dei-file-json-codificati-in-utf-8">7.5. <span style="color: #4f81bd"><strong>Script</strong> [json_02]<strong>: gestione dei file jSON codificati in UTF-8</strong></span></h2>
+<p>Un file jSON codificato in UTF-8 può assumere due forme:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">codecs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># dizionario</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">data = {</span><span style="color:#a31515">&#x27;marié&#x27;</span><span style="color:#000000">: </span><span style="color:#a31515">&#x27;oui&#x27;</span><span style="color:#000000">, </span><span style="color:#a31515">&#x27;impôt&#x27;</span><span style="color:#000000">: 1340}</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># scrittura di un file jSON</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">out_file1 = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">out_file2 = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># trasferimento del dizionario [data] in un file json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    out_file1 = </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span><span style="color:#a31515">&quot;./data/out1.json&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;w&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;utf8&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="background-color:#fff2cc;color:#6f008a">json</span><span style="background-color:#fff2cc;color:#000000">.dump</span><span style="color:#000000">(data, out_file1, ensure_ascii=</span><span style="color:#0000ff">True</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># trasferimento del dizionario [data] in un file json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    out_file2 = </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span><span style="color:#a31515">&quot;./data/out2.json&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;w&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;utf8&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">json</span><span style="color:#000000">.dump(data, out_file2, ensure_ascii=</span><span style="color:#0000ff">False</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> </span><span style="color:#2b91af">BaseException</span><span style="color:#000000"> </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato l&#x27;errore e il programma viene chiuso</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># chiusura dei file se sono aperti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> out_file1:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        out_file1.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> out_file2:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        out_file2.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+</code></pre></div>
+
+<ul>
+<li>in questo script, il dizionario <strong>[data]</strong> (riga 7) viene scritto in due file jSON (righe 14, 17);</li>
+<li>righe 14, 17: in entrambi i casi, si crea un file di testo UTF-8;</li>
+<li>riga 15: durante la scrittura del dizionario, si utilizza il parametro denominato <strong>[ensure_ascii=True]</strong>;</li>
+<li>riga 18: durante la scrittura del dizionario, si utilizza il parametro denominato <strong>[ensure_ascii=False]</strong>;</li>
+</ul>
+<p>Ecco i due file ottenuti:</p>
+<p><img src="images/1000000100000378000000B9490980DB.png" width="585" height="122" style="width:15.49cm;height:3.226cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000378000000B9490980DB.png" /></p>
+<ul>
+<li>nel file <strong>[out1.json]</strong>, i caratteri accentati sono stati sostituiti da una serie di <strong>caratteri</strong> che ne rappresentano il codice UTF-8. A volte si dice che siano stati «escapati». Tecnicamente, nel file binario <strong>[out1.json]</strong>, per il carattere «é» di <strong>[marié]</strong> si trovano in successione i codici binari UTF-8 dei 6 caratteri <strong>[\u00e9]</strong>;</li>
+<li>nel file <strong>[out2.json]</strong>, i caratteri accentati sono stati lasciati così come sono. Ciò significa che nel file binario di <strong>[out2.json]</strong> questi caratteri sono rappresentati dal loro codice <strong>binario</strong> UTF-8 (un solo codice UTF-8 invece di 6 per out1). Per il carattere «é» di <strong>[marié]</strong>, si troverà quindi il codice binario <strong>[00e9]</strong> su 4 byte;</li>
+<li>è il valore del parametro <strong>[ensure_ascii]</strong> del metodo <strong>[json.dump]</strong> a determinare il formato utilizzato;</li>
+</ul>
+<p>Alcune applicazioni utilizzano UTF-8 «escapato» per i propri file jSON. In tal caso, occorre utilizzare il valore <strong>[ensure_ascii=True]</strong>. Questo valore è, infatti, quello predefinito. Se quindi non si utilizza il parametro <strong>[ensure_ascii],</strong> si lavorerà con file jSON e UTF-8 &quot;escapati&quot;.</p>
+<p>Lo script prosegue come segue:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">codecs</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">json</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> </span><span style="color:#6f008a">sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># dizionario</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">data = {<span style="color:#a31515">&#x27;marié&#x27;</span>: <span style="color:#a31515">&#x27;oui&#x27;</span>, <span style="color:#a31515">&#x27;impôt&#x27;</span>: 1340}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># rilettura dei file jSON</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">in_file1 = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">in_file2 = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># trasferimento del file jSON 1 in un dizionario</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    in_file1 = </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span><span style="color:#a31515">&quot;./data/out1.json&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;r&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;utf8&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    dico1 = </span><span style="color:#6f008a">json</span><span style="color:#000000">.load(in_file1)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizzazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;dico1={dico1}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># trasferimento del file jSON 2 in un dizionario</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    in_file2 = </span><span style="color:#6f008a">codecs</span><span style="color:#000000">.open(</span><span style="color:#a31515">&quot;./data/out2.json&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;r&quot;</span><span style="color:#000000">, </span><span style="color:#a31515">&quot;utf8&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    dico2 = </span><span style="color:#6f008a">json</span><span style="color:#000000">.load(in_file2)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># visualizzazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;dico2={dico2}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> </span><span style="color:#2b91af">BaseException</span><span style="color:#000000"> </span><span style="color:#0000ff">as</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># viene visualizzato l&#x27;errore e si esce</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#a31515">f&quot;L&#x27;erreur suivante s&#x27;est produite : {erreur}&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#6f008a">sys</span><span style="color:#000000">.exit()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">finally</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#000000"># chiusura dei file se sono aperti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> in_file1:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        in_file1.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> in_file2:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        in_file2.close()</span></span>
+</code></pre></div>
+
+<p><strong>Note</strong></p>
+<ul>
+<li>righe 11-34: rilettura dei due file <strong>[out1.json, out2.json]</strong> e visualizzazione del dizionario letto in ciascuno dei casi;</li>
+</ul>
+<p><strong>Risultati</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/fichiers/json_02.py
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>dico1={&#39;marié&#39;: &#39;oui&#39;, &#39;impôt&#39;: 1340}
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>dico2={&#39;marié&#39;: &#39;oui&#39;, &#39;impôt&#39;: 1340}
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>Process finished with exit code 0
+</code></pre></div></td></tr></table></div>
+<p>Sorprendentemente, si nota che non è stato necessario specificare alla funzione <strong>[json.load]</strong> (righe 17, 22) il tipo di codifica (con o senza escape) della stringa jSON da leggere. In entrambi i casi si ottiene il dizionario corretto.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Questo tutorial scritto da <strong>Serge Tahé</strong> è reso disponibile al pubblico secondo i termini della
+<em>Creative Commons Attribuzione – Non commerciale –
+Condividi allo stesso modo 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

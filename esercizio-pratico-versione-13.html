@@ -1,0 +1,2463 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduzione a Python 3 e al framework web Flask attraverso esempi">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/it-python-flask-sept-2020/esercizio-pratico-versione-13.html">
+      
+      
+        <link rel="prev" href="la-modalita-html-della-versione-12.html">
+      
+      
+        <link rel="next" href="esercizio-pratico-versione-14.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>33. Esercizio pratico: versione 13 - Introduzione a Python 3 e al framework web Flask attraverso esempi</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduzione a Python 3 e al framework web Flask attraverso esempi";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#33-esercizio-pratico-versione-13" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-header__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduzione a Python 3 e al framework web Flask attraverso esempi
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              33. Esercizio pratico: versione 13
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità scura"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità scura" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Passa alla modalità chiara"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passa alla modalità chiara" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduzione a Python 3 e al framework web Flask attraverso esempi" class="md-nav__button md-logo" aria-label="Introduzione a Python 3 e al framework web Flask attraverso esempi" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduzione a Python 3 e al framework web Flask attraverso esempi
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/it-python-flask-sept-2020" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benvenuti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prefazione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prefazione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installazione-di-un-ambiente-di-lavoro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Installazione di un ambiente di lavoro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nozioni-di-base-su-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Nozioni di base su Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-stringhe-di-caratteri.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Le stringhe di caratteri
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-eccezioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Le eccezioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-funzioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Le funzioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="i-file-di-testo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. I file di testo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Esercizio pratico – versione 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-importazioni.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Le importazioni
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Esercizio pratico: versione 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Esercizio pratico: versione 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-e-gli-oggetti.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Le classi e gli oggetti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="le-classi-generiche-baseentity-e-myexception.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Le classi generiche [BaseEntity] e [MyException]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architettura-a-livelli-e-programmazione-tramite-interfacce.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Architettura a livelli e programmazione tramite interfacce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico---versione-4.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Esercizio pratico - versione 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Utilizzo di SGBD MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-sgbd-e-postgresql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Utilizzo di SGBD e PostgreSQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="scrivere-codice-indipendente-da-sgbd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Scrivere codice indipendente da SGBD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizzo-di-orm-sqlalchemy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Utilizzo di ORM SQLALCHEMY
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Esercizio pratico: versione 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="funzioni-internet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Funzioni Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="servizi-web-con-il-framework-flask.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Servizi web con il framework Flask
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-6.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Esercizio pratico: versione 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Esercizio pratico: versione 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="-esercizio-pratico-versione-8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25.  Esercizio pratico: versione 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dal-dizionario-a-xml-e-viceversa.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Dal dizionario a XML e viceversa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27. Esercizio pratico: versione 9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28. Esercizio pratico: versione 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-11.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29. Esercizio pratico: versione 11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30. Esercizio pratico: versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="client-web-per-i-servizi-json-e-xml-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31. Client web per i servizi jSON e XML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="la-modalita-html-della-versione-12.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    32. La modalità HTML della versione 12
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Esercizio pratico: versione 13
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="esercizio-pratico-versione-13.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33. Esercizio pratico: versione 13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#331-rifattorizzazione-della-configurazione-dellapplicazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.1. Rifattorizzazione della configurazione dell’applicazione
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#332-rifattorizzazione-dello-script-principale-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.2. Rifattorizzazione dello script principale [main]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="33.2. Rifattorizzazione dello script principale [main]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3321-i-moduli-flask_session-e-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.2.1. I moduli [flask_session] e [redis]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3322-il-server-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.2.2. Il server Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3323-gestione-del-server-redis-nello-script-principale-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.2.3. Gestione del server Redis nello script principale [main]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3324-gestione-delle-rotte-nello-script-principale-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.2.4. Gestione delle rotte nello script principale [main]
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#333-rifattorizzazione-del-controller-principale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.3. Rifattorizzazione del controller principale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#334-gestione-delle-password-crittografate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.4. Gestione delle password crittografate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#335-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        33.5. Test
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-14.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34. Esercizio pratico: versione 14
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-15.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35. Esercizio pratico: versione 15
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-16.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36. Esercizio pratico: versione 16
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-17.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37. Esercizio pratico: versione 17
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="esercizio-pratico-versione-18-.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38. Esercizio pratico: versione 18 
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusione.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39. Conclusione
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="exercicedapplication9" name="exercicedapplication9" class="odt-bookmark-anchor"></span>
+<span id="toc48549303" name="toc48549303" class="odt-bookmark-anchor"></span></p>
+<h1 id="33-esercizio-pratico-versione-13">33. <span style="color: #365f91">Esercizio pratico: versione 13</span></h1>
+<p>La versione 13 modifica la versione 12 nei seguenti punti:</p>
+<ul>
+  <li>vengono ristrutturate alcune parti del codice (refactoring);
+  </li>
+  <li>la gestione della sessione viene effettuata in modo diverso tramite il modulo <b>[flask_session]</b>;
+  </li>
+  <li>si utilizzano password crittografate nel file di configurazione;
+  </li>
+</ul>
+
+<p>La versione 13 si ottiene inizialmente copiando la versione 12:</p>
+<p><img src="images/100000000000063B000001C274D580D2.png" width="695" height="196" style="width:18.399cm;height:5.191cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000063B000001C274D580D2.png" /></p>
+<p><img src="images/10000000000001BB0000018E64332B59.png" width="193" height="174" style="width:5.112cm;height:4.591cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BB0000018E64332B59.png" /></p>
+<ul>
+  <li>in <b>[1]</b>, la configurazione verrà rifattorizzata. In particolare, verrà rimossa dalla cartella <b>[flask]</b>;
+  </li>
+  <li>in <b>[2]</b>, lo script principale verrà rifattorizzato. Verrà inoltre rimosso dalla cartella <b>[flask]</b>;
+  </li>
+  <li>in <b>[3]</b>, la configurazione verrà suddivisa in più file;
+  </li>
+  <li>in <b>[4]</b>: lo script principale <b>[main]</b> verrà semplificato spostando parte del codice in altri file;
+  </li>
+  <li>in <b>[5]</b>, il controller di autenticazione verrà modificato poiché d&#x27;ora in poi le password degli utenti saranno crittografate;
+  </li>
+  <li>in <b>[6]</b>, il controller principale integrerà il codice precedentemente presente nello script principale <b>[main]</b>;
+  </li>
+</ul>
+
+<p><span id="toc48549304" name="toc48549304" class="odt-bookmark-anchor"></span></p>
+<h2 id="331-rifattorizzazione-della-configurazione-dellapplicazione">33.1. <span style="color: #4f81bd">Rifattorizzazione della configurazione dell’applicazione</span></h2>
+<p><img src="images/10000000000005BA00000152D171FD8C.png" width="641" height="148" style="width:16.949cm;height:3.909cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005BA00000152D171FD8C.png" /></p>
+<p>Vengono visualizzati tre nuovi file di configurazione:</p>
+<ul>
+  <li><b>[mvc]</b>: per configurare l&#x27;architettura MVC dell&#x27;applicazione;
+  </li>
+  <li><b>[parameters]</b>: che raggrupperà tutte le costanti dell&#x27;applicazione;
+  </li>
+  <li><b>[syspath]</b>: che configura il Python Path dell&#x27;applicazione;
+  </li>
+</ul>
+
+<p>Il file <strong>[syspath.py]</strong> è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> configure(config: dict) -&gt; dict:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> os</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># cartella di questo file</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    script_dir = os.path.dirname(os.path.abspath(__file__))</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># percorso radice</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    root_dir = </span>&quot;C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020&quot;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># dipendenze</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    absolute_dependencies = <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># cartelle del progetto</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># BaseEntity, MyException</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/classes/02/entities&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># InterfaceImpôtsDao, InterfaceImpôtsMétier, InterfaceImpôtsUi</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/impots/v04/interfaces&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># AbstractImpôtsdao, ImpôtsConsole, ImpôtsMétier</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/impots/v04/services&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># ImpotsDaoWithAdminDataInDatabase</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/impots/v05/services&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># AdminData, ImpôtsError, TaxPayer</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/impots/v04/entities&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># Costanti, intervalli</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/impots/v05/entities&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># Logger, SendAdminMail</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;</span><span style="font-weight:bold;color:#000000">{root_dir}</span><span style="font-weight:bold">/impots/http-servers/02/utilities&quot;</span><span style="font-weight:bold;color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># cartella dello script principale</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        script_dir,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">        </span><span style="font-weight:bold"># configurazioni [database, layers, parameters, controllers, views]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{script_dir}<span style="color:#a31515">/../configs&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># controllori</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{script_dir}<span style="color:#a31515">/../controllers&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># risposte HTTP</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{script_dir}<span style="color:#a31515">/../responses&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># modelli delle viste</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{script_dir}<span style="color:#a31515">/../models_for_views&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si imposta il syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> myutils <span style="color:#0000ff">import</span> set_syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    set_syspath(absolute_dependencies)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si rende la configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;root_dir&quot;</span>: root_dir,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;script_dir&quot;</span>: script_dir</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+</code></pre></div>
+
+<ul>
+  <li>lo script <b>[syspath] </b>serve a configurare il Python Path dell’applicazione (righe 40-41);
+  </li>
+  <li>fornisce due informazioni utili agli altri script di configurazione (righe 45-46);
+  </li>
+</ul>
+
+<p>Lo script <strong>[mvc]</strong> configura l’architettura MVC dell’applicazione web jSON / XML / HTML:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> configure(config: dict) -&gt; dict:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione dell&#x27;applicazione MVC</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># i controller</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> AfficherCalculImpotController <span style="color:#0000ff">import</span> AfficherCalculImpotController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> AuthentifierUtilisateurController <span style="color:#0000ff">import</span> AuthentifierUtilisateurController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> CalculerImpotController <span style="color:#0000ff">import</span> CalculerImpotController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> CalculerImpotsController <span style="color:#0000ff">import</span> CalculerImpotsController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> FinSessionController <span style="color:#0000ff">import</span> FinSessionController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> GetAdminDataController <span style="color:#0000ff">import</span> GetAdminDataController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> InitSessionController <span style="color:#0000ff">import</span> InitSessionController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> ListerSimulationsController <span style="color:#0000ff">import</span> ListerSimulationsController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> MainController <span style="color:#0000ff">import</span> MainController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> SupprimerSimulationController <span style="color:#0000ff">import</span> SupprimerSimulationController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># le risposte HTTP</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> HtmlResponse <span style="color:#0000ff">import</span> HtmlResponse</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> JsonResponse <span style="color:#0000ff">import</span> JsonResponse</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> XmlResponse <span style="color:#0000ff">import</span> XmlResponse</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># i modelli delle viste</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> ModelForAuthentificationView <span style="color:#0000ff">import</span> ModelForAuthentificationView</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> ModelForCalculImpotView <span style="color:#0000ff">import</span> ModelForCalculImpotView</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> ModelForErreursView <span style="color:#0000ff">import</span> ModelForErreursView</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">from</span> ModelForListeSimulationsView <span style="color:#0000ff">import</span> ModelForListeSimulationsView</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># azioni consentite e relativi controllori</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    controllers = {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># inizializzazione di una sessione di calcolo</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;init-session&quot;</span>: InitSessionController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># autenticazione di un utente</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;authentifier-utilisateur&quot;</span>: AuthentifierUtilisateurController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># calcolo dell&#x27;imposta in modalità individuale</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;calculer-impot&quot;</span>: CalculerImpotController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># calcolo dell&#x27;imposta in modalità batch</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;calculer-impots&quot;</span>: CalculerImpotsController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># elenco delle simulazioni</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;lister-simulations&quot;</span>: ListerSimulationsController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># eliminazione di una simulazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;supprimer-simulation&quot;</span>: SupprimerSimulationController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># fine della sessione di calcolo</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;fin-session&quot;</span>: FinSessionController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># visualizzazione della schermata di calcolo dell&#x27;imposta</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;afficher-calcul-impot&quot;</span>: AfficherCalculImpotController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># recupero dei dati dall&#x27;amministrazione fiscale</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;get-admindata&quot;</span>: GetAdminDataController(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># controller principale</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;main-controller&quot;</span>: MainController()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># i diversi tipi di risposta (json, xml, html)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    responses = {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;json&quot;</span>: JsonResponse(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;html&quot;</span>: HtmlResponse(),</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;xml&quot;</span>: XmlResponse()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># le viste HTML e i relativi modelli dipendono dallo stato restituito dal controller</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    views = <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">            </span><span style="font-weight:bold"># vista di autenticazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">            </span><span style="font-weight:bold;color:#a31515">&quot;états&quot;</span><span style="font-weight:bold">: [</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                700,    # /init-session - operazione riuscita</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                201,    # /autenticazione-utente - errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">            ]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span>&quot;view_name&quot;<span style="color:#000000">: </span>&quot;views/vue-authentification.html&quot;<span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;model_for_view&quot;</span>: ModelForAuthentificationView()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        },</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># pagina di calcolo dell&#x27;imposta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;états&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                200,    # /autenticare-utente completato con successo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                300,    # /calcolo-imposta completato con successo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                301,    # /calcolo-imposta fallito</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                800,    # /visualizza-calcolo-imposta (operazione riuscita)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">            ]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span>&quot;view_name&quot;<span style="color:#000000">: </span>&quot;views/vue-calcul-impot.html&quot;<span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;model_for_view&quot;</span>: ModelForCalculImpotView()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        },</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># visualizzazione dell&#x27;elenco delle simulazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;états&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                500,    # /elenco-simulazioni (operazione riuscita)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                600,    # /eliminare-simulazione (operazione riuscita)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">            ]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span>&quot;view_name&quot;<span style="color:#000000">: </span>&quot;views/vue-liste-simulations.html&quot;<span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;model_for_view&quot;</span>: ModelForListeSimulationsView()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        },</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># visualizzazione degli errori imprevisti</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    view_erreurs = {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span>&quot;view_name&quot;<span style="color:#000000">: </span>&quot;views/vue-erreurs.html&quot;<span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;model_for_view&quot;</span>: ModelForErreursView()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># reindirizzamenti</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    redirections = <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">            </span><span style="font-weight:bold;color:#a31515">&quot;états&quot;</span><span style="font-weight:bold">: [</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                400,  # /fine-sessione riuscita</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">            ]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># reindirizzamento a URL</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span>&quot;to&quot;<span style="color:#000000">: </span>&quot;/init-session/html&quot;<span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    ]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># si ripristina la configurazione MVC</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># controller</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;controllers&quot;</span>: controllers,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># risposte HTTP</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;responses&quot;</span>: responses,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># viste e modelli</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;views&quot;</span>: views,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># elenco dei reindirizzamenti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;redirections&quot;</span>: redirections,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># pagina degli errori imprevisti</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;view_erreurs&quot;</span>: view_erreurs</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+</code></pre></div>
+
+<ul>
+  <li>righe 1-101: questo codice è noto;
+  </li>
+  <li>righe 105-116: si restituisce la configurazione MVC dell’applicazione;
+  </li>
+</ul>
+
+<p>Lo script <strong>[parameters]</strong> raccoglie le costanti dell&#x27;applicazione:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> configure(config: dict) -&gt; dict:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione dell&#x27;applicazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># script_dir</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    script_dir = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;syspath&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;script_dir&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione dell&#x27;applicazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    parameters = {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># utenti autorizzati a utilizzare l&#x27;applicazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;users&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">                </span><span style="font-weight:bold;color:#a31515">&quot;login&quot;</span><span style="font-weight:bold">: </span><span style="font-weight:bold;color:#a31515">&quot;admin&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">                </span><span style="font-weight:bold;color:#a31515">&quot;password&quot;</span><span style="font-weight:bold">: </span><span style="font-weight:bold;color:#a31515">&quot;$pbkdf2-sha256$29000$mPM.h3COkTIGYOzde68VIg$7LH5Q7rN/1hW.Xa.6rcmR6h52PntvVqd5.na7EtgQNw&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">        ]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># file di log</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;logsFilename&quot;</span>: <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{script_dir}<span style="color:#a31515">/../data/logs/logs.txt&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># configurazione del server SMTP</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;adminMail&quot;</span>: {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># server SMTP</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;smtp-server&quot;</span>: <span style="color:#a31515">&quot;localhost&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># porta del server SMTP</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;smtp-port&quot;</span>: <span style="color:#a31515">&quot;25&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># amministratore</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;from&quot;</span>: <span style="color:#a31515">&quot;guest@localhost.com&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;to&quot;</span>: <span style="color:#a31515">&quot;guest@localhost.com&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># oggetto dell&#x27;e-mail</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;subject&quot;</span>: <span style="color:#a31515">&quot;plantage du serveur de calcul d&#x27;impôts&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># TLS impostato su True se il server SMTP richiede l&#x27;autenticazione, altrimenti su False</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;tls&quot;</span>: <span style="color:#0000ff">False</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        },</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># durata della pausa del thread in secondi</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;sleep_time&quot;</span>: <span style="color:#098658">0</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#008000"># server Redis</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;redis&quot;</span>: {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;host&quot;</span>: <span style="color:#a31515">&quot;127.0.0.1&quot;</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#a31515">&quot;port&quot;</span>: <span style="color:#098658">6379</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        },</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># si imposta la configurazione dell&#x27;applicazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> parameters</span></span>
+</code></pre></div>
+
+<ul>
+  <li>riga 13: d&#x27;ora in poi le password degli utenti saranno crittografate;
+  </li>
+  <li>righe 34-38: la configurazione di un server <b>[Redis] </b>su cui torneremo;
+  </li>
+</ul>
+
+<p>Con questi nuovi file di configurazione, lo script <strong>[config]</strong> diventa il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> configure(config: dict) -&gt; dict:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione del syspath</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> syspath</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;syspath&#x27;</span><span style="font-weight:bold">]</span> = syspath.configure(config)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione dell&#x27;applicazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> parameters</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold">]</span> = parameters.configure(config)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione del database</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> database</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&quot;database&quot;</span><span style="font-weight:bold">]</span> = database.configure(config)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># istanziazione dei livelli dell&#x27;applicazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> layers</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;layers&#x27;</span><span style="font-weight:bold">]</span> = layers.configure(config)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># configurazione MVC del livello [web]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">import</span> mvc</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;mvc&#x27;</span><span style="font-weight:bold">]</span> = mvc.configure(config)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#008000"># si restituisce la configurazione</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">return</span> config</span></span>
+</code></pre></div>
+
+<p><span id="toc48549305" name="toc48549305" class="odt-bookmark-anchor"></span></p>
+<h2 id="332-rifattorizzazione-dello-script-principale-main">33.2. <span style="color: #4f81bd"><strong>Rifattorizzazione dello script principale</strong> [main]</span></h2>
+<p><img src="images/100000000000055B000001EA42D0C7D8.png" width="598" height="214" style="width:15.81cm;height:5.652cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000055B000001EA42D0C7D8.png" /></p>
+<p>Lo script principale <strong>[main.py]</strong> si limita ad avviare il server:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># si attende un parametro mysql o pgres</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">syntaxe = </span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="color:#000000">{sys.argv</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#098658">0</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">}</span><span style="color:#a31515"> mysql / pgres&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">erreur = len(sys.argv) != </span><span style="color:#098658">2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> </span><span style="color:#0000ff">not</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    sgbd = sys.argv</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#098658">1</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">.lower()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    erreur = sgbd != </span><span style="color:#a31515">&quot;mysql&quot;</span><span style="color:#000000"> </span><span style="color:#0000ff">and</span><span style="color:#000000"> sgbd != </span><span style="color:#a31515">&quot;pgres&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;syntaxe : </span><span style="color:#000000">{syntaxe}</span><span style="color:#a31515">&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    sys.exit()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si configura l&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> config</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">config = config.configure({</span><span style="color:#a31515">&#x27;sgbd&#x27;</span><span style="color:#000000">: sgbd})</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># dipendenze</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> SendAdminMail </span><span style="color:#0000ff">import</span><span style="color:#000000"> SendAdminMail</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> Logger </span><span style="color:#0000ff">import</span><span style="color:#000000"> Logger</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> ImpôtsError </span><span style="color:#0000ff">import</span><span style="color:#000000"> ImpôtsError</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> redis</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># invio di un&#x27;e-mail all&#x27;amministratore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> send_adminmail(config: dict, message: str):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si invia un&#x27;e-mail all&#x27;amministratore dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    config_mail = config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&#x27;adminMail&#x27;</span><span style="font-weight:bold;color:#000000">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    config_mail</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&quot;logger&quot;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000"> = config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;logger&#x27;</span><span style="font-weight:bold;color:#000000">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    SendAdminMail.send(config_mail, message)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># verifica del file di log</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">logger = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">erreur = </span><span style="color:#0000ff">False</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">message_erreur = </span><span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># registratore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    logger = Logger(config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&#x27;logsFilename&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> BaseException </span><span style="color:#0000ff">as</span><span style="color:#000000"> exception:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># log della console</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    print(</span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;L&#x27;erreur suivante s&#x27;est produite : </span><span style="color:#000000">{exception}</span><span style="color:#a31515">&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si registra l&#x27;errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    erreur = </span><span style="color:#0000ff">True</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    message_erreur = </span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="color:#000000">{exception}</span><span style="color:#a31515">&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si memorizza il logger nella configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;logger&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000"> = logger</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># gestione degli errori</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># invio di un&#x27;e-mail all&#x27;amministratore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    send_adminmail(config, message_erreur)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># chiusura dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    sys.exit(</span><span style="color:#098658">1</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># log di avvio</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">log = </span><span style="color:#a31515">&quot;</span><span style="font-weight:bold;color:#a31515">[serveur]</span><span style="color:#a31515"> démarrage du serveur&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">logger.write(</span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="color:#000000">{log}\n</span><span style="color:#a31515">&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># verifica della disponibilità del server Redis</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">redis_client = redis.Redis(host=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&quot;parameters&quot;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&quot;redis&quot;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&quot;host&quot;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                           port=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&quot;parameters&quot;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&quot;redis&quot;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&quot;port&quot;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si esegue il ping del server Redis</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    redis_client.ping()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> BaseException </span><span style="color:#0000ff">as</span><span style="color:#000000"> exception:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># Redis non disponibile</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    log = </span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="font-weight:bold;color:#a31515">[serveur]</span><span style="color:#a31515"> Le serveur Redis n&#x27;est pas disponible : </span><span style="color:#000000">{exception}</span><span style="color:#a31515">&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># console</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(log)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># log</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    logger.write(</span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="color:#000000">{log}\n</span><span style="color:#a31515">&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># fine</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    sys.exit(</span><span style="color:#098658">1</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si memorizza il client [redis] nella configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;redis_client&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000"> = redis_client</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># recupero dei dati dall&#x27;amministrazione fiscale</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">erreur = </span><span style="color:#0000ff">False</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># admindata sarà un dato a livello di applicazione in sola lettura</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&quot;admindata&quot;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000"> = config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&quot;layers&quot;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&quot;dao&quot;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">.get_admindata()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># log di esito positivo</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    logger.write(</span><span style="color:#a31515">&quot;</span><span style="font-weight:bold;color:#a31515">[serveur]</span><span style="color:#a31515"> connexion à la base de données réussie\n&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span><span style="color:#000000"> ImpôtsError </span><span style="color:#0000ff">as</span><span style="color:#000000"> ex:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si registra l&#x27;errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    erreur = </span><span style="color:#0000ff">True</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># log degli errori</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    log = </span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;L&#x27;erreur suivante s&#x27;est produite : </span><span style="color:#000000">{ex}</span><span style="color:#a31515">&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># console</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(log)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># file di log</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    logger.write(</span><span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="color:#000000">{log}\n</span><span style="color:#a31515">&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># e-mail all&#x27;amministratore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    send_adminmail(config, log)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># il thread principale non ha più bisogno del logger</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">logger.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># se si è verificato un errore, ci si arresta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span><span style="color:#000000"> erreur:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    sys.exit(</span><span style="color:#098658">2</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione delle route dell&#x27;applicazione web</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> routes</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">routes.config=config</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">routes.execute(__name__)</span></span>
+</code></pre></div>
+
+<ul>
+  <li>righe 56-73: vengono introdotti un server Redis e il relativo client;
+  </li>
+  <li>righe 102-104: le route dell’applicazione sono state esternalizzate nello script <b>[routes]</b>;
+  </li>
+</ul>
+
+<p><span id="toc48549306" name="toc48549306" class="odt-bookmark-anchor"></span></p>
+<h3 id="3321-i-moduli-flask_session-e-redis">33.2.1. <span style="color: #4f81bd"><strong>I moduli</strong> [flask_session] <strong>e</strong> [redis]</span></h3>
+<p>Il server <strong>[Redis]</strong> verrà utilizzato per memorizzare le sessioni degli utenti. Utilizzeremo il modulo <strong>[flask_session]</strong> per gestire tali sessioni. Questo modulo può memorizzare le sessioni degli utenti in diverse posizioni. Redis è una di queste e la utilizzeremo.</p>
+<p>Il modulo <strong>[flask_session]</strong> deve essere installato in un terminale PyCharm:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\packages&gt;<span style="background-color:#fff2cc">pip install flask-session</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Collecting flask-session</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  …</span></span>
+</code></pre></div>
+
+<p>Per comunicare con il server Redis, abbiamo bisogno di un client Redis. Questo ci verrà fornito dal modulo <strong>[redis],</strong> che installeremo a nostra volta:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\packages&gt;<span style="background-color:#fff2cc">pip install redis</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Collecting redis</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+</code></pre></div>
+
+<p><span id="toc48549307" name="toc48549307" class="odt-bookmark-anchor"></span></p>
+<h3 id="3322-il-server-redis">33.2.2. <span style="color: #4f81bd">Il server Redis</span></h3>
+<p>Il server Redis servirà a memorizzare le sessioni degli utenti. Il modulo <strong>[flask_session]</strong> funziona nel modo seguente:</p>
+<ul>
+  <li>ogni utente ha un identificativo di sessione ed è proprio questo che viene inviato al client, e nient’altro. Il client riceve un cookie di sessione una sola volta, al termine della sua prima richiesta. Questo cookie contiene l’identificativo di sessione dell’utente, che non cambierà più nel corso delle successive richieste del client. Per questo motivo il server non deve inviare un nuovo cookie di sessione;
+  </li>
+  <li>in precedenza il contenuto della sessione veniva inviato al client. Questo non avverrà più. Il contenuto della sessione dell’utente verrà memorizzato sul server Redis;
+  </li>
+</ul>
+
+<p>Laragon viene fornito con un server Redis disattivato per impostazione predefinita. È quindi necessario attivarlo:</p>
+<p><img src="images/1000000100000362000001692AD27BEF.png" width="551" height="230" style="width:14.589cm;height:6.082cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000100000362000001692AD27BEF.png" /></p>
+<ul>
+  <li>in <b>[3]</b>, attivare il server <b>[Redis]</b>;
+  </li>
+  <li>in <b>[4]</b>, lasciare la porta <b>[6379] </b>che i client Redis utilizzano di default;
+  </li>
+</ul>
+
+<p>I servizi Laragon vengono riavviati automaticamente dopo l’attivazione di Redis:</p>
+<p><img src="images/10000000000003E40000029211639DFF.png" width="435" height="287" style="width:11.509cm;height:7.604cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003E40000029211639DFF.png" /></p>
+<p>Il server Redis può essere interrogato in modalità comando. Si apre un terminale Laragon <strong>[6]</strong>:</p>
+<p><img src="images/100000010000042A00000144D0385EF7.png" width="663" height="202" style="width:17.542cm;height:5.332cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000010000042A00000144D0385EF7.png" /></p>
+<ul>
+  <li>in <b>[1]</b>, il comando <b>[redis-cli] </b>avvia il client in modalità comando del server Redis;
+  </li>
+</ul>
+
+<p>Nel luglio 2019, il client Redis può utilizzare 172 comandi per interagire con il server <strong>[https://redis.io/commands#list]</strong>. Uno di questi, <strong>[command count] [2]</strong>, visualizza il numero <strong>[3]</strong>.</p>
+<p>La scrittura in <strong>[Redis]</strong> avviene tramite il comando Redis <strong>[set attribut valeur] [4]</strong>. Il valore può quindi essere recuperato con il comando <strong>[get attribut] [5]</strong>.</p>
+<p>Potrebbe essere necessario svuotare la memoria di Redis. Ciò si effettua con il comando <strong>[flushdb] [6]</strong>. Successivamente, se si richiede il valore dell’attributo <strong>[titre] [7]</strong>, si ottiene un riferimento <strong>[nil] [8]</strong> che indica che l’attributo non è stato trovato. È inoltre possibile utilizzare il comando <strong>[exists] [9-10]</strong> per verificare l’esistenza di un attributo.</p>
+<p>Per uscire dal client Redis, digitare il comando <strong>[quit] [11]</strong>.</p>
+<p>È inoltre possibile utilizzare un&#x27;interfaccia web per gestire le chiavi presenti nel server Redis. A tal fine, è necessario che il server Apache di Laragon sia in esecuzione:</p>
+<p><img src="images/10000000000003E400000292126A9DFB.png" width="434" height="287" style="width:11.494cm;height:7.594cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003E400000292126A9DFB.png" /></p>
+<p>Si ottiene la seguente interfaccia:</p>
+<p><img src="images/100000000000052F000002ED3DD2CE2D.png" width="579" height="327" style="width:15.332cm;height:8.654cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000052F000002ED3DD2CE2D.png" /></p>
+<ul>
+  <li>in <b>[1-4]</b>, una delle sessioni memorizzate sul server Redis;
+  </li>
+</ul>
+
+<p><span id="toc48549308" name="toc48549308" class="odt-bookmark-anchor"></span></p>
+<h3 id="3323-gestione-del-server-redis-nello-script-principale-main">33.2.3. <span style="color: #4f81bd"><strong>Gestione del server Redis nello script principale</strong> [main]</span></h3>
+<p>Lo script <strong>[main]</strong> verifica la presenza del server Redis nel modo seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span> redis</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si verifica la disponibilità del server Redis</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">redis_client = redis.Redis(host=config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&quot;parameters&quot;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&quot;redis&quot;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&quot;host&quot;</span><span style="font-weight:bold">]</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                           port=config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&quot;parameters&quot;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&quot;redis&quot;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&quot;port&quot;</span><span style="font-weight:bold">]</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si esegue il ping del server Redis</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">try</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    redis_client.ping()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">except</span> BaseException <span style="color:#0000ff">as</span> exception:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # Redis non disponibile</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    log = <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="font-weight:bold;color:#a31515">[serveur]</span><span style="color:#a31515"> Le serveur Redis n&#x27;est pas disponible : </span>{exception}<span style="color:#a31515">&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # console</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(log)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # log</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    logger.write(<span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{log}\n<span style="color:#a31515">&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    # fine</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    sys.exit(<span style="color:#098658">1</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si memorizza il client [redis] nella configurazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;redis_client&#x27;</span><span style="font-weight:bold">]</span> = redis_client</span></span>
+</code></pre></div>
+
+<ul>
+  <li>riga 4: il costruttore della classe <b>[redis.Redis] </b>crea un client del server Redis. Le sue caratteristiche (indirizzo, porta) si trovano nello script <b>[parameters]</b>;
+  </li>
+  <li>riga 8: il metodo <b>[ping] </b>consente di verificare la presenza del server Redis;
+  </li>
+  <li>righe 9-17: se il ping non va a buon fine, l&#x27;errore viene registrato nel log e il server viene arrestato;
+  </li>
+  <li>riga 20: il riferimento del client Redis viene inserito nella configurazione;
+  </li>
+</ul>
+
+<p><span id="toc48549309" name="toc48549309" class="odt-bookmark-anchor"></span></p>
+<h3 id="3324-gestione-delle-rotte-nello-script-principale-main">33.2.4. <span style="color: #4f81bd"><strong>Gestione delle rotte nello script principale</strong> [main]</span></h3>
+<p>La gestione delle rotte in <strong>[main]</strong> si limita alle seguenti righe:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-markdown">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione delle rotte dell&#x27;applicazione web</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> routes</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">routes.config=config</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">routes.execute(__name__)</span></span>
+</code></pre></div>
+
+<ul>
+  <li>riga 1: le rotte sono state esternalizzate nel modulo <b>[routes]</b>;
+  </li>
+  <li>riga 3: le route devono conoscere la configurazione di esecuzione;
+  </li>
+  <li>riga 4: si avvia l&#x27;applicazione Flask passandole il nome dello script eseguito (__main__);
+  </li>
+</ul>
+
+<p>Lo script delle route è il seguente:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># dipendenze</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span><span style="color:#000000"> os</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> flask </span><span style="color:#0000ff">import</span><span style="color:#000000"> Flask, redirect, request, session, url_for</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> flask_api </span><span style="color:#0000ff">import</span><span style="color:#000000"> status</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span><span style="color:#000000"> flask_session </span><span style="color:#0000ff">import</span><span style="color:#000000"> Session</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># Applicazione Flask</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">app = Flask(__name__, template_folder=</span><span style="color:#a31515">&quot;../flask/templates&quot;</span><span style="color:#000000">, static_folder=</span><span style="color:#a31515">&quot;../flask/static&quot;</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># configurazione dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">config = {}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># il front controller</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> front_controller() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># la richiesta viene inoltrata al controller principale</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    main_controller = config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;mvc&#x27;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&#x27;controllers&#x27;</span><span style="font-weight:bold;color:#000000">][</span><span style="font-weight:bold;color:#a31515">&#x27;main-controller&#x27;</span><span style="font-weight:bold;color:#000000">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> main_controller.execute(request, session, config)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> index() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># reindirizzamento a /init-session/html</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> redirect(url_for(</span><span style="color:#a31515">&quot;init_session&quot;</span><span style="color:#000000">, type_response=</span><span style="color:#a31515">&quot;html&quot;</span><span style="color:#000000">), status.HTTP_302_FOUND)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># init-session</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/init-session/&lt;string:type_response&gt;&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> init_session(type_response: str) -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si esegue il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># autenticazione utente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/authentifier-utilisateur&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;POST&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> authentifier_utilisateur() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si esegue il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># calcolo-imposta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/calculer-impot&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;POST&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> calculer_impot() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si esegue il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># calcolo dell&#x27;imposta in batch</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/calculer-impots&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;POST&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> calculer_impots():</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si esegue il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elenco delle simulazioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/lister-simulations&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> lister_simulations() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># viene eseguito il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># elimina-simulazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/supprimer-simulation/&lt;int:numero&gt;&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> supprimer_simulation(numero: int) -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># viene eseguito il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># fine-sessione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/fin-session&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> fin_session() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si esegue il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># visualizza-calcolo-imposta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/afficher-calcul-impot&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> afficher_calcul_impot() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># si esegue il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># get-admindata</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">@app.route(</span><span style="color:#a31515">&#x27;/get-admindata&#x27;</span><span style="color:#000000">, methods=</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;GET&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> get_admindata() -&gt; tuple:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># viene eseguito il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> front_controller()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span><span style="color:#000000"> execute(name: str):</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># chiave segreta della sessione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    app.secret_key = os.urandom(</span><span style="color:#098658">12</span><span style="color:#000000">).hex()</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># Flask-Session</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    app.config.update(SESSION_TYPE=</span><span style="color:#a31515">&#x27;redis&#x27;</span><span style="color:#000000">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                      SESSION_REDIS=config</span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#a31515">&#x27;redis_client&#x27;</span><span style="font-weight:bold;color:#000000">]</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    Session(app)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># caso in cui l&#x27;applicazione Flask viene avviata tramite uno script da riga di comando</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> name == </span><span style="color:#a31515">&#x27;__main__&#x27;</span><span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        app.config.update(ENV=</span><span style="color:#a31515">&quot;development&quot;</span><span style="color:#000000">, DEBUG=</span><span style="color:#0000ff">True</span><span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        app.run(threaded=</span><span style="color:#0000ff">True</span><span style="color:#000000">)</span></span></span>
+</code></pre></div>
+
+<ul>
+  <li>riga 9: l&#x27;applicazione Flask viene istanziata;
+  </li>
+  <li>riga 12: la configurazione dell&#x27;applicazione non è ancora nota al momento della scrittura dello script. Diventa nota solo al momento della sua esecuzione;
+  </li>
+  <li>righe 20-77: le route dell’applicazione così come erano definite nella versione precedente. Non cambiano;
+  </li>
+  <li>righe 14-18: tutte le route si limitano a chiamare la funzione <b>[front_controller]</b>. Abbiamo eliminato da quest’ultima il codice iniziale. Ora si limita a chiamare il controller principale dell’applicazione web;
+  </li>
+  <li>righe 79-89: <b>[execute] </b>è la funzione chiamata dallo script <b>[main] </b>per avviare l’applicazione web;
+  </li>
+  <li>riga 81: il modulo <b>[flask_session] </b>utilizza la chiave segreta di Flask;
+  </li>
+  <li>righe 82-84: configurazione del modulo <b>[flask_session]</b>. Consiste nell’aggiungere le chiavi <b>[SESSION_TYPE, SESSION_REDIS] </b>alla configurazione <b>[app.config] </b>dell’applicazione Flask <b>[app]</b>:
+  </li>
+  <li><b>[SESSION_TYPE]</b>: il tipo di sessione. Ne esistono diversi. Il tipo <b>[redis] </b>indica che <b>[flask_session] </b>utilizza un server <b>[redis] </b>per memorizzare le sessioni degli utenti. Per questo motivo, è necessario definire la chiave <b>[SESSION_REDIS], </b>che deve essere il riferimento di un client Redis;
+  </li>
+  <li>riga 85: la sessione <b>[Flask-Session] </b>è associata all’applicazione Flask;
+  </li>
+  <li>righe 86-89: se il parametro <b>[name] </b>della riga 79 è la stringa <b>[__main__]</b>, allora l’applicazione Flask viene avviata;
+  </li>
+</ul>
+
+<p><span id="toc48549310" name="toc48549310" class="odt-bookmark-anchor"></span></p>
+<h2 id="333-rifattorizzazione-del-controller-principale">33.3. <span style="color: #4f81bd"><strong><span style="color: #4f81bd">Rifattorizzazione del controller principale</span></strong></span></h2>
+<p>Il codice che in precedenza si trovava nella funzione <strong>[front_controller]</strong> dello script <strong>[main]</strong> è stato spostato nel controller principale:</p>
+<p><img src="images/10000000000001A40000017CC273E1B7.png" width="183" height="166" style="width:4.842cm;height:4.382cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A40000017CC273E1B7.png" /></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"># importazione delle dipendenze</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">import</span> threading</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> time</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> random <span style="color:#0000ff">import</span> randint</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> flask_api <span style="color:#0000ff">import</span> status</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> werkzeug.local <span style="color:#0000ff">import</span> LocalProxy</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> InterfaceController <span style="color:#0000ff">import</span> InterfaceController</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> Logger <span style="color:#0000ff">import</span> Logger</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> SendAdminMail <span style="color:#0000ff">import</span> SendAdminMail</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">def</span> send_adminmail(config: dict, message: str):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span># invio di un&#x27;e-mail all&#x27;amministratore dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config_mail = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;adminMail&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    config_mail<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&quot;logger&quot;</span><span style="font-weight:bold">]</span> = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;logger&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    SendAdminMail.send(config_mail, message)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># controller principale dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">class</span> MainController(InterfaceController):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    <span style="color:#0000ff">def</span> execute(self, request: LocalProxy, session: LocalProxy, config: dict) -&gt; (dict, int):</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># elaborazione della richiesta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        logger = <span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        action = <span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        type_response1 = <span style="color:#0000ff">None</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">try</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># si recuperano gli elementi del percorso</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            params = request.path.split(<span style="color:#a31515">&#x27;/&#x27;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># l&#x27;azione è il primo elemento</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            action = params<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#098658">1</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># nessun errore iniziale</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            erreur = <span style="color:#0000ff">False</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># il tipo di sessione deve essere noto prima di determinate azioni</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            type_response1 = session.get(<span style="color:#a31515">&#x27;typeResponse&#x27;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> type_response1 <span style="color:#0000ff">is</span> <span style="color:#0000ff">None</span> <span style="color:#0000ff">and</span> action != <span style="color:#a31515">&quot;init-session&quot;</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span># si registra l&#x27;errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                résultat = {<span style="color:#a31515">&quot;action&quot;</span>: action, <span style="color:#a31515">&quot;état&quot;</span>: <span style="color:#098658">101</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                            </span>&quot;réponse&quot;<span style="color:#000000">: </span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold">&quot;pas de session en cours. Commencer par action [init-session</span><span style="font-weight:bold;color:#000000">]</span>&quot;<span style="color:#000000">]}</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                erreur = <span style="color:#0000ff">True</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># registrare nel log</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            logger = Logger(config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;logsFilename&#x27;</span><span style="font-weight:bold">]</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># viene memorizzato in una configurazione associata al thread</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            thread_config = {<span style="color:#a31515">&quot;logger&quot;</span>: logger}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            thread_name = threading.current_thread().name</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            config<span style="font-weight:bold">[thread_name]</span> = {<span style="color:#a31515">&quot;config&quot;</span>: thread_config}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># si registra la richiesta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            logger.write(<span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="font-weight:bold;color:#a31515">[MainController]</span><span style="color:#a31515"> requête : </span>{request}\n<span style="color:#a31515">&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># si interrompe il thread se richiesto</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            sleep_time = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;sleep_time&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> sleep_time != <span style="color:#098658">0</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span># la pausa è casuale, in modo che alcuni thread vengano interrotti e altri no</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                aléa = randint(<span style="color:#098658">0</span>, <span style="color:#098658">1</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                <span style="color:#0000ff">if</span> aléa == <span style="color:#098658">1</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                    <span style="color:#008000"># registrazione prima della pausa</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                    logger.write(</span><span style="color:#0000ff">f</span>&quot;<span style="font-weight:bold">[front_controller]</span> mis en pause du thread pendant <span style="color:#000000">{sleep_time}</span> seconde(s)<span style="color:#000000">\n</span>&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                    <span style="color:#008000"># pausa</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                    time.sleep(sleep_time)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># per alcune azioni è necessario essere autenticati</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            user = session.get(<span style="color:#a31515">&#x27;user&#x27;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> <span style="color:#0000ff">not</span> erreur <span style="color:#0000ff">and</span> user <span style="color:#0000ff">is</span> <span style="color:#0000ff">None</span> <span style="color:#0000ff">and</span> action <span style="color:#0000ff">not</span> <span style="color:#0000ff">in</span> <span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&quot;init-session&quot;</span><span style="font-weight:bold">, </span><span style="font-weight:bold;color:#a31515">&quot;authentifier-utilisateur&quot;</span><span style="font-weight:bold">]</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span># si rileva l&#x27;errore</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                résultat = {<span style="color:#a31515">&quot;action&quot;</span>: action, <span style="color:#a31515">&quot;état&quot;</span>: <span style="color:#098658">101</span>,</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                            </span>&quot;réponse&quot;<span style="color:#000000">: </span><span style="font-weight:bold;color:#000000">[</span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold">&quot;action [</span><span style="font-weight:bold;color:#000000">{action}]</span> demandée par utilisateur non authentifié&quot;<span style="color:#000000">]}</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                erreur = <span style="color:#0000ff">True</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># Ci sono errori?</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> erreur:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span># la richiesta non è valida</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                status_code = status.HTTP_400_BAD_REQUEST</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">else</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">                </span># viene eseguito il controller associato all&#x27;azione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                controller = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;mvc&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;controllers&#x27;</span><span style="font-weight:bold">][action]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                résultat, status_code = controller.execute(request, session, config)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">except</span> BaseException <span style="color:#0000ff">as</span> exception:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># altre eccezioni (impreviste)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            résultat = {<span style="color:#a31515">&quot;action&quot;</span>: action, <span style="color:#a31515">&quot;état&quot;</span>: <span style="color:#098658">131</span>, <span style="color:#a31515">&quot;réponse&quot;</span>: <span style="font-weight:bold">[</span><span style="font-weight:bold;color:#0000ff">f</span><span style="font-weight:bold;color:#a31515">&quot;</span><span style="font-weight:bold">{exception}</span><span style="font-weight:bold;color:#a31515">&quot;</span><span style="font-weight:bold">]</span>}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            status_code = status.HTTP_400_BAD_REQUEST</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">finally</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">pass</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si registra il risultato inviato al cliente</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        log = <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span><span style="font-weight:bold;color:#a31515">[MainController]</span><span style="color:#a31515"> </span>{résultat}\n<span style="color:#a31515">&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        logger.write(log)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># Si è verificato un errore irreversibile?</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">if</span> status_code == status.HTTP_500_INTERNAL_SERVER_ERROR:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># viene inviata un&#x27;e-mail all&#x27;amministratore dell&#x27;applicazione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            send_adminmail(config, log)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si determina il tipo desiderato per la risposta</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        type_response2 = session.get(<span style="color:#a31515">&#x27;typeResponse&#x27;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">if</span> type_response2 <span style="color:#0000ff">is</span> <span style="color:#0000ff">None</span> <span style="color:#0000ff">and</span> type_response1 <span style="color:#0000ff">is</span> <span style="color:#0000ff">None</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># il tipo di sessione non è ancora stato stabilito - sarà jSON</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            type_response = <span style="color:#a31515">&#x27;json&#x27;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">elif</span> type_response2 <span style="color:#0000ff">is</span> <span style="color:#0000ff">not</span> <span style="color:#0000ff">None</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># il tipo di risposta è noto e presente nella sessione</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            type_response = type_response2</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">else</span>:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">            </span># altrimenti si continua a utilizzare type_response1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            type_response = type_response1</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si costruisce la risposta da inviare</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        response_builder = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;mvc&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;responses&#x27;</span><span style="font-weight:bold">][type_response]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        response, status_code = response_builder \</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            .build_http_response(request, session, config, status_code, résultat)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si chiude il file di log se era stato aperto</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">if</span> logger:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            logger.close()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        </span># si invia la risposta HTTP</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#0000ff">return</span> response, status_code</span></span>
+</code></pre></div>
+
+<p>Tutto questo codice è già stato visto in un momento o nell’altro.</p>
+<p><span id="toc48549311" name="toc48549311" class="odt-bookmark-anchor"></span></p>
+<h2 id="334-gestione-delle-password-crittografate">33.4. <span style="color: #4f81bd">Gestione delle password crittografate</span></h2>
+<p>Per gestire le password crittografate utilizzeremo il modulo <strong>[passlib],</strong> che si installa da un terminale PyCharm:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span class="odt-code-line-content">(venv) C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\packages&gt;<span style="background-color:#fff2cc">pip install passlib</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">Collecting passlib</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+</code></pre></div>
+
+<p>Ecco un esempio di script che crittografa la password che gli viene passata come parametro:</p>
+<p><img src="images/10000000000001A3000001433EF36B61.png" width="183" height="141" style="width:4.842cm;height:3.732cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001A3000001433EF36B61.png" /></p>
+<p>Lo script <strong>[create_hashed_password]</strong> è il seguente (<a href="https://passlib.readthedocs.io/en/stable/"><u><span style="color: #0563c1">https://passlib.readthedocs.io/en/stable/</span></u></a>):</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content">import<span style="color:#000000"> sys</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># funzione di crittografia</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> passlib.hash <span style="color:#0000ff">import</span> pbkdf2_sha256</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si attende la password da crittografare</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">syntaxe = <span style="color:#0000ff">f</span><span style="color:#a31515">&quot;</span>{sys.argv<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#098658">0</span><span style="font-weight:bold">]</span>}<span style="color:#a31515"> password&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">erreur = len(sys.argv) != <span style="color:#098658">2</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">if</span> erreur:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    print(<span style="color:#0000ff">f</span><span style="color:#a31515">&quot;syntaxe : </span>{syntaxe}<span style="color:#a31515">&quot;</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    sys.exit()</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">else<span style="color:#000000">:</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    password = sys.argv<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#098658">1</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># si crittografa la password</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">hash = pbkdf2_sha256.hash(password)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print(</span><span style="color:#0000ff">f</span>&quot;version cryptée de <span style="font-weight:bold">[</span><span style="font-weight:bold;color:#000000">{password}</span><span style="font-weight:bold">]</span> = <span style="color:#000000">{hash}</span>&quot;<span style="color:#000000">)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"># verifica</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">correct = pbkdf2_sha256.verify(password, hash)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">print(correct)</span></span>
+</code></pre></div>
+
+<ul>
+  <li>riga 16: si crittografa la password passata come parametro;
+  </li>
+  <li>riga 20: si confronta la password <b>[password] </b>passata come parametro con la sua versione crittografata <b>[hash]</b>. La funzione <b>[verify] </b>crittografa la password <b>[password] </b>e confronta la stringa crittografata ottenuta con <b>[hash]</b>. Restituisce True se le due stringhe sono uguali;
+  </li>
+</ul>
+
+<p>Lo script sopra riportato ci permette di ottenere la versione crittografata della password <strong>[admin]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">C:\Data\st-2020\dev\python\cours-2020\python3-flask-2020\venv\Scripts\python.exe C:/Data/st-2020/dev/python/cours-2020/python3-flask-2020/impots/http-servers/08/passlib/<span style="background-color:#fff2cc">create_hashed_password.py</span><span style="background-color:#f7caac"> </span><span style="background-color:#fff2cc">admin</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">version cryptée de <span style="font-weight:bold">[admin]</span> = <span style="background-color:#fff2cc">$pbkdf2-sha256$29000$fU9pTendO6c0ZoyR8r5Xqg$5ZXywIUnbMfN2hPnBaefiuqWjEbmAY.Lu06i4dwcnek</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">True</span></span>
+</code></pre></div>
+
+<p>Riga 2, il valore che inseriamo nello script <strong>[parameters]</strong>:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#a31515">&quot;users&quot;</span>: <span style="font-weight:bold">[</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">                </span><span style="font-weight:bold;color:#a31515">&quot;login&quot;</span><span style="font-weight:bold">: </span><span style="font-weight:bold;color:#a31515">&quot;admin&quot;</span><span style="font-weight:bold">,</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">                </span><span style="font-weight:bold;color:#a31515">&quot;password&quot;</span><span style="font-weight:bold">: </span><span style="font-weight:bold;color:#a31515">&quot;$pbkdf2-sha256$29000$fU9pTendO6c0ZoyR8r5Xqg$5ZXywIUnbMfN2hPnBaefiuqWjEbmAY.Lu06i4dwcnek&quot;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold">        ]</span>,</span></span>
+</code></pre></div>
+
+<p>Il controller di autenticazione <strong>[AuthentifierUtilisateurController]</strong> si evolve come segue:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">from</span> passlib.handlers.pbkdf2 <span style="color:#0000ff">import</span> <span style="background-color:#fff2cc">pbkdf2_sha256</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># si verifica la validità della coppia (utente, password)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            users = config<span style="font-weight:bold">[</span><span style="font-weight:bold;color:#a31515">&#x27;parameters&#x27;</span><span style="font-weight:bold">][</span><span style="font-weight:bold;color:#a31515">&#x27;users&#x27;</span><span style="font-weight:bold">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            i = <span style="color:#098658">0</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            nbusers = len(users)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            trouvé = <span style="color:#0000ff">False</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">while</span> <span style="color:#0000ff">not</span> trouvé <span style="color:#0000ff">and</span> i &lt; nbusers:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                trouvé = user == users<span style="font-weight:bold">[i][</span><span style="font-weight:bold;color:#a31515">&quot;login&quot;</span><span style="font-weight:bold">]</span> <span style="color:#0000ff">and</span> <span style="background-color:#fff2cc">pbkdf2_sha256.verify</span>(password, users<span style="font-weight:bold">[i][</span><span style="font-weight:bold;color:#a31515">&quot;password&quot;</span><span style="font-weight:bold">]</span>)</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">                i += <span style="color:#098658">1</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#008000"># Trovata?</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">            <span style="color:#0000ff">if</span> <span style="color:#0000ff">not</span> trouvé:</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">…</span></span>
+</code></pre></div>
+
+<p><span id="toc48549312" name="toc48549312" class="odt-bookmark-anchor"></span></p>
+<h2 id="335-test">33.5. <span style="color: #4f81bd">Test</span></h2>
+<p>Oltre ai test con un browser, è possibile utilizzare anche i client presenti nella cartella <strong>[http-servers/07]</strong> scritti per la versione 12. Dovrebbero funzionare anche per la versione 13:</p>
+<p><img src="images/100000000000021A000002A91233C6E6.png" width="235" height="298" style="width:6.219cm;height:7.872cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000021A000002A91233C6E6.png" /></p>
+<ul>
+  <li>in <b>[1]</b>, i tre client devono funzionare;
+  </li>
+  <li>in <b>[2]</b>, i due test dovrebbero funzionare;
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Questo tutorial scritto da <strong>Serge Tahé</strong> è reso disponibile al pubblico secondo i termini della
+<em>Creative Commons Attribuzione – Non commerciale –
+Condividi allo stesso modo 3.0 Unported</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
